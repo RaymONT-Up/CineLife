@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    // Запрет на неявные any-типы в TypeScript коде.
+    "noImplicitAny": true,
+    "module": "ESNext",
+    "target": "es5",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "moduleResolution": "node",
+
+    // Опция для разрешения синтетических default импортов (для CommonJS и ES6 модулей).
+    // import test from test а не const test = require('test')
+    "allowSyntheticDefaultImports": true,
+    // Опция, позволяющая удобно работать с импортами в стиле ES6.
+    // import test from test а не import * as test from....
+    "esModuleInterop": true,
+
+    // Для абсолютных импортов
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"]
+    }
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}

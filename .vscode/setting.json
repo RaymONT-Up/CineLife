@@ -1,0 +1,18 @@
+{
+  "editor.quickSuggestions": {
+  "other": true,
+  "comments": false,
+  "strings": false
+  },
+
+  "stylelint.validate": ["css", "scss"],
+	"css.validate": false,
+	"less.validate": false,
+	"scss.validate": false,
+
+	"editor.formatOnSave": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.stylelint": true
+	},
+	"files.autoSaveDelay": 500
+}

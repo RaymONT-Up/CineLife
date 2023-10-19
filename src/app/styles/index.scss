@@ -1,0 +1,16 @@
+@import "./reset";
+@import "./vars/global";
+@import "./themes/dark";
+@import "./themes/white";
+
+.app {
+  font: var(--font-m);
+  background: var(--bg-color);
+  color: var(--primary-color);
+}
+
+.container{
+  max-width: var(--container-width);
+  padding: 0 var(--container-padding);
+  margin: 0 auto;
+}
