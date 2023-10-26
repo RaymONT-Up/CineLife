@@ -10,7 +10,7 @@ const Hero: FC<HeroProps> = (props) => {
   const { className } = props;
   return (
     <div className={classNames(cls.Hero, {}, [className])}>
-      Test
+      test
     </div>
   );
 };

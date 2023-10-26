@@ -2,6 +2,7 @@
 @import "./vars/global";
 @import "./themes/dark";
 @import "./themes/white";
+@import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap';
 
 .app {
   font: var(--font-m);
@@ -9,8 +10,3 @@
   color: var(--primary-color);
 }
 
-.container{
-  max-width: var(--container-width);
-  padding: 0 var(--container-padding);
-  margin: 0 auto;
-}

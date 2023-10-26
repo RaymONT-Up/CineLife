@@ -1,5 +1,6 @@
 .appLink {
   display: inline-block;
+  color: var(--text-color);
 }
 
 .clear {
@@ -11,7 +12,6 @@
 .classic {
   padding: 1px 2px;
   position: relative;
-  color: var(--secondary-color);
   text-decoration: none;
   transition: color, var(--transition-duration);
 

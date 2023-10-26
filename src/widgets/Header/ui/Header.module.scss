@@ -1,20 +1,12 @@
 .Header{
-  padding: 20px;
+  padding: 3vh var(--container-padding);
   display: flex;
   align-items: center;
   background-color: var(--bg-color);
 }
 
 .Logo{
-  margin-right: 40px;
+  margin-right: calc(var(--index) * 3);
 }
 
-.list {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
 
-.item:not(:last-child) {
-  margin-right: 30px;
-}

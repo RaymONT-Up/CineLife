@@ -7,10 +7,18 @@
   overflow: hidden;
 }
 
-.heroBg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+.bgImg_wrapper{
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+.bgImg_wrapper img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .btn {
