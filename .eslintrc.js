@@ -6,7 +6,11 @@ module.exports = {
     jest: true,
   },
 
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb', 'plugin:storybook/recommended',
+    'plugin:storybook/recommended',
+  ],
   parser: '@typescript-eslint/parser',
 
   parserOptions: {
@@ -38,6 +42,7 @@ module.exports = {
     'react/no-unused-prop-types': 'warn',
     'react/jsx-props-no-spreading': 'warn',
 
+    'react/no-unescaped-entities': 'off',
     'react/function-component-definition': 'off',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
