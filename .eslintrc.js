@@ -25,7 +25,7 @@ module.exports = {
 
   rules: {
     //
-    'linebreak-style': [2, 'windows'],
+    // 'linebreak-style': [2, 'windows'],
 
     // Отступы
     'react/jsx-indent': [2, 2],
@@ -51,6 +51,7 @@ module.exports = {
     'no-shadow': 'off',
     'import/extensions': 'off',
     'no-underscore-dangle': 'off',
+    'linebreak-style': 'off',
   },
 
   globals: {

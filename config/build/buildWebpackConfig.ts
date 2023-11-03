@@ -35,7 +35,7 @@ export const buildWebpackConfig = (
 
     // плагины
     // Функция buildPlugins возвращает массив плагинов
-    plugins: buildPlugins(paths),
+    plugins: buildPlugins(options),
 
     // карта исходных кодов для отладки(в доке подробнее)
     devtool: isDev ? "inline-source-map" : undefined,
