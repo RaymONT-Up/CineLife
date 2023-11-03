@@ -19,6 +19,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
 
   // Для обработки файлов SVG с использованием @svgr/webpack
   // Исключаем стандартный обработчик для SVG и добавляем новый
+  // eslint-disable-next-line no-param-reassign
   config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
     if (/svg/.test(rule.test as string)) {
       return { ...rule, exclude: /\.svg$/i };
