@@ -8,8 +8,8 @@
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
  
-    "lint:ts": "eslint \"**/*.{ts,tsx,js}\"",
-    "lint:ts:fix": "eslint \"**/*.{ts,tsx,js}\" --fix",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:scss": "npx stylelint \"**/*.scss\"",
   
     "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
@@ -21,6 +21,7 @@
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
+  
     
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook"
