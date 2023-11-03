@@ -37,13 +37,7 @@
   text-decoration: none;
   color: var(--secondary-color);
   background-color: var(--primary-color);
-  transition: border-radius, 0.3s;
-
-  &:hover {
-    border-radius: 26px;
-  }
 }
-
 
 .nav_link{
   display: block;
