@@ -21,9 +21,12 @@ module.exports = {
     sourceType: 'module',
   },
 
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'react-hooks'],
 
   rules: {
+    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
+
     // Отступы
     'react/jsx-indent': [2, 2],
 
@@ -38,6 +41,8 @@ module.exports = {
     'import/order': 'warn',
     'react/no-unused-prop-types': 'warn',
     'react/jsx-props-no-spreading': 'warn',
+    'jsx-a11y/click-events-have-key-events': 'warn',
+    'jsx-a11y/no-static-element-interactions': 'warn',
 
     'react/no-unescaped-entities': 'off',
     'react/function-component-definition': 'off',
@@ -49,6 +54,7 @@ module.exports = {
     'import/extensions': 'off',
     'no-underscore-dangle': 'off',
     'linebreak-style': 'off',
+
   },
 
   globals: {
