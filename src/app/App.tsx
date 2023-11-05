@@ -20,7 +20,6 @@ const App: FC<AppProps> = () => {
   const modalToggle = () => {
     setIsOpen((prev) => !prev);
   };
-
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
