@@ -32,7 +32,7 @@ module.exports = {
 
     'react/jsx-filename-extension': [
       2,
-      { extensions: ['.js', '.jsx', '.tsx'] },
+      { extensions: ['.js', '.jsx', '.tsx', 'ts'] },
     ],
     'max-len': [2, { code: 110, ignoreComments: true }],
 

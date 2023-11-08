@@ -1,8 +1,18 @@
 .Header{
-  padding: 3vh var(--container-padding);
   display: flex;
   align-items: center;
-  background-color: var(--bg-color);
+  flex-direction: row;
+  box-sizing: border-box;
+
+  border-radius: 5px;
+  border: 1px solid #E8BC4D;
+  border-top: none;
+  margin: 0 calc(var(--index) * 1);
+  padding: calc(var(--index) * 1) calc(var(--index) * 2);
+  
+  background: rgb(75 75 75 / 28%);
+
+  backdrop-filter: blur(9px);
 }
 
 .Logo{

@@ -15,21 +15,13 @@ interface AppProps {
 const App: FC<AppProps> = () => {
   const { theme } = useTheme();
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const modalToggle = () => {
-    setIsOpen((prev) => !prev);
-  };
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
 
   return (
     <div className={classNames('app', {}, [])}>
-      <Modal isOpen={isOpen} onClose={modalToggle}>
-        Test
-      </Modal>
-      <Button onClick={modalToggle}>open</Button>
+
       <Header />
       <AppRouter />
     </div>
