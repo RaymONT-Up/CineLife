@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Input from 'shared/ui/Input';
 import classNames from 'shared/lib/classNames/classNames';
 import Button from 'shared/ui/Button';
@@ -11,9 +11,16 @@ interface LoginFormProps {
 const LoginForm: FC<LoginFormProps> = (props) => {
   const { className = '' } = props;
 
+  const [username, setUsername] = useState('');
+
+  const onUsernameChange = (val: string) => {
+    console.log(username);
+    setUsername(val);
+  };
+
   return (
     <form className={cls.LoginForm}>
-      <Input className={classNames(cls.Input)} />
+      <Input value={username} onChange={onUsernameChange} className={classNames(cls.Input)} />
       <Input className={classNames(cls.Input)} />
       <Button className={classNames(cls.Button)}>Test</Button>
     </form>

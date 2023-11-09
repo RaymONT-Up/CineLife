@@ -1,3 +1,26 @@
 .Input{
-  padding: 12px 20px;
+  --size: calc(var(--index) * 0.8);
+
+  font-size: var(--size); // size
+  font-weight: 400;
+  line-height: 1;
+
+  padding: 0.6em 0.8em;
+  border: 0.11em solid var(--primary-color);
+  background: transparent;
+  color: var(--text-color);
+  border-radius: 0.6em;
+
+  transition: all, var(--transition-duration);
+
+
+  &::placeholder{
+    color: var(--text-color);
+    opacity: 0.7;
+  }
+
+  &:focus-visible{  
+    outline: none;
+    border-color: var(--secondary-color);
+  }
 }
