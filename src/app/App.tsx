@@ -3,8 +3,7 @@ import './styles/index.scss';
 
 import classNames from 'shared/lib/classNames/classNames';
 import Header from 'widgets/Header/ui/Header';
-import Modal from 'shared/ui/Modal';
-import Button from 'shared/ui/Button';
+
 import { AppRouter } from './router';
 import { useTheme } from './providers/ThemeProvider';
 
@@ -21,7 +20,6 @@ const App: FC<AppProps> = () => {
 
   return (
     <div className={classNames('app', {}, [])}>
-
       <Header />
       <AppRouter />
     </div>
