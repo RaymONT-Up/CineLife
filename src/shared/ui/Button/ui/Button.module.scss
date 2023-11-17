@@ -1,6 +1,9 @@
 .Button {
   display: inline-block;
   cursor: pointer;
+  border: none;
+  
+  font: var(--font-m);
 }
 
 .clear {
@@ -11,7 +14,6 @@
 }
 
 .classic {
-  border: 1px;
   border-radius: var(--btn-border-radius);
   padding: var(--btn-padding);
   background-color: var(--primary-color);
@@ -19,7 +21,7 @@
 }
 
 .outline{
-  border: 1px solid var(--primary-color);
+  border: 0.1em solid var(--primary-color);
   border-radius: var(--btn-border-radius);
   padding: var(--btn-padding);
   color: var(--primary-color);

@@ -14,7 +14,6 @@ const LoginForm: FC<LoginFormProps> = (props) => {
   const [username, setUsername] = useState('');
 
   const onUsernameChange = (val: string) => {
-    console.log(username);
     setUsername(val);
   };
 

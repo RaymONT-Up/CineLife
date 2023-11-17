@@ -4,5 +4,5 @@
 }
   
 .item:not(:last-child) {
-  margin-right: calc(var(--index) * 1);
+  margin-right: calc(var(--index) * 3);
 }

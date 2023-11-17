@@ -1,13 +1,19 @@
 .Header{
+  --border-size: calc(var(--index) * 0.1);
+  --border-radius-size: calc(var(--index) * 0.5);
+
   display: flex;
   align-items: center;
   flex-direction: row;
   box-sizing: border-box;
 
-  border-radius: 5px;
-  border: 1px solid #E8BC4D;
+  border-radius: var(--border-radius-size);
+  border: var(--border-size) solid var(--primary-color);
+
   border-top: none;
-  margin: 0 calc(var(--index) * 1);
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  
   padding: calc(var(--index) * 1) calc(var(--index) * 2);
   
   background: rgb(75 75 75 / 28%);
@@ -15,8 +21,15 @@
   backdrop-filter: blur(9px);
 }
 
-.Logo{
+.nav{
   margin-right: calc(var(--index) * 3);
+  margin-left: auto;
 }
 
+.Logo{
+  margin-right: calc(var(--index) * 1);
+}
 
+.loginBtn{
+  margin-right: calc(var(--index) * 1.5);
+}
