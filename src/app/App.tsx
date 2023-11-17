@@ -6,6 +6,7 @@ import Header from 'widgets/Header/ui/Header';
 
 import { AppRouter } from './router';
 import { useTheme } from './providers/ThemeProvider';
+import './firebase';
 
 interface AppProps {
   className?: string;

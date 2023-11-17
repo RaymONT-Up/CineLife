@@ -1,8 +1,9 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import webpack from "webpack";
-import { BuildOptions, BuildPaths } from "./types/config";
+import { BuildOptions } from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer"
+import Dotenv from "dotenv-webpack";
 
 export const buildPlugins = (
   options: BuildOptions
@@ -24,9 +25,13 @@ export const buildPlugins = (
       chunkFilename: "css/[name].[contenthash:8].css",
     }),
 
-  
+    // Глобальные переменные из webpack --env mode=production для использования не только в webpack, но и в проекте
+    new webpack.DefinePlugin({
+      __IS_DEV__: JSON.stringify(isDev),
+    }),
 
-  
+    // Глобальные переменные из .env
+    new Dotenv()
   ];
 
   if(isDev) {
@@ -40,7 +45,7 @@ export const buildPlugins = (
     )
     // При изменениях в css мы будем менять сразу, а не перезагружать стр
     plugins.push(
-    new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin()
     )
   }
 

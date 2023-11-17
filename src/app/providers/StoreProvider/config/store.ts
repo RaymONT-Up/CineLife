@@ -6,10 +6,9 @@ export function createReduxStore(initialState?: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     user: userReducer,
   };
-
   return configureStore<StateSchema>({
     reducer: rootReducers,
-    devTools: true,
+    devTools: __IS_DEV__, // __IS_DEV__ global env webpack var -> look plugins
     preloadedState: initialState,
   });
 }
