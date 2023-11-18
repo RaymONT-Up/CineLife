@@ -1,29 +1,42 @@
 .Hero {
+  margin-top: calc(var(--header-height) * -1);
+  padding-top: var(--header-height);
   position: relative;
-  height: 100vh;
   display: flex;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 
   background-size: 100%;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 
-  &::after{
+  &::after,&::before{
     content: "";
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--overlay-color);
+  }
+
+  &::after{
+    top: 0;
     z-index: 0;
+
+    background: var(--overlay-color);
+  }
+
+  &::before{
+    top: 25%;
+    z-index: 1;
+
+    background: var(--blackout);
   }
 }
 
 .content{
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .title{

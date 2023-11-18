@@ -1,6 +1,12 @@
 :root {
   --index: calc(1vh + 1vw);
-  --container-padding: 5vw;
+
+  // header-height ~
+  --header-height: calc(var(--index) * 5);
+
+  // scroll size
+  --scroll-size: calc(var(--index) * 0.5);
+  --scroll-border-radius: calc(var(--index) * 0.5);
 
   // classic Font
   --font-family-main: 'Roboto', sans-serif;
@@ -31,7 +37,8 @@
   --z-index-header: 3;
 
   // overlay-color
-  --overlay-color: rgba(0 0 0 / 40%);
+  --overlay-color: rgba(0 0 0 / 30%);
+  --blackout: linear-gradient(0deg, #000 0%, rgb(0 0 0 / 0%) 100%);
 
   // container
   --container-margin: 0 var(--index);

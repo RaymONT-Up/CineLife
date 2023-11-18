@@ -21,7 +21,9 @@ const App: FC<AppProps> = () => {
   return (
     <div className={classNames('app', {}, [])}>
       <Header />
-      <AppRouter />
+      <main className={classNames('main')}>
+        <AppRouter />
+      </main>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import bgImg from 'shared/assets/hero-bg.png';
-import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
+import Title, { TitleTags } from 'shared/ui/Title';
 import cls from './Hero.module.scss';
 
 interface HeroProps {
