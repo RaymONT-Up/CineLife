@@ -1,6 +1,13 @@
 .Header{
   --border-size: calc(var(--index) * 0.1);
   --border-radius-size: calc(var(--index) * 0.5);
+  --blur: calc(var(--index) * 0.1);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-index-header);
 
   display: flex;
   align-items: center;
@@ -14,11 +21,11 @@
   border-top-right-radius: 0;
   border-top-left-radius: 0;
   
-  padding: calc(var(--index) * 1) calc(var(--index) * 2);
+  padding: calc(var(--index) * 1);
   
-  background: rgb(75 75 75 / 28%);
+  background: rgb(75 75 75 / 30%);
 
-  backdrop-filter: blur(9px);
+  backdrop-filter: blur(var(--blur));
 }
 
 .nav{

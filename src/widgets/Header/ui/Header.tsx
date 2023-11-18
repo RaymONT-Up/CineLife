@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import Logo from 'shared/ui/Logo';
 
@@ -21,7 +21,7 @@ const Header: FC<HeaderProps> = (props) => {
       <Nav className={cls.nav} />
 
       <Button className={cls.loginBtn}>Войти</Button>
-      <Button theme={ButtonTheme.OUTLINE}>Зарегестрироваться</Button>
+      <Button theme={ButtonTheme.OUTLINE}>Зарегистрироваться</Button>
 
     </header>
   );
