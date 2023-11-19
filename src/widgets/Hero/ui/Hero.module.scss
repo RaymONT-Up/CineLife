@@ -37,6 +37,12 @@
 .content{
   position: relative;
   z-index: 2;
+  width: 100%;
+}
+
+.searchForm{
+  max-width: 75%;
+  margin-bottom: 3em;
 }
 
 .title{

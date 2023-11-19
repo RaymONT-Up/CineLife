@@ -7,12 +7,12 @@
 
   padding: 0.6em 0.8em;
   border: 0.11em solid var(--primary-color);
-  background: transparent;
+  background: var(--overlay-color);
   color: var(--text-color);
   border-radius: 0.6em;
 
   transition: all, var(--transition-duration);
-
+  
 
   &::placeholder{
     color: var(--text-color);

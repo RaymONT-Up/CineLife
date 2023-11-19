@@ -1,0 +1,29 @@
+.SearchForm{
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.input{
+  display: block;
+  padding: 1em 3em 1em 2em;
+
+  width: 100%;
+  border-width: 0.16em;
+
+  font: var(--font-l);
+  line-height: 100%;
+}
+
+.submitBtn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

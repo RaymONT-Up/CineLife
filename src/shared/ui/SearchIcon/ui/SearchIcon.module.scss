@@ -1,0 +1,5 @@
+.SearchIcon{
+  --size: calc(var(--index) * 1.5);
+  width: var(--size);
+  height: var(--size);
+}
