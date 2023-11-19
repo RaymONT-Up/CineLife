@@ -1,8 +1,4 @@
 .Header{
-  --border-size: calc(var(--index) * 0.1);
-  --border-radius-size: calc(var(--index) * 0.5);
-  --blur: calc(var(--index) * 0.1);
-
   position: fixed;
   top: 0;
   left: 0;
@@ -14,8 +10,8 @@
   flex-direction: row;
   box-sizing: border-box;
 
-  border-radius: var(--border-radius-size);
-  border: var(--border-size) solid var(--primary-color);
+  border-radius: var(--border-radius-size-d);
+  border: var(--border-size-d) solid var(--primary-color);
 
   border-top: none;
   border-top-right-radius: 0;
@@ -23,9 +19,9 @@
   
   padding: calc(var(--index) * 0.77);
   
-  background: rgb(75 75 75 / 30%);
+  background: var(--bg-color-glass);
 
-  backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--glass-bg-blur));
 }
 
 .nav{
@@ -35,8 +31,4 @@
 
 .Logo{
   margin-right: calc(var(--index) * 1);
-}
-
-.loginBtn{
-  margin-right: calc(var(--index) * 1.5);
 }

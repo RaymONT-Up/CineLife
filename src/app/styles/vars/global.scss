@@ -5,12 +5,12 @@
   --header-height: calc(var(--index) * 5);
 
   // scroll size
-  --scroll-size: calc(var(--index) * 0.5);
-  --scroll-border-radius: calc(var(--index) * 0.5);
+  --scroll-size: calc(var(--index) * 0.4);
+  --scroll-border-radius: calc(var(--index) * 0.2);
 
   // classic Font
   --font-family-main: 'Roboto', sans-serif;
-  --font-size-m: calc(var(--index) * 0.8);
+  --font-size-m: calc(var(--index) * 0.85);
   --font-m: 400 var(--font-size-m) / 115% var(--font-family-main);
 
   // font l
@@ -33,6 +33,14 @@
 
   // ---
 
+  // default border for card
+  --border-size-d: calc(var(--index) * 0.1);
+  --border-radius-size-d: calc(var(--index) * 0.5);
+
+  // glass-bg
+  --glass-bg-color: rgb(75 75 75 / 30%);
+  --glass-bg-blur: calc(var(--index) * 0.1);
+
   // animation
   --transition-duration: 0.3s;
 
@@ -41,7 +49,7 @@
   --z-index-header: 3;
 
   // overlay-color
-  --overlay-color: rgba(0 0 0 / 25%);
+  --overlay-color: rgba(0 0 0 / 80%);
   --blackout: linear-gradient(0deg, #000 0%, rgb(0 0 0 / 0%) 100%);
 
   // container

@@ -23,7 +23,7 @@
     top: 0;
     z-index: 0;
 
-    background: var(--overlay-color);
+    background: rgba(0 0 0 / 40%);
   }
 
   &::before{
@@ -41,7 +41,7 @@
 }
 
 .searchForm{
-  max-width: 75%;
+  max-width: 70%;
   margin-bottom: 3em;
 }
 

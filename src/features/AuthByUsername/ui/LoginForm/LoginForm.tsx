@@ -19,9 +19,19 @@ const LoginForm: FC<LoginFormProps> = (props) => {
 
   return (
     <form className={cls.LoginForm}>
-      <Input value={username} onChange={onUsernameChange} className={classNames(cls.Input)} />
-      <Input className={classNames(cls.Input)} />
-      <Button className={classNames(cls.Button)}>Test</Button>
+      <Input
+        placeholder="Email"
+        type="email"
+        value={username}
+        onChange={onUsernameChange}
+        className={classNames(cls.Input)}
+      />
+      <Input
+        placeholder="Пароль"
+        type="password"
+        className={classNames(cls.Input)}
+      />
+      <Button className={classNames(cls.Button)}>Войти в аккаунт</Button>
     </form>
   );
 };

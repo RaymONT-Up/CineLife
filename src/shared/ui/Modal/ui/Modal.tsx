@@ -46,6 +46,10 @@ const Modal: FC<ModalProps> = (props) => {
     [cls.isOpen]: isOpen,
   };
 
+  // if (!isOpen) {
+  //   return undefined;
+  // }
+
   return (
     <Portal>
       <div className={classNames(cls.Modal, mods, [className])}>

@@ -1,12 +1,20 @@
 .content{
   position: relative;
   z-index: 1;
-  padding: 20px;
-  border-radius: 16px;
-  background-color: var(--bg-color);
+  padding: 1.5em;
   max-width: 70%;
+  min-width: 25%;
 
-  transition: transform, var(--transition-duration);
+  border: var(--border-size-d) solid var(--primary-color);
+  border-radius: var(--border-radius-size-d);
+
+  box-shadow: 0 0 0.2em 0.05em var(--primary-color);
+
+  background-color: var(--glass-bg-color);
+  backdrop-filter: blur(var(--glass-bg-blur));
+
+  
+  transition: transform, var(--transition-duration); 
   transform: scale(0.2);
 }
 
@@ -24,9 +32,9 @@
   opacity: 0;
   visibility: hidden;
 
+  transition: all, var(--transition-duration); 
 
-  transition: all, var(--transition-duration);
-
+ 
   &.isOpen{
     opacity: 1;
     visibility: visible;

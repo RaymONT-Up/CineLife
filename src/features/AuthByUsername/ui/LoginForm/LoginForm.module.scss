@@ -6,7 +6,11 @@
 
 .Input {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 2em;
+
+  &:not(:last-child){
+    margin-bottom: 1em;
+  }
 }
 
 .Button{
