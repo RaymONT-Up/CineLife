@@ -1,4 +1,6 @@
-import { FC, useEffect, useState } from 'react';
+import {
+  FC, useCallback, useEffect, useState,
+} from 'react';
 import Modal from 'shared/ui/Modal';
 import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
 import Button, { ButtonTheme } from 'shared/ui/Button';
@@ -13,7 +15,7 @@ interface AuthModalProps {
   onClose: () => void;
 }
 
-const ANIMATION_DELAY = 500;
+const ANIMATION_DURATION = 1000;
 
 const AuthModal: FC<AuthModalProps> = (props) => {
   const { className = '', isOpen, onClose } = props;
@@ -21,28 +23,45 @@ const AuthModal: FC<AuthModalProps> = (props) => {
   const [isСhanging, setIsСhanging] = useState(false);
   const [isOpens, setIsOpens] = useState(false);
 
-  useEffect(() => {
-    let Timer: ReturnType<typeof setTimeout>;
-
-    if (isСhanging) {
-      Timer = setTimeout(() => {
-        setIsСhanging(false);
-        setIsOpens(true);
-      }, ANIMATION_DELAY);
-    }
-
-    return () => {
-      clearTimeout(Timer);
-    };
-  }, [isСhanging]);
-
+  // Обработчик события для переключения формы
   const toggleFormType = () => {
+    // Старт анимации закрытия
+    setIsСhanging(true);
+    setIsOpens(false);
+
     setTimeout(() => {
       setIsLogin((prev) => !prev);
-    }, ANIMATION_DELAY);
-    setIsOpens(false);
-    setIsСhanging(true);
+    }, ANIMATION_DURATION);
   };
+
+  useEffect(() => {
+    let timerChanging: ReturnType<typeof setTimeout>;
+    if (isСhanging) {
+      // Таймер для анимации закрытия
+      timerChanging = setTimeout(() => {
+      // Завершение анимации закрытия
+        setIsСhanging(false);
+
+        // Старт анимации открытия
+        setIsOpens(true);
+
+        // Таймер для завершения анимации открытия
+        const timerOpening = setTimeout(() => {
+        // Завершение анимации открытия
+          setIsOpens(false);
+        }, ANIMATION_DURATION);
+
+        // Очистка таймера для завершения анимации открытия при размонтировании
+        return () => {
+          clearTimeout(timerOpening);
+        };
+      }, ANIMATION_DURATION);
+      // Очистка таймера для анимации закрытия при размонтировании
+    }
+    return () => {
+      clearTimeout(timerChanging);
+    };
+  }, [isСhanging]);
 
   return (
     <Modal

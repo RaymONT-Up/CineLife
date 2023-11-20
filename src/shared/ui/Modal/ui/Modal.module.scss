@@ -35,8 +35,6 @@
 
   transition: all, var(--transition-duration); 
 
- 
-
   &.isOpen{
     opacity: 1;
     visibility: visible;
