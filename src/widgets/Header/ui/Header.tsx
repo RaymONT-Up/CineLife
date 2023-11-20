@@ -5,7 +5,7 @@ import classNames from 'shared/lib/classNames/classNames';
 import Logo from 'shared/ui/Logo';
 
 import Button from 'shared/ui/Button';
-import { LoginModal } from 'features/AuthByUsername';
+import { AuthModal } from 'features/Auth';
 import cls from './Header.module.scss';
 import Nav from './Nav/Nav';
 
@@ -15,13 +15,13 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = (props) => {
   const { className = '' } = props;
-  const [loginIsOpen, setLoginIsOpen] = useState(false);
+  const [AuthIsOpen, setAuthIsOpen] = useState(false);
 
-  const openLoginModal = () => {
-    setLoginIsOpen(true);
+  const openAuthModal = () => {
+    setAuthIsOpen(true);
   };
-  const closeLoginModal = () => {
-    setLoginIsOpen(false);
+  const closeAuthModal = () => {
+    setAuthIsOpen(false);
   };
 
   return (
@@ -33,15 +33,15 @@ const Header: FC<HeaderProps> = (props) => {
 
       <Button
         className={cls.loginBtn}
-        onClick={openLoginModal}
+        onClick={openAuthModal}
       >
         Войти
 
       </Button>
 
-      <LoginModal
-        isOpen={loginIsOpen}
-        onClose={closeLoginModal}
+      <AuthModal
+        isOpen={AuthIsOpen}
+        onClose={closeAuthModal}
       />
 
     </header>

@@ -1,0 +1,69 @@
+.Modal {
+  .isChanging {
+    animation: is-changing-animation;
+    animation-duration: 1000ms;
+  }
+
+  .isOpens {
+    animation: is-opens-animation;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes is-changing-animation {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    to {
+      opacity: 0;
+      transform:  translateX(-200%) skew(-16deg, 0) scaleY(0.7) scaleX(0.7);   
+    }
+  }
+
+  @keyframes is-opens-animation {
+    from {
+      opacity: 0;
+      transform: translateX(200%) skew(-16deg, 0) scaleY(0.7) scaleX(0.7);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0) skew(0, 0) scaleY(1) scaleX(1);
+    }
+  }
+}
+
+.Title{
+  margin-bottom: 1em;
+}
+
+.toggleFormBtn{
+  margin-top: 1em;
+  padding: 0.1em;
+  width: 100%;
+  text-align: right;
+}
+
+.Form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  input{
+    display: block;
+    margin-bottom: 2em;
+
+    &:not(:last-child){
+      margin-bottom: 1em;
+    }
+  }
+
+  button{
+    display: block;
+    width: 100%;
+  }
+}
+

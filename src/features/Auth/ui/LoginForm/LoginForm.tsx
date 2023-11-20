@@ -18,7 +18,7 @@ const LoginForm: FC<LoginFormProps> = (props) => {
   };
 
   return (
-    <form className={cls.LoginForm}>
+    <form className={className}>
       <Input
         placeholder="Email"
         type="email"
