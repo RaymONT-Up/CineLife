@@ -11,19 +11,11 @@ interface LoginFormProps {
 const LoginForm: FC<LoginFormProps> = (props) => {
   const { className = '' } = props;
 
-  const [username, setUsername] = useState('');
-
-  const onUsernameChange = (val: string) => {
-    setUsername(val);
-  };
-
   return (
     <form className={className}>
       <Input
         placeholder="Email"
         type="email"
-        value={username}
-        onChange={onUsernameChange}
         className={classNames(cls.Input)}
       />
       <Input

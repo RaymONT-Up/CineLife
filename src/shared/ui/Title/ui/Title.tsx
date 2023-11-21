@@ -6,6 +6,10 @@ export enum TitleTheme {
   hero = 'hero',
   subtitle = 'subtitle',
 }
+export enum TitleColor {
+  primary = 'primary',
+  default = 'default',
+}
 export enum TitleTags {
   h1 = 'h1',
   h2 = 'h2',
@@ -21,6 +25,7 @@ interface TitleProps {
   Tag: TitleTags;
   children: ReactNode;
 
+  color?: TitleColor;
   theme?: TitleTheme;
   className?: string;
   centered?: boolean;
@@ -33,6 +38,7 @@ const Title: FC<TitleProps> = (props) => {
     centered = false,
     Tag = TitleTags.div,
     theme = TitleTheme.hero,
+    color = TitleColor.default,
   } = props;
 
   return (
@@ -40,6 +46,7 @@ const Title: FC<TitleProps> = (props) => {
       className={classNames(cls.Title, { [cls.centered]: centered }, [
         className,
         cls[theme],
+        cls[color],
       ])}
     >
       {children}
