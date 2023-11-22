@@ -1,6 +1,14 @@
+import { UserCredential } from 'firebase/auth';
+
+export interface User {
+  uid: string;
+  displayName: string;
+  email: string;
+  photo: string;
+  userToken: string;
+}
+
 export interface UserSchema {
-  id: number | null;
-  token:string | null;
-  username: string | null;
-  email:string | null;
+  authData?: User;
+  isAuth: boolean;
 }

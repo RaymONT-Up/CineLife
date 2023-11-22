@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getIsAuth } from 'entities/User/model/selectors/getUserAuthData/getIsAuth';
 import cls from './ProfilePage.module.scss';
 
 interface ProfilePageProps {
@@ -9,10 +11,9 @@ interface ProfilePageProps {
 
 const ProfilePage: FC<ProfilePageProps> = (props) => {
   const { className } = props;
+  const isAuth = useSelector(getIsAuth);
 
-  const LoggedIn = true;
-
-  if (LoggedIn) {
+  if (!isAuth) {
     return <Navigate to="/" />;
   }
   return (

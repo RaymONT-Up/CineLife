@@ -10,6 +10,24 @@ interface RegisterFormProps {
 
 const RegisterForm: FC<RegisterFormProps> = (props) => {
   const { className } = props;
+
+  // const onSubmitLoginForm = (event: FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //
+  //   const auth = getAuth();
+  //   createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+  //     // Signed up
+  //     const { user } = userCredential;
+  //     console.log(userCredential);
+  //   })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       // ..
+  //       console.log(errorCode);
+  //       console.log(errorMessage);
+  //     });
+  // };
   return (
     <form className={classNames(cls.RegisterForm, {}, [className])}>
       <Input

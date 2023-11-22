@@ -6,6 +6,8 @@ import Logo from 'shared/ui/Logo';
 
 import Button from 'shared/ui/Button';
 import { AuthModal } from 'features/Auth';
+import { useSelector } from 'react-redux';
+import { getIsAuth } from 'entities/User/model/selectors/getUserAuthData/getIsAuth';
 import cls from './Header.module.scss';
 import Nav from './Nav/Nav';
 
@@ -15,6 +17,9 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = (props) => {
   const { className = '' } = props;
+
+  const isAuth = useSelector(getIsAuth);
+
   const [AuthIsOpen, setAuthIsOpen] = useState(false);
 
   const openAuthModal = () => {
@@ -31,18 +36,24 @@ const Header: FC<HeaderProps> = (props) => {
 
       <Nav className={cls.nav} />
 
-      <Button
-        className={cls.loginBtn}
-        onClick={openAuthModal}
-      >
-        Войти
+      {isAuth ? 'Иконка'
+        : (
+          <>
+            <Button
+              className={cls.loginBtn}
+              onClick={openAuthModal}
+            >
+              Войти
 
-      </Button>
+            </Button>
 
-      <AuthModal
-        isOpen={AuthIsOpen}
-        onClose={closeAuthModal}
-      />
+            <AuthModal
+              isOpen={AuthIsOpen}
+              onClose={closeAuthModal}
+            />
+
+          </>
+        )}
 
     </header>
   );

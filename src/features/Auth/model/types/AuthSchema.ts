@@ -3,5 +3,5 @@ export interface AuthSchema {
   password: string;
   repeatPassword?: string;
   isLoading: boolean;
-  error?: string | boolean;
+  error?: string | undefined;
 }
