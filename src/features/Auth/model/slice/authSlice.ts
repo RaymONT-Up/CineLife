@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AuthSchema } from '../types/AuthSchema';
 import loginByEmailAndPassword from '../services/loginByEmailAndPassword/loginByEmailAndPassword';
+import registerByEmailAndPassword from '../services/registerByEmailAndPassword/registerByEmailAndPassword';
 
 const initialState: AuthSchema = {
   email: '',
   password: '',
-  repeatPassword: '',
   isLoading: false,
   error: undefined,
 };
@@ -31,6 +31,18 @@ export const authSlice = createSlice({
     });
 
     builder.addCase(loginByEmailAndPassword.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload as string;
+    });
+
+    builder.addCase(registerByEmailAndPassword.pending, (state, action) => {
+      state.error = undefined;
+      state.isLoading = true;
+    });
+    builder.addCase(registerByEmailAndPassword.fulfilled, (state, action) => {
+      state.isLoading = false;
+    });
+    builder.addCase(registerByEmailAndPassword.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload as string;
     });

@@ -5,7 +5,7 @@ import Input from 'shared/ui/Input';
 import classNames from 'shared/lib/classNames/classNames';
 import Button from 'shared/ui/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLoginState } from 'features/Auth/model/selectors/getAuthState/getLoginState';
+import { getAuthState } from 'features/Auth/model/selectors/getAuthState/getAuthState';
 import { authActions } from 'features/Auth/model/slice/authSlice';
 import loginByEmailAndPassword from 'features/Auth/model/services/loginByEmailAndPassword/loginByEmailAndPassword';
 import Loader from 'shared/ui/Loader';
@@ -22,7 +22,7 @@ const LoginForm: FC<LoginFormProps> = (props) => {
   const dispatch = useDispatch();
   const {
     email, password, isLoading, error,
-  } = useSelector(getLoginState);
+  } = useSelector(getAuthState);
 
   const onChangeEmail = useCallback((value: string) => {
     dispatch(authActions.setEmail(value));

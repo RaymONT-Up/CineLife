@@ -1,25 +1,24 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { userActions } from 'entities/User';
 import { User } from 'entities/User/model/types/user';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localstorage';
 
-export interface loginByEmailAndPasswordProps {
+export interface registerByEmailAndPasswordProps {
   email: string;
   password: string;
 }
 
-const loginByEmailAndPassword = createAsyncThunk(
-  'auth/loginByEmailAndPassword',
-  async (authData: loginByEmailAndPasswordProps, thunkAPI) => {
+const registerByEmailAndPassword = createAsyncThunk(
+  'auth/registerByEmailAndPassword',
+  async (registrationData: registerByEmailAndPasswordProps, thunkAPI) => {
     const auth = getAuth();
-    const { email, password } = authData;
+    const { email, password } = registrationData;
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const idToken = userCredential.user.refreshToken;
 
-      console.log(idToken, 'token');
       const user: User = {
         uid: userCredential.user.uid,
         displayName: userCredential.user.displayName,
@@ -37,4 +36,4 @@ const loginByEmailAndPassword = createAsyncThunk(
     }
   },
 );
-export default loginByEmailAndPassword;
+export default registerByEmailAndPassword;
