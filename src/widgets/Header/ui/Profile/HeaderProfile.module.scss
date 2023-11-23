@@ -1,0 +1,31 @@
+.list{
+  position: absolute;
+  right: 0;
+  top: 100%;
+
+  background-color: var(--glass-bg-color);
+  backdrop-filter: blur(var(--glass-bg-blur));
+  padding: var(--index);
+  border-radius: var(--border-radius-size-d);
+
+  opacity: 0;
+  visibility: hidden;
+  transition-duration: var(--transition-duration);
+  transition-property: opacity, visibility;
+}
+
+.item{
+  &:not(:last-child){
+    padding-bottom: calc((var(--index) * 0.5));
+  }
+}
+
+.HeaderProfile{
+  position: relative;
+
+  &:hover  .list{
+    opacity: 1;
+    visibility: visible;
+  }
+}
+

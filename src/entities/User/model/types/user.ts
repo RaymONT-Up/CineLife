@@ -1,5 +1,3 @@
-import { UserCredential } from 'firebase/auth';
-
 export interface User {
   uid: string;
   displayName: string;

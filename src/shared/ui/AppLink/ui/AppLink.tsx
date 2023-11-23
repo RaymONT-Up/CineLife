@@ -20,7 +20,7 @@ const AppLink: FC<AppLinkProps> = (props) => {
     children,
     to,
     className = '',
-    theme = AppLinkTheme.CLASSIC,
+    theme = AppLinkTheme.CLEAR,
     ...otherProps
   } = props;
 
