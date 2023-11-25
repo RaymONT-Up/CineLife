@@ -19,7 +19,6 @@ const loginByEmailAndPassword = createAsyncThunk(
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const idToken = userCredential.user.refreshToken;
 
-      console.log(idToken, 'token');
       const user: User = {
         uid: userCredential.user.uid,
         displayName: userCredential.user.displayName,

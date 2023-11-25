@@ -22,7 +22,7 @@ export enum TitleTags {
 }
 
 interface TitleProps {
-  Tag: TitleTags;
+  Tag?: TitleTags;
   children: ReactNode;
 
   color?: TitleColor;
@@ -36,7 +36,7 @@ const Title: FC<TitleProps> = (props) => {
     className,
     children,
     centered = false,
-    Tag = TitleTags.div,
+    Tag = TitleTags.p,
     theme = TitleTheme.hero,
     color = TitleColor.default,
   } = props;

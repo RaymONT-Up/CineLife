@@ -4,10 +4,8 @@ import './styles/index.scss';
 import classNames from 'shared/lib/classNames/classNames';
 import Header from 'widgets/Header/ui/Header';
 
-import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localstorage';
 import { useDispatch } from 'react-redux';
 
-import { getAuth, signInWithCustomToken } from 'firebase/auth';
 import { userActions } from 'entities/User';
 import { AppRouter } from './router';
 import { useTheme } from './providers/ThemeProvider';
@@ -21,7 +19,6 @@ const App: FC<AppProps> = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     document.body.className = theme;
-
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         const {

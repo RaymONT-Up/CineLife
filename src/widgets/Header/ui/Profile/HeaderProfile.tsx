@@ -10,7 +10,6 @@ import cls from './HeaderProfile.module.scss';
 
 const HeaderProfile: FC = () => {
   const isAuth = useSelector(getIsAuth);
-  console.log(isAuth);
   const [AuthIsOpen, setAuthIsOpen] = useState(false);
 
   const openAuthModal = () => {
