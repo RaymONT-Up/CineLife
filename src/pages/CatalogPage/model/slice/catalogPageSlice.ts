@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FilmList } from '../../../../shared/api/kinopoisk/models';
+import { CatalogList } from 'shared/api/kinopoisk/models';
 import { CatalogPageSchema } from '../types/catalogPageSchema';
 import { FetchCatalog } from '../service/FetchCatalog';
 
@@ -26,11 +26,14 @@ const catalogPageSlice = createSlice({
   name: 'catalogPageSlice',
   initialState,
   reducers: {
-    setItems(state, action:PayloadAction<FilmList>) {
+    setItems(state, action:PayloadAction<CatalogList>) {
       state.items = action.payload;
     },
     setPage(state, action:PayloadAction<number>) {
       state.page = action.payload;
+    },
+    setSearch(state, action:PayloadAction<string>) {
+      state.search = action.payload;
     },
   },
   extraReducers: (builder) => {

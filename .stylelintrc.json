@@ -4,6 +4,7 @@
     "indentation": [2],
     "declaration-empty-line-before": null,
     "selector-class-pattern": null,
-    "declaration-block-no-redundant-longhand-properties": null
+    "declaration-block-no-redundant-longhand-properties": null,
+    "no-descending-specificity": null
   }
 }

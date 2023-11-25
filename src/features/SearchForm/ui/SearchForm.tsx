@@ -13,7 +13,7 @@ interface SearchFormProps {
   placeholder?: string;
   value: string;
   onChange: (str: string) => void;
-  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
 }
 
 const SearchForm: FC<SearchFormProps> = (props) => {

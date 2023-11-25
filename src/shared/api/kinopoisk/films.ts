@@ -1,6 +1,6 @@
 import { AxiosPromise } from 'axios';
 import { $kinopoisk } from './base';
-import { GetFilmsListResponse } from './models';
+import { GetCatalogListResponse } from './models';
 
 export enum catalogOrderTypes {
   RATING = 'RATING',
@@ -14,13 +14,15 @@ export enum catalogTypeTypes{
   MINI_SERIES = 'MINI_SERIES',
   ALL = 'ALL'
 }
+export interface catalogParamsTypes{
 
-export const $getFilms = (): AxiosPromise<GetFilmsListResponse> => $kinopoisk.get('/films', {
+}
+
+export const $getCatalog = (): AxiosPromise<GetCatalogListResponse> => $kinopoisk.get('/films', {
   params: {
     order: catalogOrderTypes.NUM_VOTE,
     page: 1,
     type: catalogTypeTypes.FILM,
-    keyword: 'Marvel',
   },
 
 });

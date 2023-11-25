@@ -1,15 +1,15 @@
-export interface FilmPreview {
+export interface CatalogItem {
   nameRu: string;
   posterUrl: string;
   ratingKinopoisk: number;
-  kinoposikId: number;
+  kinopoiskId: number;
   year: number;
 }
 
-export type FilmList = FilmPreview[];
+export type CatalogList = CatalogItem[];
 
-export interface GetFilmsListResponse {
+export interface GetCatalogListResponse {
   total: number,
   totalPages: number,
-  items: FilmList,
+  items: CatalogList,
 }

@@ -45,7 +45,7 @@ const App: FC<AppProps> = () => {
   return (
     <div className={classNames('app', {}, [])}>
       <Header />
-      <main className={classNames('main')}>
+      <main className={classNames('main container')}>
         <AppRouter />
       </main>
     </div>

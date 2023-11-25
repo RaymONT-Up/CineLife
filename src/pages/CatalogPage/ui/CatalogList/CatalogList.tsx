@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
-import { FilmList } from 'shared/api/kinopoisk/models';
+import { CatalogList as CatalogListTypes } from 'shared/api/kinopoisk/models';
 import Title from 'shared/ui/Title';
-import FilmPreviewCard from 'entities/FilmPreviewCard/ui/FilmPreviewCard';
+import { CatalogPreviewCard } from 'entities/CatalogPreviewCard';
 import cls from './CatalogList.module.scss';
 
 interface CatalogListProps {
   className?: string;
-  items: FilmList,
+  items: CatalogListTypes,
 }
 
 const CatalogList: FC<CatalogListProps> = (props) => {
@@ -24,9 +24,9 @@ const CatalogList: FC<CatalogListProps> = (props) => {
   return (
     <ul className={classNames(cls.CatalogList, {}, [className])}>
       {items.map((item, index) => (
-        <FilmPreviewCard
-          key={item.kinoposikId || index}
-          kinoposikId={item.kinoposikId}
+        <CatalogPreviewCard
+          key={item.kinopoiskId || index}
+          kinopoiskId={item.kinopoiskId}
           ratingKinopoisk={item.ratingKinopoisk}
           nameRu={item.nameRu}
           posterUrl={item.posterUrl}

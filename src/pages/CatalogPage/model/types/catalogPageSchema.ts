@@ -1,11 +1,11 @@
-import { FilmList } from 'shared/api/kinopoisk/models';
+import { CatalogList } from 'shared/api/kinopoisk/models';
 
 export interface CatalogPageSchema {
   isLoading?: boolean,
   error?: string | undefined,
 
   //
-  items: FilmList,
+  items: CatalogList,
 
   // pagination
   page: number,
@@ -16,5 +16,4 @@ export interface CatalogPageSchema {
 
   // filters
   search: string,
-
 }
