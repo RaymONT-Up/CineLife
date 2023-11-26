@@ -3,6 +3,7 @@
   --padding: 0.75em;
 
   position: relative;
+  display: flex;
   border-radius: var(--border-radius-size-d);
   overflow: hidden;
 
@@ -41,12 +42,6 @@
     }
  
   }
-}
-
-.catalogLink{
-  position: relative;
-  z-index: 1;
-  display: block;
 }
 
 .rating{
@@ -108,12 +103,12 @@
 
 
 .name{
-  font: var(--font-l);
+  font-size: 1.2em;
   margin-bottom: 0.2em;
 }
 
 .year{
-  font-size: 0.9;
+  font-size: 0.8em;
   
   opacity: 0.6;
 }

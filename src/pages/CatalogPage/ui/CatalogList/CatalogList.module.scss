@@ -1,6 +1,6 @@
 .CatalogList{
   display: grid;
-  grid-template-columns: repeat(5,1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: calc(var(--index) * 1.1);
   margin-bottom: var(--index);
 }

@@ -8,6 +8,7 @@ import SearchForm from 'features/SearchForm';
 import { catalogActions } from 'pages/CatalogPage/model/slice/catalogPageSlice';
 import cls from './Catalog.module.scss';
 import CatalogList from '../CatalogList/CatalogList';
+import CatalogFilter from '../CatalogFilter/CatalogFilter';
 
 interface CatalogProps {
   className?: string;
@@ -32,6 +33,7 @@ const Catalog: FC<CatalogProps> = (props) => {
 
   return (
     <div className={classNames(cls.Catalog, {}, [className])}>
+      <CatalogFilter />
       <CatalogList items={items} />
     </div>
   );

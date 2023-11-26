@@ -18,17 +18,17 @@ const CatalogPreviewCard: FC<CatalogPreviewCardProps> = (props) => {
   const ratingCategory = ratingScoreCategory(ratingKinopoisk);
 
   return (
-    <li className={classNames(cls.CatalogPreviewCard, {}, [className])}>
-      <AppLink to={`${RoutePath.catalog}/${kinopoiskId}`}>
-        <div className={classNames(cls.rating, {}, [cls[ratingCategory]])}>
+    <li>
+      <AppLink className={classNames(cls.CatalogPreviewCard, {}, [className])} to={`${RoutePath.catalog}/${kinopoiskId}`}>
+        <b className={classNames(cls.rating, {}, [cls[ratingCategory]])}>
           {ratingKinopoisk}
-        </div>
+        </b>
         <img className={cls.img} src={posterUrl} alt={`Постер для фильма ${nameRu}`} />
         <div className={cls.info}>
           <h6 className={cls.name}>
             {nameRu}
           </h6>
-          <div className={cls.year}>{year}</div>
+          <span className={cls.year}>{year}</span>
         </div>
       </AppLink>
     </li>
