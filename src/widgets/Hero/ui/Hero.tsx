@@ -2,7 +2,7 @@ import { FC, FormEvent, useState } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import bgImg from 'shared/assets/hero-bg.png';
 import Title, { TitleTags } from 'shared/ui/Title';
-import SearchForm from 'features/SearchForm';
+import SearchForm from 'shared/ui/SearchForm';
 import cls from './Hero.module.scss';
 
 interface HeroProps {

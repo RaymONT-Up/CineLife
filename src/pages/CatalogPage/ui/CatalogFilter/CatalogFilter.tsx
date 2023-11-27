@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
+import MySelect from 'shared/ui/Select/ui/MySelect';
 import cls from './CatalogFilter.module.scss';
 
 interface CatalogFilterProps {
@@ -10,7 +11,9 @@ interface CatalogFilterProps {
 const CatalogFilter: FC<CatalogFilterProps> = (props) => {
   const { className } = props;
   return (
-    <div className={classNames(cls.CatalogFilter, {}, [className])} />
+    <div className={classNames(cls.CatalogFilter, {}, [className])}>
+      <MySelect />
+    </div>
   );
 };
 

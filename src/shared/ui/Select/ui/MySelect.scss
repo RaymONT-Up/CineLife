@@ -1,0 +1,82 @@
+// using important is bad but this library...
+body .MySelect{
+  background-color: var(--body-bg);
+
+  &__control{
+    padding: 0.5em 0.6em;
+    color: var(--text-color);
+    border-radius: var(--btn-border-radius);
+    border: 0 solid var(--primary-color);
+    background-color: var(--glass-bg-color);  
+    backdrop-filter: var(--glass-bg-blur);
+
+    &--menu-is-open{
+      // border-bottom-left-radius: 0;
+      // border-bottom-right-radius: 0;
+    }
+  }
+
+  &__input{
+    color: var(--text-color) !important;
+
+    &::placeholder{
+      color: var(--text-color) !important;
+      opacity: 0.8 !important;
+    }
+
+    &-container{
+      margin: 0.03em;
+      padding: 0.03em 0;
+      background-color: transparent;
+    }
+  }
+
+  &__single-value{
+    margin: 0 0.03em;
+    color: var(--text-color)
+  }
+
+  &__value-container{
+    padding: 0.05em 0.15em !important;
+  } 
+  
+  &__indicator-separator{
+    display: none;
+  }
+
+  // menu
+
+  &__menu{
+    margin-top: 0.5em;
+    margin-bottom: 0;
+    border-radius: var(--btn-border-radius);
+
+    background-color: var(--glass-bg-color);  
+    backdrop-filter: var(--glass-bg-blur);  
+
+    // border-top-right-radius: 0;
+    // border-top-left-radius: 0;
+
+    &-list{
+      padding: 0;
+      border-radius: var(--btn-border-radius);
+      max-height: 7em;
+
+      color: var(--text-color);
+      border: 0 solid var(--primary-color);
+
+      background-color: transparent;
+    }
+  }
+
+  &__option{
+    color: var(--text-color);
+    background-color: transparent;
+    padding: 0.5em 0.6em;
+    border-radius: 0 !important;
+
+    &--is-selected{
+      background-color: var(--primary-color);
+    }
+  }
+}

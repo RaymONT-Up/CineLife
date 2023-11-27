@@ -21,7 +21,7 @@
     transition: opacity var(--transition-duration);
   }
 
-  &:hover {
+  &:hover, &:focus-visible,&:focus {
     .info{
       opacity: 1;
       transform: translateY(0%);
