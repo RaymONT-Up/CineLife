@@ -2,12 +2,14 @@ import { ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 import { userReducer } from 'entities/User';
 import { authReducer } from 'features/Auth/model/slice/authSlice';
 import { catalogReducer } from 'pages/CatalogPage';
+import { CatalogFilterAndSearchReducer } from 'features/CatalogFilterAndSearch';
 import { StateSchema } from './StateSchema';
 
 export function createReduxStore(initialState?: StateSchema) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     user: userReducer,
     catalog: catalogReducer,
+    catalogFilter: CatalogFilterAndSearchReducer,
     auth: authReducer,
   };
   return configureStore<StateSchema>({

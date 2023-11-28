@@ -11,6 +11,7 @@ interface CatalogFilterAndSearchProps {
 
 const CatalogFilterAndSearch: FC<CatalogFilterAndSearchProps> = (props) => {
   const { className } = props;
+
   return (
     <div className={classNames(cls.CatalogFilterAndSearch, {}, [className])}>
       <SortSelect className={cls.sort} />
