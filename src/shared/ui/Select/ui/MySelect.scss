@@ -3,6 +3,7 @@ body .MySelect{
   background-color: var(--body-bg);
 
   &__control{
+    min-width: calc(var(--index) * 10);
     padding: 0.5em 0.6em;
     color: var(--text-color);
     border-radius: var(--btn-border-radius);
@@ -60,7 +61,7 @@ body .MySelect{
     &-list{
       padding: 0;
       border-radius: var(--btn-border-radius);
-      max-height: 7em;
+      max-height: 12em;
 
       color: var(--text-color);
       border: 0 solid var(--primary-color);

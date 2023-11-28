@@ -59,7 +59,6 @@ export interface CatalogParams {
   ratingTo?: number;
   yearFrom?: number;
   yearTo?: number;
-  imdbId?: string;
   keyword?: string;
   page?: number;
 }

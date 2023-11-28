@@ -11,8 +11,8 @@ export interface ISelectOption {
 interface MySelectProps extends Omit<SelectProps<ISelectOption>, 'onChange'> {
   className?: string;
   options: ISelectOption[];
-  isSearchable: boolean;
-  onChange: OnChangeValue<ISelectOption, boolean>;
+  isSearchable?: boolean;
+  onChange?: OnChangeValue<ISelectOption, boolean>;
   name: string;
 }
 
@@ -22,11 +22,12 @@ const MySelect: FC<MySelectProps> = (props) => {
     options,
     onChange,
     name,
+    isSearchable = false,
     ...rest
   } = props;
 
   const handleChange = (newValue: OnChangeValue<ISelectOption, boolean>) => {
-
+    console.log(newValue, 'in');
   };
 
   return (
@@ -36,7 +37,7 @@ const MySelect: FC<MySelectProps> = (props) => {
       defaultValue={options[0]}
       name={name}
       options={options}
-      isSearchable={false}
+      isSearchable={isSearchable}
       onChange={handleChange}
       {...rest}
     />
