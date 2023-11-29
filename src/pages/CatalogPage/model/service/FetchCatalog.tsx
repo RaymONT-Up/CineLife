@@ -1,10 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { $getCatalog } from 'shared/api/kinopoisk/catalog';
+import { CatalogParams } from 'shared/api/kinopoisk/models';
 
-export const FetchCatalog = createAsyncThunk('catalogPage/fetchCatalog', async (props, thunkApi) => {
-  const { rejectWithValue, getState } = thunkApi;
+export const FetchCatalog = createAsyncThunk('catalogPage/fetchCatalog', async (props: CatalogParams, thunkApi) => {
+  const { rejectWithValue } = thunkApi;
+
   try {
-    const response = await $getCatalog({});
+    const response = await $getCatalog(props);
     if (!response.data) {
       throw new Error();
     }

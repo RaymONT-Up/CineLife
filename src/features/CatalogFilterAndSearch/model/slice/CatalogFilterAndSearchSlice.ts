@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-  catalogOrderTypes, catalogTypeTypes, CountryType, GenreType,
+  catalogOrderTypes, catalogTypeTypes,
 } from 'shared/api/kinopoisk/models';
 import { CatalogFilterAndSearchSchema } from '../types/CatalogFilterAndSearchSchema';
 
@@ -41,10 +41,10 @@ export const CatalogFilterAndSearchSlice = createSlice({
     setKeyword: (state, action: PayloadAction<string>) => {
       state.keyword = action.payload;
     },
-    setCountries: (state, action: PayloadAction<CountryType[]>) => {
+    setCountries: (state, action: PayloadAction<number[]>) => {
       state.countries = action.payload;
     },
-    setGenres: (state, action: PayloadAction<GenreType[]>) => {
+    setGenres: (state, action: PayloadAction<number[]>) => {
       state.genres = action.payload;
     },
     resetCatalogParams: (state) => ({ ...initialState }),

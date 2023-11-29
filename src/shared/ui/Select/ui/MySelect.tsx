@@ -4,14 +4,15 @@ import classNames from 'shared/lib/classNames/classNames';
 import './MySelect.scss';
 
 export interface ISelectOption {
-  value: string;
+  value: string | number;
   label: string;
 }
 
 interface MySelectProps {
-  onChange: (value: string) => void;
+  onChange: (value: string | number) => void;
   options: ISelectOption[];
   name: string;
+  defaultValue?: ISelectOption;
 
   className?: string;
   isSearchable?: boolean;
@@ -21,6 +22,7 @@ const MySelect: FC<MySelectProps> = (props) => {
   const {
     className = '',
     options,
+    defaultValue = options[0],
     onChange,
     name,
     isSearchable = false,
@@ -29,14 +31,13 @@ const MySelect: FC<MySelectProps> = (props) => {
 
   const handleChange = (newValue: ISelectOption) => {
     onChange(newValue.value);
-    console.log(newValue, 'in');
   };
 
   return (
     <Select
       className={classNames('MySelectWrapper', {}, [className])}
       classNamePrefix="MySelect"
-      defaultValue={options[0]}
+      defaultValue={defaultValue}
       name={name}
       options={options}
       isSearchable={isSearchable}

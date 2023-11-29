@@ -41,18 +41,10 @@ export const CatalogTypeOption: Record<catalogTypeTypes, string> = {
   [catalogTypeTypes.MINI_SERIES]: 'Мини-сериалы',
   [catalogTypeTypes.ALL]: 'Все',
 };
-export interface GenreType {
-  id: number;
-  genre: string;
-}
-export interface CountryType {
-  id: number;
-  country: string;
-}
 
 export interface CatalogParams {
-  countries?: CountryType[];
-  genres?: GenreType[];
+  countries?: number[];
+  genres?: number[];
   order?: catalogOrderTypes;
   type?: catalogTypeTypes;
   ratingFrom?: number;

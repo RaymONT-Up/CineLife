@@ -14,7 +14,7 @@ export const $getCatalog = (params?: CatalogParams): AxiosPromise<GetCatalogList
     yearTo: params.yearTo,
     keyword: params.keyword || '',
     page: params.page || 1,
-    countries: params.countries || [],
-    genres: params.genres || [],
+    countries: params.countries.join(','),
+    genres: params.genres.join(','),
   },
 });
