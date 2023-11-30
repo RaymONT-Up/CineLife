@@ -3,15 +3,29 @@ import classNames from 'shared/lib/classNames/classNames';
 import { CatalogList as CatalogListTypes } from 'shared/api/kinopoisk/models';
 import Title from 'shared/ui/Title';
 import { CatalogPreviewCard } from 'entities/CatalogPreviewCard';
+import PageLoader from 'widgets/PageLoader';
 import cls from './CatalogList.module.scss';
 
 interface CatalogListProps {
   className?: string;
+  error?: string;
+
   items: CatalogListTypes,
+  isLoading: boolean;
 }
 
 const CatalogList: FC<CatalogListProps> = (props) => {
-  const { className, items } = props;
+  const {
+    className, items, isLoading = false, error = '',
+  } = props;
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
 
   if (items.length < 1) {
     return (

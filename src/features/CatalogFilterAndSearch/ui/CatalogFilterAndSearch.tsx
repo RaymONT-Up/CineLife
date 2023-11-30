@@ -8,14 +8,14 @@ import Search from './Search/Search';
 
 interface CatalogFilterAndSearchProps {
   className?: string;
+  isLoading: boolean;
 }
 
 const CatalogFilterAndSearch: FC<CatalogFilterAndSearchProps> = (props) => {
-  const { className } = props;
+  const { className, isLoading } = props;
 
   return (
-    <div className={classNames(cls.CatalogFilterAndSearch, {}, [className])}>
-
+    <div className={classNames(cls.CatalogFilterAndSearch, { [cls.disabled]: isLoading }, [className])}>
       <div className={cls.top}>
         <Search className={cls.search} />
       </div>
@@ -23,9 +23,7 @@ const CatalogFilterAndSearch: FC<CatalogFilterAndSearchProps> = (props) => {
       <div className={cls.bottom}>
         <GenresSelect className={cls.genres} />
         <TypeSelect className={cls.type} />
-
         <SortSelect className={cls.sort} />
-
       </div>
     </div>
   );

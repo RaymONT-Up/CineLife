@@ -34,13 +34,16 @@ export const CatalogOrderOptions: Record<catalogOrderTypes, string> = {
   [catalogOrderTypes.YEAR]: 'Год',
 };
 
-export const CatalogTypeOption: Record<catalogTypeTypes, string> = {
+export const CatalogTypeOptions: Record<catalogTypeTypes, string> = {
   [catalogTypeTypes.FILM]: 'Фильмы',
   [catalogTypeTypes.TV_SHOW]: 'ТВ-шоу',
   [catalogTypeTypes.TV_SERIES]: 'ТВ-сериалы',
   [catalogTypeTypes.MINI_SERIES]: 'Мини-сериалы',
   [catalogTypeTypes.ALL]: 'Все',
 };
+
+export const CatalogTypeOptionDefault = catalogTypeTypes.ALL;
+export const CatalogOrderOptionDefault = catalogOrderTypes.NUM_VOTE;
 
 export interface CatalogParams {
   countries?: number[];

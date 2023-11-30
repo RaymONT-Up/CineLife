@@ -9,8 +9,8 @@ interface SearchFormProps {
   className?: string;
   classNameInput?: string;
   classNameSubmitBtn?: string;
-
   placeholder?: string;
+
   value: string;
   onChange: (str: string) => void;
   onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
@@ -21,7 +21,6 @@ const SearchForm: FC<SearchFormProps> = (props) => {
     className = '',
     classNameInput = '',
     classNameSubmitBtn = '',
-
     placeholder = 'Найти фильм, сериал или аниме',
 
     value,

@@ -1,10 +1,8 @@
 import { FC } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
-import MySelect, { ISelectOption } from 'shared/ui/Select/ui/MySelect';
-import { useDispatch, useSelector } from 'react-redux';
-import { getSortState } from 'features/CatalogFilterAndSearch/model/selectors/getCatalogFilter';
+import MySelect from 'shared/ui/Select/ui/MySelect';
+import { useDispatch } from 'react-redux';
 import { CatalogFilterAndSearchActions } from 'features/CatalogFilterAndSearch/model/slice/CatalogFilterAndSearchSlice';
-// import cls from './GenresSelect.module.scss';
 
 interface GenresSelectProps {
   className?: string;
@@ -50,7 +48,6 @@ const GenresSelect: FC<GenresSelectProps> = (props) => {
   const { className } = props;
 
   const dispatch = useDispatch();
-  const select = useSelector(getSortState);
 
   const onChange = (newValue: number) => {
     dispatch(CatalogFilterAndSearchActions.setGenres([newValue]));

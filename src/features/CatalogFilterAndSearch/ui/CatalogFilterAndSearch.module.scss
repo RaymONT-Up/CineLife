@@ -4,6 +4,11 @@
   margin-bottom: calc(var(--index) * 1.5);
 }
 
+.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
 .top{
   margin-bottom: calc(var(--index) * 0.5);
 }

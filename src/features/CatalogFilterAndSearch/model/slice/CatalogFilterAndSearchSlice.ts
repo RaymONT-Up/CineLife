@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-  catalogOrderTypes, catalogTypeTypes,
+  CatalogOrderOptionDefault,
+  catalogOrderTypes, CatalogTypeOptionDefault, catalogTypeTypes,
 } from 'shared/api/kinopoisk/models';
 import { CatalogFilterAndSearchSchema } from '../types/CatalogFilterAndSearchSchema';
 
 const initialState: CatalogFilterAndSearchSchema = {
   countries: [],
   genres: [],
-  order: catalogOrderTypes.NUM_VOTE,
-  type: catalogTypeTypes.ALL,
+  order: CatalogOrderOptionDefault,
+  type: CatalogTypeOptionDefault,
   keyword: '',
   page: 1,
 };

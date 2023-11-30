@@ -11,13 +11,12 @@
   &::-webkit-scrollbar {
     width: var(--scroll-size);
     height: var(--scroll-size);
-
-    // фон
+    
+    // bg
     &-track{
       background-color: var(--bg-color);
     }
 
-    // прокрутка
     &-thumb{
       background-color: var(--primary-color);
       border-radius: var(--scroll-border-radius);

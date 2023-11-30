@@ -21,7 +21,7 @@ const Search: FC<SearchProps> = (props) => {
   const debouncedOnChange = useDebounce((str: string) => {
     // when dispatch changes useEffect inside catalogPage, which sends a request to the server to receive items
     dispatch(CatalogFilterAndSearchActions.setKeyword(str));
-  }, 5000);
+  }, 2500);
 
   const onChange = (str: string) => {
     // set Input value

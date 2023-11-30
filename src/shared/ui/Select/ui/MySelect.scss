@@ -1,8 +1,11 @@
 // using important is bad but this library...
 body .MySelect{
   background-color: var(--body-bg);
-
+  
   &__control{
+
+    cursor: pointer;
+
     min-width: calc(var(--index) * 12);
     padding: 0.5em 0.5em 0.5em 0.7em;
     height: 2.8em;
@@ -22,13 +25,10 @@ body .MySelect{
     }
 
     &--menu-is-open{
-      // c
       svg{
         transform: rotate(180deg);
       }
     }
-
-
   }
 
   &__input{
@@ -67,10 +67,13 @@ body .MySelect{
     border-radius: var(--btn-border-radius);
 
     background-color: var(--glass-bg-color);  
-    backdrop-filter: var(--glass-bg-blur);  
+    backdrop-filter: blur(var(--glass-bg-blur));  
 
     // border-top-right-radius: 0;
     // border-top-left-radius: 0;
+
+    animation-name: menu-is-open;
+    animation-duration: var(--transition-duration);
 
     &-list{
       padding: 0;
@@ -81,10 +84,28 @@ body .MySelect{
       border: 0 solid var(--primary-color);
 
       background-color: transparent;
+
+      // SCROLL
+      &::-webkit-scrollbar {
+        width: 0.4em;
+        height: 0.4em;
+        
+        // bg
+        &-track{
+          background-color: transparent;
+        }
+    
+        &-thumb{
+          background-color: var(--secondary-color);
+          border-radius: 0.3em;
+        }
+      }
     }
   }
 
   &__option{
+    cursor: pointer;
+
     color: var(--text-color);
     background-color: transparent;
     padding: 0.5em 0.6em;
@@ -108,5 +129,17 @@ body .MySelect{
       width: 1.3em;
       height: 100%;
     }
+  }
+}
+
+@keyframes menu-is-open {
+  0%{
+    opacity: 0;
+    transform: scale(0.2) translateY(-20%);
+  }
+
+  100%{
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }

@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import Select, { OnChangeValue, Props as SelectProps } from 'react-select';
+import { FC } from 'react';
+import Select from 'react-select';
 import classNames from 'shared/lib/classNames/classNames';
 import './MySelect.scss';
 
@@ -12,8 +12,9 @@ interface MySelectProps {
   onChange: (value: string | number) => void;
   options: ISelectOption[];
   name: string;
-  defaultValue?: ISelectOption;
 
+  defaultValue?: ISelectOption;
+  isOpen?:boolean;
   className?: string;
   isSearchable?: boolean;
 }
@@ -26,6 +27,7 @@ const MySelect: FC<MySelectProps> = (props) => {
     onChange,
     name,
     isSearchable = false,
+    isOpen = false,
     ...rest
   } = props;
 
@@ -42,6 +44,7 @@ const MySelect: FC<MySelectProps> = (props) => {
       options={options}
       isSearchable={isSearchable}
       onChange={handleChange}
+      menuIsOpen={isOpen || undefined}
       {...rest}
     />
   );
