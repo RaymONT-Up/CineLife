@@ -22,7 +22,7 @@ const SearchForm: FC<SearchFormProps> = (props) => {
     classNameInput = '',
     classNameSubmitBtn = '',
 
-    placeholder = '',
+    placeholder = 'Найти фильм, сериал или аниме',
 
     value,
     onChange,

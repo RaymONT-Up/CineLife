@@ -1,21 +1,31 @@
 .CatalogFilterAndSearch{
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin-bottom: calc(var(--index) * 1.5);
 }
 
+.top{
+  margin-bottom: calc(var(--index) * 0.5);
+}
+
+.bottom{
+  display: flex;
+  align-items: center;
+}
+
 .countries{
-  margin-right: 2em;
+  margin-right: var(--index);
 }
 
 .genres{
-  margin-right: 2em;
+  margin-right: var(--index);
+}
+
+.type{
+  margin-right: var(--index);
 }
 
 .sort{
   margin-left: auto;
 }
 
-.type{
-  margin-right: 2em;
-}

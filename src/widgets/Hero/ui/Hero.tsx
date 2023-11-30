@@ -37,7 +37,6 @@ const Hero: FC<HeroProps> = (props) => {
         </Title>
         <SearchForm
           className={cls.searchForm}
-          placeholder="Найти фильм, сериал или аниме"
           value={searchValue}
           onChange={searchValueHandler}
           onSubmit={searchFormSubmitHandler}

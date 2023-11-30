@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "cinelife",  
     "public": "build",
     "ignore": [
       "firebase.json",
