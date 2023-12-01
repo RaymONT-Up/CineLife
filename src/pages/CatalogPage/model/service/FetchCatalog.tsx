@@ -11,7 +11,7 @@ export const FetchCatalog = createAsyncThunk('catalogPage/fetchCatalog', async (
       throw new Error();
     }
     return response.data;
-  } catch {
-    return rejectWithValue('error');
+  } catch (error) {
+    return rejectWithValue(`Ошибка загрузки каталога: ${error.message}`);
   }
 });

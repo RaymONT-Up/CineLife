@@ -1,9 +1,12 @@
 export interface CatalogItem {
   nameRu: string;
+  posterUrlPreview: string;
   posterUrl: string;
   ratingKinopoisk: number;
   kinopoiskId: number;
   year: number;
+  genres: { genre: string }[];
+  countries: { country: string }[];
 }
 
 export type CatalogList = CatalogItem[];

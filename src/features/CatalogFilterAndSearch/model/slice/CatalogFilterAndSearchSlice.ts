@@ -6,12 +6,8 @@ import {
 import { CatalogFilterAndSearchSchema } from '../types/CatalogFilterAndSearchSchema';
 
 const initialState: CatalogFilterAndSearchSchema = {
-  countries: [],
-  genres: [],
   order: CatalogOrderOptionDefault,
   type: CatalogTypeOptionDefault,
-  keyword: '',
-  page: 1,
 };
 
 export const CatalogFilterAndSearchSlice = createSlice({

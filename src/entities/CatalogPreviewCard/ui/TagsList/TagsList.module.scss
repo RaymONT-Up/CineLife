@@ -1,0 +1,36 @@
+.TagsList{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+
+  margin-right: -5%;
+  margin-left: -2%;
+}
+
+.item{
+  display: block;
+  margin-right: 0.6em;
+  margin-bottom: 0.6em;
+  padding: 0.5em 1em;
+  border-radius: 0.4em;
+
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.6em;
+  line-height: 100%;
+  color: var(--text-color);
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.bgBlur{
+  background-color: var(--glass-bg-color);
+  backdrop-filter: blur(var(--glass-bg-blur));
+}
+
+.outline{
+  border: 0.05em solid var(--primary-color);
+}

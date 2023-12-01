@@ -7,6 +7,13 @@
   border-radius: var(--border-radius-size-d);
   overflow: hidden;
 
+
+  outline: 0.15em solid var(--bg-color);
+
+
+  transition-property: transform outline;
+  transition-duration: var(--transition-duration);
+  
   &::after{ 
     content: "";
     position: absolute;
@@ -22,6 +29,10 @@
   }
 
   &:hover, &:focus-visible,&:focus {
+
+    transform: scale(1.03);
+    outline-color: var(--primary-color);
+
     .info{
       opacity: 1;
       transform: translateY(0%);
@@ -77,8 +88,6 @@
   }
 }
 
-
-
 .img{
   width: 100%;
   display: block;
@@ -103,7 +112,7 @@
 
 
 .name{
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin-bottom: 0.2em;
 }
 

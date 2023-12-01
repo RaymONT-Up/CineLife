@@ -18,6 +18,10 @@
   align-items: center;
 }
 
+.countries,.genres,.type,.sort{
+  min-width: 18vw;
+}
+
 .countries{
   margin-right: var(--index);
 }
