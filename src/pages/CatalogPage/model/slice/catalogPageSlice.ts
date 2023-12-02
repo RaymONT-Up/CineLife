@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, ThunkAction } from '@reduxjs/toolkit';
 import { CatalogList } from 'shared/api/kinopoisk/models';
 import { CatalogPageSchema } from '../types/catalogPageSchema';
 import { FetchCatalog } from '../service/FetchCatalog';
@@ -6,34 +6,29 @@ import { FetchCatalog } from '../service/FetchCatalog';
 const initialState: CatalogPageSchema = {
   isLoading: false,
   error: undefined,
+  loadMore: false,
 
   //
   items: [],
+  page: 1,
 
   // pagination
-  page: 1,
-  limit: 20,
-
   totalItems: null,
   totalPages: null,
-
-  // filters
-  search: '',
-
 };
 
 const catalogPageSlice = createSlice({
   name: 'catalogPageSlice',
   initialState,
   reducers: {
+    setLoadMore(state, action:PayloadAction<boolean>) {
+      state.loadMore = action.payload;
+    },
     setItems(state, action:PayloadAction<CatalogList>) {
       state.items = action.payload;
     },
     setPage(state, action:PayloadAction<number>) {
       state.page = action.payload;
-    },
-    setSearch(state, action:PayloadAction<string>) {
-      state.search = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -42,16 +37,16 @@ const catalogPageSlice = createSlice({
         state.error = undefined;
         state.isLoading = true;
       })
-      .addCase(FetchCatalog.fulfilled, (
-        state,
-        action,
-      ) => {
+      .addCase(FetchCatalog.fulfilled, (state, action) => {
         state.isLoading = false;
-
         state.totalPages = action.payload.totalPages;
         state.totalItems = action.payload.total;
-        state.items = action.payload.items;
-        // state.hasMore = action.payload.length >= state.limit;
+
+        if (state.loadMore) {
+          state.items = [...state.items, ...action.payload.items];
+        } else {
+          state.items = action.payload.items;
+        }
       })
       .addCase(FetchCatalog.rejected, (state, action) => {
         state.isLoading = false;

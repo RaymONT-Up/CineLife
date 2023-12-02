@@ -22,8 +22,9 @@ const TagsList: FC<TagsListProps> = (props) => {
 
   return (
     <ul className={classNames(cls.TagsList, {}, [className])}>
-      {list.map((string) => (
-        <li className={classNames(cls.item, {}, [cls[theme]])}>
+      {list.map((string, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <li key={index} className={classNames(cls.item, {}, [cls[theme]])}>
           {string}
         </li>
       ))}

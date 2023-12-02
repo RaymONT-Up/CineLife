@@ -1,35 +1,76 @@
-import { FC, useEffect } from 'react';
+import {
+  FC, useCallback, useEffect, useRef,
+} from 'react';
 import classNames from 'shared/lib/classNames/classNames';
-import { FetchCatalog } from 'pages/CatalogPage/model/service/FetchCatalog';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCatalogError, getCatalogIsLoading, getCatalogItems } from 'pages/CatalogPage/model/selectors/CatalogPageSelectors';
-import CatalogFIlterAndSearch from 'features/CatalogFilterAndSearch/ui/CatalogFilterAndSearch';
-import { getCatalogFilterParams } from 'features/CatalogFilterAndSearch';
+import {
+  getCatalogError, getCatalogIsLoading, getCatalogItems, getCatalogPage, getCatalogTotalPages, getLoadMore,
+} from 'pages/CatalogPage/model/selectors/CatalogPageSelectors';
+import CatalogFilterAndSearch, { getCatalogFilterParams } from 'features/CatalogFilterAndSearch';
+import { catalogActions } from 'pages/CatalogPage/model/slice/catalogPageSlice';
 import cls from './Catalog.module.scss';
 import CatalogList from '../CatalogList/CatalogList';
+import { FetchCatalog } from '../../model/service/FetchCatalog';
 
 interface CatalogProps {
   className?: string;
 }
-
+// !FIX !!!!!! be sure to refactor
 const CatalogPage: FC<CatalogProps> = (props) => {
   const { className } = props;
   const dispatch = useDispatch();
 
   const isLoading = useSelector(getCatalogIsLoading);
   const error = useSelector(getCatalogError);
+
   const items = useSelector(getCatalogItems);
   const params = useSelector(getCatalogFilterParams);
 
-  useEffect(() => {
-    dispatch(FetchCatalog(params) as any);
+  const page = useSelector(getCatalogPage);
+  const loadMore = useSelector(getLoadMore);
+
+  const totalPages = useSelector(getCatalogTotalPages);
+  const hasMore = totalPages - page >= 1;
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params]);
+  const scrollHandler = (e: any) => {
+    const { scrollHeight } = e.target.documentElement;
+    const { scrollTop } = e.target.documentElement;
+    const { innerHeight } = window;
+
+    if (
+      scrollHeight - (scrollTop + innerHeight) < 120
+      && hasMore
+      && !isLoading
+    ) {
+      dispatch(catalogActions.setLoadMore(true));
+      dispatch(catalogActions.setPage(page + 1));
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandler);
+
+    return () => {
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  }, [scrollHandler]);
+
+  useEffect(() => {
+    dispatch(catalogActions.setLoadMore(false));
+    dispatch(catalogActions.setPage(1));
+  }, [params, dispatch]);
+
+  // init load data
+  useEffect(() => {
+    dispatch(FetchCatalog({ ...params, page }) as any);
+  }, [params, page, dispatch]);
 
   return (
     <div className={classNames(cls.Catalog, {}, [className])}>
-      <CatalogFIlterAndSearch isLoading={isLoading} />
-      <CatalogList isLoading={isLoading} error={error} items={items} />
+      <CatalogFilterAndSearch isLoading={isLoading} />
+      <CatalogList isLoading={isLoading} error={error} items={items} loadMore={loadMore} />
+      {/* {!hasMore && 'The end'} */}
     </div>
   );
 };

@@ -1,9 +1,10 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import MySelect, { ISelectOption } from 'shared/ui/Select/ui/MySelect';
 import { CatalogOrderOptionDefault, CatalogOrderOptions, catalogOrderTypes } from 'shared/api/kinopoisk/models';
 import { useDispatch } from 'react-redux';
 import { CatalogFilterAndSearchActions } from 'features/CatalogFilterAndSearch/model/slice/CatalogFilterAndSearchSlice';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 interface SortSelectProps {
   className?: string;
@@ -20,6 +21,10 @@ const SortSelect: FC<SortSelectProps> = (props) => {
   const { className } = props;
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onChange = (newValue: catalogOrderTypes) => {
     dispatch(CatalogFilterAndSearchActions.setOrder(newValue));

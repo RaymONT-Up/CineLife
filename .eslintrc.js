@@ -34,7 +34,7 @@ module.exports = {
       2,
       { extensions: ['.js', '.jsx', '.tsx', 'ts'] },
     ],
-    'max-len': [2, { code: 130, ignoreComments: true }],
+    'max-len': [2, { code: 135, ignoreComments: true }],
 
     'no-unused-vars': 'warn',
     'import/no-extraneous-dependencies': ['warn', { devDependencies: true }],

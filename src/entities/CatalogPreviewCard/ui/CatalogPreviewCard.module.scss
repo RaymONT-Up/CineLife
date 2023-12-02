@@ -8,6 +8,8 @@
   overflow: hidden;
 
 
+  background-color: var(--empty-color);
+
   outline: 0.15em solid var(--bg-color);
 
 
@@ -94,6 +96,11 @@
   object-fit: cover;
 
   transition: transform var(--transition-duration);
+
+  &Wrapper{
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .info{

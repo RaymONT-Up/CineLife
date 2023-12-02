@@ -9,21 +9,25 @@ import cls from './CatalogList.module.scss';
 interface CatalogListProps {
   className?: string;
   error?: string;
-
-  items: CatalogListTypes,
+  items: CatalogListTypes;
   isLoading: boolean;
+  loadMore: boolean;
 }
 
 const CatalogList: FC<CatalogListProps> = (props) => {
   const {
-    className, items, isLoading = false, error = '',
+    className,
+    items,
+    isLoading = false,
+    loadMore,
+    error = '',
   } = props;
 
   if (error) {
     return <div>{error}</div>;
   }
 
-  if (isLoading) {
+  if (isLoading && !loadMore) {
     return <PageLoader />;
   }
 
@@ -36,21 +40,24 @@ const CatalogList: FC<CatalogListProps> = (props) => {
   }
 
   return (
-    <ul className={classNames(cls.CatalogList, {}, [className])}>
-      {items.map((item, index) => (
-        <CatalogPreviewCard
-          genres={item.genres}
-          countries={item.countries}
-          key={item.kinopoiskId || index}
-          kinopoiskId={item.kinopoiskId}
-          ratingKinopoisk={item.ratingKinopoisk}
-          nameRu={item.nameRu}
-          posterUrl={item.posterUrl}
-          posterUrlPreview={item.posterUrlPreview}
-          year={item.year}
-        />
-      ))}
-    </ul>
+    <>
+      <ul className={classNames(cls.CatalogList, {}, [className])}>
+        {items.map((item, index) => (
+          <CatalogPreviewCard
+            genres={item.genres}
+            countries={item.countries}
+            key={item.kinopoiskId || index}
+            kinopoiskId={item.kinopoiskId}
+            ratingKinopoisk={item.ratingKinopoisk}
+            nameRu={item.nameRu}
+            posterUrl={item.posterUrl}
+            posterUrlPreview={item.posterUrlPreview}
+            year={item.year}
+          />
+        ))}
+      </ul>
+      {(isLoading && loadMore) && <PageLoader />}
+    </>
   );
 };
 

@@ -37,11 +37,15 @@ const CatalogPreviewCard: FC<CatalogPreviewCardProps> = (props) => {
         <b className={classNames(cls.rating, {}, [cls[ratingCategory]])}>
           {ratingKinopoisk}
         </b>
-        <img
-          className={cls.img}
-          src={isWideScreen ? posterUrl : posterUrlPreview}
-          alt={`Постер для фильма ${nameRu}`}
-        />
+
+        <div className={cls.imgWrapper}>
+          <img
+            className={cls.img}
+            src={isWideScreen ? posterUrl : posterUrlPreview}
+            alt={`Постер для фильма ${nameRu}`}
+          />
+        </div>
+
         <div className={cls.info}>
           <TagsList list={genresList} />
           <TagsList list={countriesList} theme={TagsListTheme.outline} />
