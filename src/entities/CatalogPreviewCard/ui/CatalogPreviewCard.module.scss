@@ -2,6 +2,8 @@
 .CatalogPreviewCard{
   --padding: 0.75em;
 
+  height: 100%;
+
   position: relative;
   display: flex;
   border-radius: var(--border-radius-size-d);
@@ -91,6 +93,7 @@
 }
 
 .img{
+  height: 100%;
   width: 100%;
   display: block;
   object-fit: cover;

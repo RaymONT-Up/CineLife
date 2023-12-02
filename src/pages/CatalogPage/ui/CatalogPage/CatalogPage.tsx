@@ -39,7 +39,7 @@ const CatalogPage: FC<CatalogProps> = (props) => {
     const { innerHeight } = window;
 
     if (
-      scrollHeight - (scrollTop + innerHeight) < 120
+      scrollHeight - (scrollTop + innerHeight) < 50
       && hasMore
       && !isLoading
     ) {
