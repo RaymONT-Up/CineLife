@@ -11,6 +11,6 @@ export const FetchFilm = createAsyncThunk('FilmPage/fetchFilm', async (id: numbe
     }
     return response.data;
   } catch (error) {
-    return rejectWithValue(`Ошибка загрузки каталога: ${error.message}`);
+    return rejectWithValue(`Ошибка загрузки фильма: ${error.message}`);
   }
 });
