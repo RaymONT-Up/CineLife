@@ -14,6 +14,7 @@ export const buildPlugins = (
     // генерирует HTML-файлы, вставляет ссылки на бандлы JavaScript
     new HtmlWebpackPlugin({
       template: paths.html,
+      publicPath: '/'
     }),
 
     // Показывает прогресс webpack cfg в консоли

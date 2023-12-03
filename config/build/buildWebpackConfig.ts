@@ -5,41 +5,45 @@ import { buildLoaders } from "./buildLoaders";
 import { buildResolvers } from "./buildResolve";
 import { buildDevServer } from "./buildDevServer";
 
+// Function to build webpack configuration based on provided options
 export const buildWebpackConfig = (
   options: BuildOptions
 ): webpack.Configuration => {
   const { isDev, paths, mode } = options;
 
   return {
-    // development || production(оптимизирует код)
+    // Set the build mode: development or production (optimizes the code)
     mode: mode,
 
-    // стартовая точка приложения
+    // Entry point of the application
     entry: paths.entry,
-    // выходная точка приложения
+    
+    // Output configuration
     output: {
       filename: "[name].[contenthash].js",
       path: paths.build,
-      clean: true,
+      publicPath: '/', // Public path for assets and fix error for page with lazy load like catalog/:id. If we restart page we got error "HTML MITE TYPE... and cant load file[pagebundle]"
+      clean: true, // Clean the output directory before each build
     },
 
     module: {
-      // rules предназначен для обработки файлов, которые выходят за рамки js -> по типу png svg ts, css и т.д
-      // buildLoaders возвращает массив loaders
+      // Rules for processing files beyond JavaScript, such as images, SVG, TypeScript, CSS, etc.
+      // buildLoaders returns an array of loaders
       rules: buildLoaders(options),
     },
 
-    // указываем расширения тех файлов для которых при импорте не будем указывать расширение
-    // "import component from "./component"
+    // Specify file extensions for which we don't need to provide when importing
+    // e.g., "import component from "./component"
     resolve: buildResolvers(options),
 
-    // плагины
-    // Функция buildPlugins возвращает массив плагинов
+    // Plugins configuration
+    // buildPlugins function returns an array of plugins
     plugins: buildPlugins(options),
 
-    // карта исходных кодов для отладки(в доке подробнее)
+    // Source map configuration for debugging (see documentation for details)
     devtool: isDev ? "inline-source-map" : undefined,
-    // настройки для devServer
+
+    // DevServer settings
     devServer: isDev ? buildDevServer(options) : undefined,
   };
 };

@@ -60,3 +60,28 @@ export interface CatalogParams {
   keyword?: string;
   page?: number;
 }
+
+export interface Film {
+  nameRu?: string;
+
+  posterUrl?: string;
+  description?: string;
+
+  ratingAgeLimits?: string;
+
+  kinopoiskId?: number;
+  coverUrl?: string | null;
+  logoUrl?: string | null;
+  ratingKinopoisk?: number;
+  webUrl?: string;
+  year?: number;
+  filmLength?: number;
+  slogan?: string;
+  shortDescription?: string;
+  type?: catalogTypeTypes;
+  genres?: { genre: string }[];
+  countries?: { country: string }[];
+  startYear?: null;
+  endYear?: null;
+  completed?: false;
+}

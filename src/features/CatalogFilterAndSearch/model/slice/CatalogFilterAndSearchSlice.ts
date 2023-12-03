@@ -14,9 +14,6 @@ export const CatalogFilterAndSearchSlice = createSlice({
   name: 'CatalogFilterAndSearch',
   initialState,
   reducers: {
-    setPage: (state, action: PayloadAction<number>) => {
-      state.page = action.payload;
-    },
     setType: (state, action: PayloadAction<catalogTypeTypes>) => {
       state.type = action.payload;
     },

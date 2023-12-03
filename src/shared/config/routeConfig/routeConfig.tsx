@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { AboutPage } from 'pages/AboutPage';
 import { CatalogPage } from 'pages/CatalogPage';
+import { FilmPage } from 'pages/FilmPage';
 import { MainPage } from 'pages/MainPage';
 import NotFoundPage from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
@@ -9,6 +10,8 @@ import { RouteProps } from 'react-router-dom';
 export enum AppRoutes {
   MAIN = 'main',
   CATALOG = 'catalog',
+  FILM ='film',
+
   ABOUT = 'about',
   PROFILE = 'profile',
 
@@ -21,13 +24,13 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
 
   [AppRoutes.CATALOG]: '/catalog',
+  [AppRoutes.FILM]: '/catalog/:id',
 
   [AppRoutes.ABOUT]: '/about',
 
   [AppRoutes.PROFILE]: '/profile',
 
   [AppRoutes.NOT_FOUND_PAGE]: '/*',
-
 };
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
@@ -39,6 +42,11 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.CATALOG]: {
     path: RoutePath.catalog,
     element: <CatalogPage />,
+  },
+
+  [AppRoutes.FILM]: {
+    path: RoutePath.film,
+    element: <FilmPage />,
   },
 
   [AppRoutes.ABOUT]: {
