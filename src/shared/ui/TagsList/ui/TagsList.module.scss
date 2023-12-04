@@ -4,8 +4,9 @@
   flex-wrap: wrap;
   align-items: center;
 
-  margin-right: -5%;
-  margin-left: -2%;
+  &.xScroll{
+    overflow-x: auto;
+  }
 }
 
 .item{
@@ -34,3 +35,4 @@
 .outline{
   border: 0.05em solid var(--primary-color);
 }
+

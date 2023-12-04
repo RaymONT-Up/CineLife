@@ -5,7 +5,7 @@ import ratingScoreCategory from '../lib/ratingScoreCategory';
 
 interface RatingProps {
   className?: string;
-  rating:number;
+  rating: number;
 }
 
 const Rating: FC<RatingProps> = (props) => {

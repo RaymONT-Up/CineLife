@@ -4,8 +4,8 @@ import { CatalogItem } from 'shared/api/kinopoisk/models';
 import AppLink from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import Rating from 'shared/ui/Rating';
+import TagsList, { TagsListTheme } from 'shared/ui/TagsList';
 import cls from './CatalogPreviewCard.module.scss';
-import TagsList, { TagsListTheme } from './TagsList/TagsList';
 
 interface CatalogPreviewCardProps extends CatalogItem{
   className?: string;

@@ -12,3 +12,11 @@
   display: flex;
   flex-direction: column;
 }
+
+.tagsList{
+  overflow-x:  auto;
+  
+  li {
+    margin-bottom: 0;
+  }
+}

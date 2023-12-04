@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
-import minutesToHours from 'shared/lib/minutesToHours/MinutesToHours';
 import { getFilm } from 'pages/FilmPage/model/selectors/FilmPageSelectors';
 import { useSelector } from 'react-redux';
-import { CatalogTypeOptions, FilmType } from 'shared/api/kinopoisk/models';
+import { FilmType } from 'shared/api/kinopoisk/models';
+import TagsList, { TagsListTheme } from 'shared/ui/TagsList';
+import minutesToHours from 'shared/lib/minutesToHours/minutesToHours';
 import cls from './FilmInfo.module.scss';
 import FilmListItem from './FilmListItem/FilmListItem';
 
@@ -39,6 +40,10 @@ const FilmInfo: FC = (props) => {
     type,
     filmLength,
   } = filmData;
+
+  const countriesList = countries?.map((item) => item.country);
+  const genresList = genres?.map((item) => item.genre);
+
   return (
     <div className={cls.FilmInfo}>
       <Title
@@ -65,8 +70,17 @@ const FilmInfo: FC = (props) => {
         <FilmListItem name="Слоган">
           {slogan}
         </FilmListItem>
+
+        <FilmListItem name="Жанры">
+          <TagsList className={cls.tagsList} list={genresList} />
+        </FilmListItem>
+
+        <FilmListItem name="Страны">
+          <TagsList className={cls.tagsList} list={countriesList} theme={TagsListTheme.outline} />
+        </FilmListItem>
+
         <FilmListItem name="Тип">
-          {FilmType[type?.toUpperCase()]}
+          {FilmType[type]}
         </FilmListItem>
         <FilmListItem name="Стартовый год">
           {startYear}
@@ -77,6 +91,7 @@ const FilmInfo: FC = (props) => {
         <FilmListItem name="Состояние">
           {completed}
         </FilmListItem>
+
       </ul>
 
     </div>

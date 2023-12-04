@@ -20,11 +20,15 @@ const TagsList: FC<TagsListProps> = (props) => {
     theme = TagsListTheme.bgBlur,
   } = props;
 
+  if (!list || list?.length === 0) {
+    return <ul />;
+  }
+
   return (
     <ul className={classNames(cls.TagsList, {}, [className])}>
-      {list.map((string, index) => (
+      {list?.map((string, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <li key={index} className={classNames(cls.item, {}, [cls[theme]])}>
+        <li key={`${string}${index}`} className={classNames(cls.item, {}, [cls[theme]])}>
           {string}
         </li>
       ))}
