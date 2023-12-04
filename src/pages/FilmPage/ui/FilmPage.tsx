@@ -1,13 +1,13 @@
 import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
 import PageLoader from 'widgets/PageLoader';
 import cls from './FilmPage.module.scss';
 import { FetchFilm } from '../model/service/FetchFilm';
 import { FilmActions } from '../model/slice/FilmPageSlice';
-import { getError, getFilm, getIsLoading } from '../model/selectors/FilmPageSelectors';
-import FilmInfo from './FilmListInfo/FilmInfo';
+import { getError, getIsLoading } from '../model/selectors/FilmPageSelectors';
+import FilmHeader from './FilmHeader/FilmHeader';
+import FilmPlayer from './FilmPlayer/FilmPlayer';
 
 interface FilmPageProps {
   className?: string;
@@ -18,26 +18,8 @@ const FilmPage: FC<FilmPageProps> = () => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch();
 
-  const filmData = useSelector(getFilm);
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
-
-  const {
-    nameRu,
-    description,
-    posterUrl,
-    ratingAgeLimits,
-    coverUrl,
-    logoUrl,
-    year,
-    slogan,
-    genres,
-    startYear,
-    completed,
-    endYear,
-    type,
-    filmLength,
-  } = filmData;
 
   useEffect(() => {
     dispatch(FetchFilm(+id) as any);
@@ -61,22 +43,8 @@ const FilmPage: FC<FilmPageProps> = () => {
   return (
     <div className={cls.FilmPage}>
 
-      <div className={cls.top}>
-
-        <div className={cls.imgWrapper}>
-          <img className={cls.img} src={posterUrl} alt={`Обложка ${nameRu}`} />
-        </div>
-
-        <FilmInfo />
-      </div>
-
-      <iframe
-        className={cls.player}
-        title={type}
-        src={`https://voidboost.tv/embed/${id}`}
-        allow="autoplay"
-        allowFullScreen
-      />
+      <FilmHeader />
+      <FilmPlayer id={+id} />
     </div>
   );
 };

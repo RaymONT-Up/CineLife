@@ -2,41 +2,44 @@ import { FC } from 'react';
 import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
 import { getFilm } from 'pages/FilmPage/model/selectors/FilmPageSelectors';
 import { useSelector } from 'react-redux';
-import { FilmType } from 'shared/api/kinopoisk/models';
+import {
+  FilmType, catalogTypeTypes, countriesList, genresList,
+} from 'shared/api/kinopoisk/models';
 import TagsList, { TagsListTheme } from 'shared/ui/TagsList';
 import minutesToHours from 'shared/lib/minutesToHours/minutesToHours';
+import Rating from 'shared/ui/Rating';
 import cls from './FilmInfo.module.scss';
 import FilmListItem from './FilmListItem/FilmListItem';
 
-// interface FilmInfoProps {
-//   className?: string;
-//   nameRu: string;
-//   year: number;
-//   slogan: string;
-//   genres: string[];
-//   completed: boolean;
-//   type: catalogTypeTypes;
-//   filmLength: number;
-//   ratingAgeLimits: number;
-// }
+interface FilmInfoProps {
+  className?: string;
+  nameRu: string;
+  year: number;
+  slogan: string;
+  genres: genresList;
+  countries: countriesList;
+  startYear: number;
+  endYear: number;
+  type: catalogTypeTypes;
+  filmLength: number;
+  ratingAgeLimits: string;
+  rating: number;
+}
 
-const FilmInfo: FC = (props) => {
-  const filmData = useSelector(getFilm);
+const FilmInfo: FC<FilmInfoProps> = (props) => {
   const {
     nameRu,
-    description,
-    posterUrl,
     ratingAgeLimits,
     year,
     slogan,
     genres,
     countries,
     startYear,
-    completed,
     endYear,
     type,
     filmLength,
-  } = filmData;
+    rating,
+  } = props;
 
   const countriesList = countries?.map((item) => item.country);
   const genresList = genres?.map((item) => item.genre);
@@ -72,7 +75,9 @@ const FilmInfo: FC = (props) => {
         <FilmListItem name="Страны">
           <TagsList className={cls.tagsList} list={countriesList} theme={TagsListTheme.outline} />
         </FilmListItem>
-
+        <FilmListItem name="Рейтинг">
+          <Rating rating={rating} />
+        </FilmListItem>
         <FilmListItem name="Тип">
           {FilmType[type]}
         </FilmListItem>
@@ -82,9 +87,9 @@ const FilmInfo: FC = (props) => {
         <FilmListItem name="Конечный год">
           {endYear}
         </FilmListItem>
-        <FilmListItem name="Состояние">
+        {/* <FilmListItem name="Состояние">
           {completed ? 'Завершен' : 'Продолжается'}
-        </FilmListItem>
+        </FilmListItem> */}
 
       </ul>
 

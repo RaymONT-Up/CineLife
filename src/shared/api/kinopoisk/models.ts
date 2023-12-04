@@ -1,3 +1,6 @@
+export type genresList = { genre: string}[];
+export type countriesList = { country: string }[];
+
 export interface CatalogItem {
   nameRu: string;
   posterUrlPreview: string;
@@ -5,8 +8,8 @@ export interface CatalogItem {
   ratingKinopoisk: number;
   kinopoiskId: number;
   year: number;
-  genres: { genre: string }[];
-  countries: { country: string }[];
+  genres: genresList;
+  countries: countriesList;
 }
 
 export type CatalogList = CatalogItem[];
@@ -79,8 +82,8 @@ export interface Film {
   slogan?: string;
   shortDescription?: string;
   type?: catalogTypeTypes;
-  genres?: { genre: string }[];
-  countries?: { country: string }[];
+  genres?: genresList;
+  countries?: countriesList;
   startYear?: null;
   endYear?: null;
   completed?: false;

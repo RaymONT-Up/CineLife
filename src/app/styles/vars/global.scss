@@ -51,8 +51,9 @@
 
   // overlay-color
   --overlay-color: rgba(0 0 0 / 85%);
+  --overlay-color-2: rgba(0 0 0 / 66%);
   --blackout: linear-gradient(0deg, #000 0%, rgb(0 0 0 / 0%) 100%);
 
   // container
-  --container-margin: 0 var(--index);
+  --container-margin: var(--index);
 }
