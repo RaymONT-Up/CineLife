@@ -85,3 +85,11 @@ export interface Film {
   endYear?: null;
   completed?: false;
 }
+
+export const FilmType: Record<catalogTypeTypes, string> = {
+  [catalogTypeTypes.FILM]: 'Фильм',
+  [catalogTypeTypes.TV_SHOW]: 'ТВ-шоу',
+  [catalogTypeTypes.TV_SERIES]: 'ТВ-сериал',
+  [catalogTypeTypes.MINI_SERIES]: 'Мини-сериал',
+  [catalogTypeTypes.ALL]: 'Все',
+};

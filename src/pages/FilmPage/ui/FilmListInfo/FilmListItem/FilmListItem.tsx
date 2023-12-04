@@ -1,22 +1,27 @@
-import { FC } from 'react';
-import classNames from 'shared/lib/classNames/classNames';
+import { FC, ReactNode } from 'react';
 import cls from './FilmListItem.module.scss';
 
 interface FilmListItemProps {
   className?: string;
   name: string;
-  value: string | [];
+  children: ReactNode;
 }
 
 const FilmListItem: FC<FilmListItemProps> = (props) => {
-  const { className, name, value } = props;
+  const { className, name, children } = props;
   return (
-    <li className={cls.item}>
-      <h6 className={cls.item__name}>
-        {name}
-      </h6>
-      {value}
-    </li>
+    <>
+      {children && (
+      <li className={cls.item}>
+        <h6 className={cls.item__name}>
+          {`${name}:`}
+        </h6>
+        <div className={cls.item__value}>
+          {children}
+        </div>
+      </li>
+      )}
+    </>
   );
 };
 

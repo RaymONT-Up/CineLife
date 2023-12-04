@@ -65,31 +65,11 @@
   top: var(--padding);
   left: var(--padding);
 
-  font-size: 0.9em;
-  line-height: 100%;
-
-  padding: 0.3em 0.5em;
-  border-radius: var(--btn-border-radius);
-  background-color: var(--empty-color);
-
   opacity: 0;
   transform: translate(-50%,-50%);
 
   transition-property: opacity, transform;
   transition-duration: var(--transition-duration);
-
-  &.great{
-    background-color: var(--great-color);
-  }
-
-  &.medium{
-    background-color: var(--medium-color);
-  }
-
-  &.bad{
-    background-color: var(--bad-color);
-
-  }
 }
 
 .img{

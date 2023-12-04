@@ -56,7 +56,7 @@ module.exports = {
     'linebreak-style': 'off',
 
     'no-param-reassign': 'off',
-
+    'react/jsx-no-useless-fragment': 'off',
   },
 
   globals: {

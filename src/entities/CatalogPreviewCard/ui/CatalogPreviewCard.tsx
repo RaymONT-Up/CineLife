@@ -3,8 +3,8 @@ import classNames from 'shared/lib/classNames/classNames';
 import { CatalogItem } from 'shared/api/kinopoisk/models';
 import AppLink from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import Rating from 'shared/ui/Rating';
 import cls from './CatalogPreviewCard.module.scss';
-import ratingScoreCategory from '../lib/ratingScoreCategory';
 import TagsList, { TagsListTheme } from './TagsList/TagsList';
 
 interface CatalogPreviewCardProps extends CatalogItem{
@@ -26,17 +26,14 @@ const CatalogPreviewCard: FC<CatalogPreviewCardProps> = (props) => {
     countries,
   } = props;
 
-  const ratingCategory = ratingScoreCategory(ratingKinopoisk);
-
   const genresList = genres.map((item) => item.genre);
   const countriesList = countries.map((item) => item.country);
 
   return (
     <li>
       <AppLink className={classNames(cls.CatalogPreviewCard, {}, [className])} to={`${RoutePath.catalog}/${kinopoiskId}`}>
-        <b className={classNames(cls.rating, {}, [cls[ratingCategory]])}>
-          {ratingKinopoisk}
-        </b>
+
+        <Rating className={cls.rating} rating={ratingKinopoisk} />
 
         <div className={cls.imgWrapper}>
           <img

@@ -7,6 +7,7 @@ import cls from './FilmPage.module.scss';
 import { FetchFilm } from '../model/service/FetchFilm';
 import { FilmActions } from '../model/slice/FilmPageSlice';
 import { getError, getFilm, getIsLoading } from '../model/selectors/FilmPageSelectors';
+import FilmInfo from './FilmListInfo/FilmInfo';
 
 interface FilmPageProps {
   className?: string;
@@ -66,42 +67,7 @@ const FilmPage: FC<FilmPageProps> = () => {
           <img className={cls.img} src={posterUrl} alt={`Обложка ${nameRu}`} />
         </div>
 
-        <div className={cls.info}>
-          <Title
-            className={cls.title}
-            theme={TitleTheme.hero}
-            Tag={TitleTags.h1}
-          >
-            {nameRu}
-          </Title>
-          <ul className={cls.list}>
-            <li className={cls.item}>
-
-              <h6 className={cls.item__name}>
-                Год:
-              </h6>
-              {year}
-            </li>
-            <li className={cls.item}>
-              <h6 className={cls.item__name}>
-                Время:
-              </h6>
-              {`${filmLength} Минут`}
-            </li>
-            <li className={cls.item}>
-              <h6 className={cls.item__name}>
-                Слоган:
-              </h6>
-              {slogan}
-            </li>
-            <li className={cls.item}>
-              <h6 className={cls.item__name}>
-                Возраст:
-              </h6>
-              {ratingAgeLimits}
-            </li>
-          </ul>
-        </div>
+        <FilmInfo />
       </div>
 
       <iframe

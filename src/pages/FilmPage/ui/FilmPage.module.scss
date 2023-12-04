@@ -24,30 +24,7 @@
   }
 }
 
-.list{
-  display: flex;
-  flex-direction: column;
 
-}
-
-.item{
-  display: flex;
-  align-items: center;
-
-  &:not(:last-child){
-    margin-bottom: 2em;
-  }
-
-  &__name{
-    margin-right: 0.3em;
-    opacity: 0.7;
-  }
-}
-
-
-.title{
-  margin-bottom: 0.5em;
-}
 
 .player{
   overflow: hidden;

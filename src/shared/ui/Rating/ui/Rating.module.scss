@@ -1,0 +1,20 @@
+.Rating{
+  font-size: 0.9em;
+  line-height: 100%;
+
+  padding: 0.3em 0.5em;
+  border-radius: var(--btn-border-radius);
+  background-color: var(--empty-color);
+
+  &.great{
+    background-color: var(--great-color);
+  }
+
+  &.medium{
+    background-color: var(--medium-color);
+  }
+
+  &.bad{
+    background-color: var(--bad-color);
+  }
+}

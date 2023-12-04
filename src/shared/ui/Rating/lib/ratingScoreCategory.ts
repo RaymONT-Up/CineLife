@@ -1,9 +1,4 @@
-export enum scoreCategory {
-  great = 'great',
-  medium = 'medium',
-  bad = 'bad',
-  empty = 'empty'
-}
+import { scoreCategory } from '../types/scoreCategoryTypes';
 
 const ratingScoreCategory = (rating:number): scoreCategory => {
   if (rating !== undefined && rating !== null) {
