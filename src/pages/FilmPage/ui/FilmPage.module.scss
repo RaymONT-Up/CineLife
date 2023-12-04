@@ -1,5 +1,5 @@
 .FilmPage{
-  margin-top: calc(var(--index) * 3);
+  margin: calc(var(--index) * 1.5) calc(var(--index) * 2);
 }
 
 .top{
@@ -18,9 +18,9 @@
     width: 100%;
     border-radius: var(--border-radius-size-d);
     overflow: hidden;
-    max-width: calc(var(--index) * 21);
+    max-width: calc(var(--index) * 18);
     height: 100%;
-    margin-right: calc(var(--index) * 2);
+    margin-right: calc(var(--index) * 1.5);
   }
 }
 
