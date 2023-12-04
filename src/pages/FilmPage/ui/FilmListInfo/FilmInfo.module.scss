@@ -1,5 +1,5 @@
 .FilmInfo{
-  margin-top: calc(var(--index) * 1.5);
+  margin-top: var(--index);
   display: flex;
   flex-direction: column;
 }
@@ -15,8 +15,9 @@
 
 .tagsList{
   overflow-x:  auto;
-  
+
   li {
     margin-bottom: 0;
+    font-size: 0.8em;
   }
 }

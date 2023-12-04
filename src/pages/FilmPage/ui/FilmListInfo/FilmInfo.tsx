@@ -22,14 +22,11 @@ import FilmListItem from './FilmListItem/FilmListItem';
 
 const FilmInfo: FC = (props) => {
   const filmData = useSelector(getFilm);
-
   const {
     nameRu,
     description,
     posterUrl,
     ratingAgeLimits,
-    coverUrl,
-    logoUrl,
     year,
     slogan,
     genres,
@@ -67,9 +64,6 @@ const FilmInfo: FC = (props) => {
         <FilmListItem name="Возраст">
           {`${ratingAgeLimits?.replace('age', '')}+`}
         </FilmListItem>
-        <FilmListItem name="Слоган">
-          {slogan}
-        </FilmListItem>
 
         <FilmListItem name="Жанры">
           <TagsList className={cls.tagsList} list={genresList} />
@@ -89,7 +83,7 @@ const FilmInfo: FC = (props) => {
           {endYear}
         </FilmListItem>
         <FilmListItem name="Состояние">
-          {completed}
+          {completed ? 'Завершен' : 'Продолжается'}
         </FilmListItem>
 
       </ul>
