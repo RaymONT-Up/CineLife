@@ -8,6 +8,7 @@ import { FilmActions } from '../model/slice/FilmPageSlice';
 import { getError, getIsLoading } from '../model/selectors/FilmPageSelectors';
 import FilmHeader from './FilmHeader/FilmHeader';
 import FilmPlayer from './FilmPlayer/FilmPlayer';
+import FilmTabs from './FilmTabs/FilmTabs';
 
 interface FilmPageProps {
   className?: string;
@@ -44,6 +45,7 @@ const FilmPage: FC<FilmPageProps> = () => {
     <div className={cls.FilmPage}>
 
       <FilmHeader />
+      <FilmTabs />
       <FilmPlayer id={+id} />
     </div>
   );

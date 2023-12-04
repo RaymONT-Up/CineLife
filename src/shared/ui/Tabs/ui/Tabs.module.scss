@@ -1,0 +1,15 @@
+.Tabs{
+  display: flex;
+  flex-direction: column;
+}
+
+.button{
+  &.active{
+    color: var(--text-color);
+    background-color: var(--primary-color);
+  }
+}
+
+.content{
+  display: block;
+}
