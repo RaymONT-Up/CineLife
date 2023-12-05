@@ -4,6 +4,8 @@ import MySelect, { ISelectOption } from 'shared/ui/Select/ui/MySelect';
 import { CatalogTypeOptionDefault, CatalogTypeOptions, catalogTypeTypes } from 'shared/api/kinopoisk/models';
 import { useDispatch } from 'react-redux';
 import { CatalogFilterAndSearchActions } from 'features/CatalogFilterAndSearch/model/slice/CatalogFilterAndSearchSlice';
+import updateUrlParam from 'shared/lib/urlParams/updateUrlParam';
+import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
 
 interface TypeSelectProps {
   className?: string;
@@ -22,6 +24,9 @@ const TypeSelect: FC<TypeSelectProps> = (props) => {
   const dispatch = useDispatch();
 
   const onChange = (newValue: catalogTypeTypes) => {
+    // set param
+    updateUrlParam(catalogURLParams.type, `${newValue}`);
+
     dispatch(CatalogFilterAndSearchActions.setType(newValue));
   };
 

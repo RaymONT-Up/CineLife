@@ -1,4 +1,4 @@
-import minutesToHours from './MinutesToHours';
+import minutesToHours from './minutesToHours';
 
 describe('minutesToHours function', () => {
   test('one hour 40 minutes', () => {

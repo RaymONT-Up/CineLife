@@ -3,6 +3,8 @@ import classNames from 'shared/lib/classNames/classNames';
 import MySelect from 'shared/ui/Select/ui/MySelect';
 import { useDispatch } from 'react-redux';
 import { CatalogFilterAndSearchActions } from 'features/CatalogFilterAndSearch/model/slice/CatalogFilterAndSearchSlice';
+import updateUrlParam from 'shared/lib/urlParams/updateUrlParam';
+import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
 
 interface GenresSelectProps {
   className?: string;
@@ -50,6 +52,9 @@ const GenresSelect: FC<GenresSelectProps> = (props) => {
   const dispatch = useDispatch();
 
   const onChange = (newValue: number) => {
+    // set param
+    updateUrlParam(catalogURLParams.genre, `${newValue}`);
+
     dispatch(CatalogFilterAndSearchActions.setGenres([newValue]));
   };
 

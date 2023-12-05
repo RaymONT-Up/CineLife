@@ -14,8 +14,8 @@
 .coverBg{
   position: absolute;
   top: 0;
-  left: calc(var(--index) * -3);
-  right: calc(var(--index) * -3);
+  left: calc(var(--film-page-margin) * -1);
+  right: calc(var(--film-page-margin) * -1);
   bottom: 0;
   z-index: 0;
   background-size: cover;

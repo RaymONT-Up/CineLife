@@ -3,6 +3,7 @@ import classNames from 'shared/lib/classNames/classNames';
 import bgImg from 'shared/assets/hero-bg.png';
 import Title, { TitleTags } from 'shared/ui/Title';
 import SearchForm from 'shared/ui/SearchForm';
+import { useNavigate } from 'react-router-dom';
 import cls from './Hero.module.scss';
 
 interface HeroProps {
@@ -12,13 +13,15 @@ interface HeroProps {
 const Hero: FC<HeroProps> = (props) => {
   const { className = '' } = props;
   const [searchValue, setSearchValue] = useState('');
+  const navigate = useNavigate();
 
   const searchValueHandler = (newSearchValue: string) => {
     setSearchValue(newSearchValue);
   };
+
   const searchFormSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(event);
+    navigate(`/catalog?search=${searchValue}`);
   };
 
   return (

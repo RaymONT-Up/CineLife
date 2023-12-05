@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getSearchState } from 'features/CatalogFilterAndSearch/model/selectors/getCatalogFilter';
 import { CatalogFilterAndSearchActions } from 'features/CatalogFilterAndSearch/model/slice/CatalogFilterAndSearchSlice';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
+import updateUrlParam from 'shared/lib/urlParams/updateUrlParam';
+import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
 
 interface SearchProps {
   className?: string;
@@ -20,6 +22,10 @@ const Search: FC<SearchProps> = (props) => {
 
   const debouncedOnChange = useDebounce((str: string) => {
     // when dispatch changes useEffect inside catalogPage, which sends a request to the server to receive items
+
+    // set search param
+    updateUrlParam(catalogURLParams.keyword, str);
+
     dispatch(CatalogFilterAndSearchActions.setKeyword(str));
   }, 2500);
 

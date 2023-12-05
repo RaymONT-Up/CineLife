@@ -20,12 +20,16 @@ const FilmTabs: FC<FilmTabsProps> = (props) => {
     { content: 'Видео', name: 'Видео', id: 3 },
     { content: 'Бюджет', name: 'Бюджет', id: 4 },
     { content: 'Награды', name: 'Награды', id: 5 },
-    { content: 'Факты', name: 'Факты', id: 5 },
+    { content: 'Факты', name: 'Факты', id: 6 },
   ];
 
   return (
     <div className={classNames(cls.FilmTabs, {}, [className])}>
-      <Tabs TabsList={TabsList} />
+      <Tabs
+        buttonClass={cls.button}
+        activeClass={cls.active}
+        TabsList={TabsList}
+      />
     </div>
   );
 };

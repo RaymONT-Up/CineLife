@@ -1,3 +1,4 @@
+import { catalogURLParams, IcatalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   CatalogOrderOptionDefault,
@@ -8,12 +9,22 @@ import { CatalogFilterAndSearchSchema } from '../types/CatalogFilterAndSearchSch
 const initialState: CatalogFilterAndSearchSchema = {
   order: CatalogOrderOptionDefault,
   type: CatalogTypeOptionDefault,
+  URLParamsIsInstalled: false,
 };
 
 export const CatalogFilterAndSearchSlice = createSlice({
   name: 'CatalogFilterAndSearch',
   initialState,
   reducers: {
+    setParams: (state, action: PayloadAction<IcatalogURLParams>) => {
+      state.type = action.payload.type as any;
+      state.order = action.payload.order as any;
+      state.genres = [action.payload.genre] as any;
+      state.countries = [action.payload.country] as any;
+      state.keyword = action.payload.keyword;
+
+      state.URLParamsIsInstalled = true;
+    },
     setType: (state, action: PayloadAction<catalogTypeTypes>) => {
       state.type = action.payload;
     },

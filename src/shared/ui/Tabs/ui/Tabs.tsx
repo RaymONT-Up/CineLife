@@ -11,15 +11,26 @@ import cls from './Tabs.module.scss';
 
 interface TabsProps {
   className?: string;
-  TabsList: Tab[]
+  buttonClass?: string;
+  activeClass?: string;
+  contentClass?: string;
+
   defaultTab?: Tab; // tab from tabsList
+
+  TabsList: Tab[]
 }
 
 const Tabs: FC<TabsProps> = (props) => {
   const {
-    className,
+    className = '',
+    buttonClass = '',
+    contentClass = '',
+    activeClass = '',
+
     TabsList,
+
     defaultTab = TabsList[0],
+
   } = props;
   const [activeTab, setActiveTab] = useState(defaultTab);
 
@@ -38,13 +49,21 @@ const Tabs: FC<TabsProps> = (props) => {
           const isActive = activeTab.id === id;
 
           return (
-            <Button className={`${cls.button} ${isActive && cls.active}`} key={tab.id} onClick={() => btnOnClick(tab)}>
+            <Button
+              className={classNames(
+                cls.button,
+                { [cls.active]: isActive, [activeClass]: isActive },
+                [buttonClass],
+              )}
+              key={tab.id}
+              onClick={() => btnOnClick(tab)}
+            >
               {name}
             </Button>
           );
         })}
       </div>
-      <div className={cls.content}>
+      <div className={`${cls.content} ${contentClass}`}>
         {activeTab.content}
       </div>
     </div>

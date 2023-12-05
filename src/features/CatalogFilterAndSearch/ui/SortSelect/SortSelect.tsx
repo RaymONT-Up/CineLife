@@ -5,6 +5,8 @@ import { CatalogOrderOptionDefault, CatalogOrderOptions, catalogOrderTypes } fro
 import { useDispatch } from 'react-redux';
 import { CatalogFilterAndSearchActions } from 'features/CatalogFilterAndSearch/model/slice/CatalogFilterAndSearchSlice';
 import { useParams, useSearchParams } from 'react-router-dom';
+import updateUrlParam from 'shared/lib/urlParams/updateUrlParam';
+import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
 
 interface SortSelectProps {
   className?: string;
@@ -22,11 +24,10 @@ const SortSelect: FC<SortSelectProps> = (props) => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const onChange = (newValue: catalogOrderTypes) => {
+    // set param
+    updateUrlParam(catalogURLParams.order, `${newValue}`);
+
     dispatch(CatalogFilterAndSearchActions.setOrder(newValue));
   };
 
