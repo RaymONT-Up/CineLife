@@ -65,7 +65,7 @@ const FilmInfo: FC<FilmInfoProps> = (props) => {
           {slogan}
         </FilmListItem>
         <FilmListItem name="Возраст">
-          {`${ratingAgeLimits?.replace('age', '')}+`}
+          {ratingAgeLimits && `${ratingAgeLimits?.replace('age', '')}+`}
         </FilmListItem>
 
         <FilmListItem name="Жанры">

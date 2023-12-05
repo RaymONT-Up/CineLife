@@ -35,7 +35,6 @@ const catalogGenresSelectOptions = [
   { value: 22, label: 'Документальный' },
   { value: 23, label: 'Короткометражка' },
   { value: 24, label: 'Аниме' },
-  { value: 25, label: '' },
   { value: 26, label: 'Новости' },
   { value: 27, label: 'Концерт' },
   { value: 28, label: 'Для взрослых' },
@@ -62,7 +61,7 @@ const GenresSelect: FC<GenresSelectProps> = (props) => {
     <MySelect
       options={catalogGenresSelectOptions}
       name="Жанры"
-      defaultValue={{ value: 'Выберите жанр', label: 'Жанры' }}
+      defaultValue={{ value: '', label: 'Жанры' }}
       className={classNames('', {}, [className])}
       onChange={onChange}
       isSearchable

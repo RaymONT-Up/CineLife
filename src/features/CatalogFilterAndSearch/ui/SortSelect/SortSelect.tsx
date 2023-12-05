@@ -1,12 +1,12 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import MySelect, { ISelectOption } from 'shared/ui/Select/ui/MySelect';
-import { CatalogOrderOptionDefault, CatalogOrderOptions, catalogOrderTypes } from 'shared/api/kinopoisk/models';
-import { useDispatch } from 'react-redux';
+import { CatalogOrderOptions, catalogOrderTypes } from 'shared/api/kinopoisk/models';
+import { useDispatch, useSelector } from 'react-redux';
 import { CatalogFilterAndSearchActions } from 'features/CatalogFilterAndSearch/model/slice/CatalogFilterAndSearchSlice';
-import { useParams, useSearchParams } from 'react-router-dom';
 import updateUrlParam from 'shared/lib/urlParams/updateUrlParam';
 import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
+import { getSortState } from 'features/CatalogFilterAndSearch/model/selectors/getCatalogFilter';
 
 interface SortSelectProps {
   className?: string;
@@ -17,17 +17,13 @@ const catalogSortSelectOptions: ISelectOption[] = Object.entries(CatalogOrderOpt
   label,
 }));
 
-const defaultValue = catalogSortSelectOptions.find((item) => item.value === CatalogOrderOptionDefault);
-
 const SortSelect: FC<SortSelectProps> = (props) => {
   const { className } = props;
-
   const dispatch = useDispatch();
+  const sort = useSelector(getSortState);
 
   const onChange = (newValue: catalogOrderTypes) => {
-    // set param
     updateUrlParam(catalogURLParams.order, `${newValue}`);
-
     dispatch(CatalogFilterAndSearchActions.setOrder(newValue));
   };
 
@@ -35,7 +31,7 @@ const SortSelect: FC<SortSelectProps> = (props) => {
     <MySelect
       options={catalogSortSelectOptions}
       name="Сортировка"
-      defaultValue={defaultValue}
+      // defaultValue={defaultValue}
       className={classNames('', {}, [className])}
       onChange={onChange}
     />

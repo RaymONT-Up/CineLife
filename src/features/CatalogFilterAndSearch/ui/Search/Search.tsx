@@ -17,7 +17,7 @@ const Search: FC<SearchProps> = (props) => {
 
   const value = useSelector(getSearchState);
   const dispatch = useDispatch();
-
+  console.log(value);
   const [inputValue, setInputValue] = useState<string>(value);
 
   const debouncedOnChange = useDebounce((str: string) => {

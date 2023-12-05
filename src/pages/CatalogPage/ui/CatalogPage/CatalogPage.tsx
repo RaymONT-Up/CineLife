@@ -1,5 +1,5 @@
 import {
-  FC, useCallback, useEffect, useRef,
+  FC, useCallback, useEffect,
 } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,6 +25,7 @@ const CatalogPage: FC<CatalogProps> = (props) => {
 
   const items = useSelector(getCatalogItems);
   const params = useSelector(getCatalogFilterParams);
+  // const paramsIsInstalled = useSelector(getURLParamsIsInstalled);
 
   const page = useSelector(getCatalogPage);
   const loadMore = useSelector(getLoadMore);
@@ -41,7 +42,7 @@ const CatalogPage: FC<CatalogProps> = (props) => {
     if (
       scrollHeight - (scrollTop + innerHeight) < 50
       && hasMore
-      && !isLoading
+      && isLoading === false
     ) {
       dispatch(catalogActions.setLoadMore(true));
       dispatch(catalogActions.setPage(page + 1));
@@ -63,7 +64,9 @@ const CatalogPage: FC<CatalogProps> = (props) => {
 
   // init load data
   useEffect(() => {
+    // if (paramsIsInstalled) {
     dispatch(FetchCatalog({ ...params, page }) as any);
+    // }
   }, [params, page, dispatch]);
 
   return (

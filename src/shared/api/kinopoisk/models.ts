@@ -48,9 +48,6 @@ export const CatalogTypeOptions: Record<catalogTypeTypes, string> = {
   [catalogTypeTypes.ALL]: 'Все',
 };
 
-export const CatalogTypeOptionDefault = catalogTypeTypes.ALL;
-export const CatalogOrderOptionDefault = catalogOrderTypes.NUM_VOTE;
-
 export interface CatalogParams {
   countries?: number[];
   genres?: number[];

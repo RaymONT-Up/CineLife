@@ -9,7 +9,7 @@ import GenresSelect from './GenresSelect/GenresSelect';
 import Search from './Search/Search';
 import { catalogURLParams } from '../model/types/urlParams';
 import { CatalogFilterAndSearchActions } from '../model/slice/CatalogFilterAndSearchSlice';
-import { getURLParamsIsInstalled } from '../model/selectors/getCatalogFilter';
+// import { getURLParamsIsInstalled } from '../model/selectors/getCatalogFilter';
 
 interface CatalogFilterAndSearchProps {
   className?: string;
@@ -19,27 +19,33 @@ interface CatalogFilterAndSearchProps {
 const CatalogFilterAndSearch: FC<CatalogFilterAndSearchProps> = (props) => {
   const { className, isLoading } = props;
 
-  const dispatch = useDispatch();
-  const paramsIsInstalled = useSelector(getURLParamsIsInstalled);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    // eslint-disable-next-line no-restricted-globals
-    const searchParams = new URLSearchParams(location.search);
-    const order = searchParams.get(catalogURLParams.order);
-    const type = searchParams.get(catalogURLParams.type);
-    const genre = searchParams.get(catalogURLParams.genre);
-    const country = searchParams.get(catalogURLParams.country);
-    const keyword = searchParams.get(catalogURLParams.keyword);
+  // useEffect(() => {
+  //   // eslint-disable-next-line no-restricted-globals
+  //   const searchParams = new URLSearchParams(location.search);
+  //   const order = searchParams.get(catalogURLParams.order);
+  //   const type = searchParams.get(catalogURLParams.type);
+  //   const genre = searchParams.get(catalogURLParams.genre);
+  //   const country = searchParams.get(catalogURLParams.country);
+  //   const keyword = searchParams.get(catalogURLParams.keyword);
 
-    dispatch(CatalogFilterAndSearchActions.setParams({
-      order, type, genre, country, keyword,
-    }));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  //   // if (
+  //   //   !country
+  //   //   && !keyword
+  //   //   && !genre
+  //   //   && !type
+  //   //   && !order
 
-  if (!paramsIsInstalled) {
-    return <PageLoader />;
-  }
+  //   // ) {
+  //   //   return;
+  //   // }
+
+  //   dispatch(CatalogFilterAndSearchActions.setParams({
+  //     order, type, genre, country, keyword,
+  //   }));
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   return (
     <div className={classNames(cls.CatalogFilterAndSearch, { [cls.disabled]: isLoading }, [className])}>
