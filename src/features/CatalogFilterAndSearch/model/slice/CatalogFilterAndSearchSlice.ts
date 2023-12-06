@@ -1,29 +1,49 @@
-import { catalogURLParams, IcatalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
+import { IcatalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   catalogOrderTypes, catalogTypeTypes,
 } from 'shared/api/kinopoisk/models';
+import isValidUrlParam from 'features/CatalogFilterAndSearch/lib/isValidUrlParam';
 import { CatalogFilterAndSearchSchema } from '../types/CatalogFilterAndSearchSchema';
 
+export const catalogDefaultOrder = catalogOrderTypes.NUM_VOTE;
+export const catalogDefaultType = catalogTypeTypes.ALL;
+
 const initialState: CatalogFilterAndSearchSchema = {
-  order: catalogOrderTypes.NUM_VOTE,
-  type: catalogTypeTypes.ALL,
-  // URLParamsIsInstalled: false,
+  order: catalogDefaultOrder,
+  type: catalogDefaultType,
+  URLParamsIsInstalled: false,
 };
 
 export const CatalogFilterAndSearchSlice = createSlice({
   name: 'CatalogFilterAndSearch',
   initialState,
   reducers: {
-    // setParams: (state, action: PayloadAction<IcatalogURLParams>) => {
-    //   state.type = action.payload.type || catalogOrderTypes.NUM_VOTE as any;
-    //   state.order = action.payload.order || catalogTypeTypes.ALL as any;
-    //   state.genres = [action.payload.genre] || '' as any;
-    //   state.countries = [action.payload.country] || '' as any;
-    //   state.keyword = action.payload.keyword || '';
+    setParams: (state, action: PayloadAction<IcatalogURLParams>) => {
+      const {
+        type, keyword, order, genre, country,
+      } = action.payload;
 
-    //   state.URLParamsIsInstalled = true;
-    // },
+      if (isValidUrlParam(type, catalogTypeTypes)) {
+        state.type = type as catalogTypeTypes;
+      }
+      if (isValidUrlParam(order, catalogOrderTypes)) {
+        state.order = order as catalogOrderTypes;
+      }
+      if (keyword && keyword !== '') {
+        state.keyword = keyword;
+      }
+
+      if (genre) {
+        state.genres = [genre];
+      }
+
+      if (country) {
+        state.countries = [country];
+      }
+
+      state.URLParamsIsInstalled = true;
+    },
     setType: (state, action: PayloadAction<catalogTypeTypes>) => {
       state.type = action.payload;
     },

@@ -1,12 +1,14 @@
-import { FC, FormEvent, useState } from 'react';
+import {
+  FC, FormEvent, useEffect, useState,
+} from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import SearchForm from 'shared/ui/SearchForm';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSearchState } from 'features/CatalogFilterAndSearch/model/selectors/getCatalogFilter';
 import { CatalogFilterAndSearchActions } from 'features/CatalogFilterAndSearch/model/slice/CatalogFilterAndSearchSlice';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import updateUrlParam from 'shared/lib/urlParams/updateUrlParam';
 import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
+import { getKeywordState } from 'features/CatalogFilterAndSearch/model/selectors/getCatalogFilter';
 
 interface SearchProps {
   className?: string;
@@ -15,10 +17,9 @@ interface SearchProps {
 const Search: FC<SearchProps> = (props) => {
   const { className } = props;
 
-  const value = useSelector(getSearchState);
   const dispatch = useDispatch();
-  console.log(value);
-  const [inputValue, setInputValue] = useState<string>(value);
+  const keywordDefaultValue = useSelector(getKeywordState);
+  const [inputValue, setInputValue] = useState<string>(keywordDefaultValue);
 
   const debouncedOnChange = useDebounce((str: string) => {
     // when dispatch changes useEffect inside catalogPage, which sends a request to the server to receive items
@@ -41,7 +42,12 @@ const Search: FC<SearchProps> = (props) => {
   };
 
   return (
-    <SearchForm className={classNames(className)} value={inputValue} onChange={onChange} onSubmit={onSubmit} />
+    <SearchForm
+      className={classNames(className)}
+      value={inputValue}
+      onChange={onChange}
+      onSubmit={onSubmit}
+    />
   );
 };
 

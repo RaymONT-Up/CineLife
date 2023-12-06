@@ -4,6 +4,7 @@ export const getParams = (state:StateSchema) => state.catalogFilter;
 
 export const getURLParamsIsInstalled = (state:StateSchema) => state.catalogFilter.URLParamsIsInstalled;
 
+export const getGenresState = (state:StateSchema) => state.catalogFilter.genres;
 export const getSortState = (state:StateSchema) => state.catalogFilter.order;
 export const getTypeState = (state:StateSchema) => state.catalogFilter.type;
-export const getSearchState = (state:StateSchema) => state.catalogFilter.keyword;
+export const getKeywordState = (state:StateSchema) => state.catalogFilter.keyword;

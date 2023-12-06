@@ -43,6 +43,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'warn',
     'jsx-a11y/click-events-have-key-events': 'warn',
     'jsx-a11y/no-static-element-interactions': 'warn',
+    eqeqeq: 'warn',
 
     'react/no-unescaped-entities': 'off',
     'react/function-component-definition': 'off',

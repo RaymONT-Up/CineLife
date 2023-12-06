@@ -35,17 +35,17 @@ export enum catalogTypeTypes{
 }
 
 export const CatalogOrderOptions: Record<catalogOrderTypes, string> = {
-  [catalogOrderTypes.RATING]: 'Рейтинг',
   [catalogOrderTypes.NUM_VOTE]: 'Количество голосов',
+  [catalogOrderTypes.RATING]: 'Рейтинг',
   [catalogOrderTypes.YEAR]: 'Год',
 };
 
 export const CatalogTypeOptions: Record<catalogTypeTypes, string> = {
-  [catalogTypeTypes.FILM]: 'Фильмы',
-  [catalogTypeTypes.TV_SHOW]: 'ТВ-шоу',
-  [catalogTypeTypes.TV_SERIES]: 'ТВ-сериалы',
-  [catalogTypeTypes.MINI_SERIES]: 'Мини-сериалы',
   [catalogTypeTypes.ALL]: 'Все',
+  [catalogTypeTypes.FILM]: 'Фильмы',
+  [catalogTypeTypes.TV_SERIES]: 'ТВ-сериалы',
+  [catalogTypeTypes.TV_SHOW]: 'ТВ-шоу',
+  [catalogTypeTypes.MINI_SERIES]: 'Мини-сериалы',
 };
 
 export interface CatalogParams {

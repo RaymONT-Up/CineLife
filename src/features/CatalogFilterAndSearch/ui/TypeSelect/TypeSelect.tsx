@@ -1,11 +1,16 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import MySelect, { ISelectOption } from 'shared/ui/Select/ui/MySelect';
 import { CatalogTypeOptions, catalogTypeTypes } from 'shared/api/kinopoisk/models';
 import { useDispatch, useSelector } from 'react-redux';
-import { CatalogFilterAndSearchActions } from 'features/CatalogFilterAndSearch/model/slice/CatalogFilterAndSearchSlice';
+import {
+  CatalogFilterAndSearchActions,
+  catalogDefaultType,
+} from 'features/CatalogFilterAndSearch/model/slice/CatalogFilterAndSearchSlice';
 import updateUrlParam from 'shared/lib/urlParams/updateUrlParam';
 import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
+import { getTypeState } from 'features/CatalogFilterAndSearch/model/selectors/getCatalogFilter';
+import findValueOption from 'features/CatalogFilterAndSearch/lib/findValueOption';
 
 interface TypeSelectProps {
   className?: string;
@@ -21,6 +26,11 @@ const TypeSelect: FC<TypeSelectProps> = (props) => {
 
   const dispatch = useDispatch();
 
+  const type = useSelector(getTypeState);
+
+  const defaultValue = findValueOption(catalogTypeSelectOptions, type)
+  || findValueOption(catalogTypeSelectOptions, catalogDefaultType);
+
   const onChange = (newValue: catalogTypeTypes) => {
     // set param
     updateUrlParam(catalogURLParams.type, `${newValue}`);
@@ -32,7 +42,7 @@ const TypeSelect: FC<TypeSelectProps> = (props) => {
     <MySelect
       options={catalogTypeSelectOptions}
       name="Тип произведения"
-      // defaultValue={defaultValue}
+      defaultValue={defaultValue}
       className={classNames('', {}, [className])}
       onChange={onChange}
     />
