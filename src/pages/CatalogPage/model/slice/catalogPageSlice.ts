@@ -30,6 +30,10 @@ const catalogPageSlice = createSlice({
     setPage(state, action:PayloadAction<number>) {
       state.page = action.payload;
     },
+
+    reset(state) {
+      state = initialState;
+    },
   },
   extraReducers: (builder) => {
     builder

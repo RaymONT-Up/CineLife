@@ -38,6 +38,10 @@ const CatalogFilterAndSearch: FC<CatalogFilterAndSearchProps> = (props) => {
     dispatch(CatalogFilterAndSearchActions.setParams({
       order, type, genre, country, keyword,
     }));
+
+    return () => {
+      dispatch(CatalogFilterAndSearchActions.resetCatalogParams());
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

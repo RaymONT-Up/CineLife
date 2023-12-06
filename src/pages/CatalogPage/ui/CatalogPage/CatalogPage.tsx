@@ -35,39 +35,43 @@ const CatalogPage: FC<CatalogProps> = (props) => {
   const hasMore = totalPages - page >= 1;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // const scrollHandler = (e: any) => {
-  //   const { scrollHeight } = e.target.documentElement;
-  //   const { scrollTop } = e.target.documentElement;
-  //   const { innerHeight } = window;
+  const scrollHandler = (e: any) => {
+    const { scrollHeight } = e.target.documentElement;
+    const { scrollTop } = e.target.documentElement;
+    const { innerHeight } = window;
 
-  //   if (
-  //     scrollHeight - (scrollTop + innerHeight) < 50
-  //     && hasMore
-  //     && isLoading === false
-  //   ) {
-  //     dispatch(catalogActions.setLoadMore(true));
-  //     dispatch(catalogActions.setPage(page + 1));
-  //   }
-  // };
+    if (
+      scrollHeight - (scrollTop + innerHeight) < 50
+      && hasMore
+      && isLoading === false
+    ) {
+      dispatch(catalogActions.setLoadMore(true));
+      dispatch(catalogActions.setPage(page + 1));
+    }
+  };
 
-  // useEffect(() => {
-  //   document.addEventListener('scroll', scrollHandler);
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandler);
 
-  //   return () => {
-  //     document.removeEventListener('scroll', scrollHandler);
-  //   };
-  // }, [scrollHandler]);
+    return () => {
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  }, [scrollHandler]);
 
-  // useEffect(() => {
-  //   dispatch(catalogActions.setLoadMore(false));
-  //   dispatch(catalogActions.setPage(1));
-  // }, [params, dispatch]);
+  useEffect(() => {
+    dispatch(catalogActions.setLoadMore(false));
+    dispatch(catalogActions.setPage(1));
+  }, [params, dispatch]);
 
   // init load data
   useEffect(() => {
     if (paramsIsInstalled) {
       dispatch(FetchCatalog({ ...params, page }) as any);
     }
+
+    return () => {
+      dispatch(catalogActions.reset());
+    };
   }, [params, page, dispatch, paramsIsInstalled]);
 
   return (
