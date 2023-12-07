@@ -1,11 +1,14 @@
-import { FC, memo, useMemo } from 'react';
+import {
+  FC, memo, useEffect, useMemo,
+} from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import Tabs from 'shared/ui/Tabs';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getDescription } from 'pages/FilmPage/model/selectors/FilmPageSelectors';
 import cls from './FilmTabs.module.scss';
 import Budget from './Budget/Budget';
 import { getIsLoading } from '../model/selectors/FilmTabsSelectors';
+import { FilmTabsAction } from '../model/slice/FilmTabsSlice';
 
 interface FilmTabsProps {
   className?: string;
@@ -21,6 +24,10 @@ const FilmTabs: FC<FilmTabsProps> = (props) => {
   } = props;
 
   const isLoading = useSelector(getIsLoading);
+  const dispatch = useDispatch();
+
+  // !!!FIX -> optimize redrawing.
+  // + If isLoading changes in the parent component, then <Budget> will not change and will remain with the original data isLoading = false
 
   const TabsList = [
     { content: description, name: 'Описание', id: 1 },
@@ -30,6 +37,10 @@ const FilmTabs: FC<FilmTabsProps> = (props) => {
     { content: 'Награды', name: 'Награды', id: 5 },
     { content: 'Факты', name: 'Факты', id: 6 },
   ];
+
+  useEffect(() => () => {
+    dispatch(FilmTabsAction.reset());
+  });
 
   return (
     <div className={classNames(cls.FilmTabs, {}, [className])}>

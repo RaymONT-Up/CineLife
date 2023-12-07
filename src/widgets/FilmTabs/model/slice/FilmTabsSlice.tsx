@@ -12,7 +12,7 @@ const FilmTabsSlice = createSlice({
   name: 'FilmTabsSlice',
   initialState,
   reducers: {
-    resetFilm() {
+    reset() {
       return initialState;
     },
   },

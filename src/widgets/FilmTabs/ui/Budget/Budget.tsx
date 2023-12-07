@@ -24,9 +24,9 @@ const Budget: FC<BudgetProps> = (props) => {
     }
   }, [id, dispatch, budgetList]);
 
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <ul className={classNames(cls.Budget, {}, [className])}>

@@ -4,6 +4,7 @@ import bgImg from 'shared/assets/hero-bg.png';
 import Title, { TitleTags } from 'shared/ui/Title';
 import SearchForm from 'shared/ui/SearchForm';
 import { useNavigate } from 'react-router-dom';
+import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
 import cls from './Hero.module.scss';
 
 interface HeroProps {
@@ -21,7 +22,7 @@ const Hero: FC<HeroProps> = (props) => {
 
   const searchFormSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    navigate(`/catalog?search=${searchValue}`);
+    navigate(`/catalog?${catalogURLParams.keyword}=${searchValue}`);
   };
 
   return (
