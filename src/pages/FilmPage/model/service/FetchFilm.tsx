@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { $getFilm } from 'shared/api/kinopoisk/catalog';
+import { kinopoiskApi } from 'shared/api';
 
 export const FetchFilm = createAsyncThunk('FilmPage/fetchFilm', async (id: number, thunkApi) => {
   const { rejectWithValue } = thunkApi;
 
   try {
-    const response = await $getFilm(id);
+    const response = await kinopoiskApi.films.$getFilm(id);
     if (!response.data) {
       throw new Error();
     }

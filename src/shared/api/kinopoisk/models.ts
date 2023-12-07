@@ -93,3 +93,17 @@ export const FilmType: Record<catalogTypeTypes, string> = {
   [catalogTypeTypes.MINI_SERIES]: 'Мини-сериал',
   [catalogTypeTypes.ALL]: 'Все',
 };
+
+// budget
+export interface FilmBudget {
+  // ideally create an enum listing possible types if necessary
+  type: string;
+  amount: number;
+  currencyCode: string;
+  name: string;
+  symbol: string;
+}
+export interface FilmBudgetResponse {
+  total: number;
+  items: FilmBudget[];
+}

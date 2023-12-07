@@ -1,0 +1,17 @@
+.Budget{
+  display: flex;
+  flex-direction: row;
+}
+
+.item{
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child){
+    margin-bottom: 1em;
+  }
+}
+
+.name{
+  margin-bottom: 0.3em;
+}

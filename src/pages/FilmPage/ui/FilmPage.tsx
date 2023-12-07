@@ -2,13 +2,13 @@ import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PageLoader from 'widgets/PageLoader';
+import FilmTabs from 'widgets/FilmTabs';
 import cls from './FilmPage.module.scss';
 import { FetchFilm } from '../model/service/FetchFilm';
 import { FilmActions } from '../model/slice/FilmPageSlice';
-import { getError, getIsLoading } from '../model/selectors/FilmPageSelectors';
+import { getDescription, getError, getIsLoading } from '../model/selectors/FilmPageSelectors';
 import FilmHeader from './FilmHeader/FilmHeader';
 import FilmPlayer from './FilmPlayer/FilmPlayer';
-import FilmTabs from './FilmTabs/FilmTabs';
 
 interface FilmPageProps {
   className?: string;
@@ -21,6 +21,7 @@ const FilmPage: FC<FilmPageProps> = () => {
 
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
+  const description = useSelector(getDescription);
 
   useEffect(() => {
     dispatch(FetchFilm(+id) as any);
@@ -45,7 +46,7 @@ const FilmPage: FC<FilmPageProps> = () => {
     <div className={cls.FilmPage}>
 
       <FilmHeader />
-      <FilmTabs />
+      <FilmTabs id={+id} description={description} />
       <FilmPlayer id={+id} />
     </div>
   );
