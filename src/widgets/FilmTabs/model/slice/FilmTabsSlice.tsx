@@ -5,7 +5,6 @@ import { FetchBudget } from '../service/FetchBudget';
 const initialState: FilmTabsSchema = {
   isLoading: false,
   error: null,
-  description: '',
 };
 
 const FilmTabsSlice = createSlice({

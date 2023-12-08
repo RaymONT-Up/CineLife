@@ -3,6 +3,7 @@ import {
 } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import Button, { ButtonTheme } from 'shared/ui/Button';
+import Loader from 'shared/ui/Loader';
 import cls from './Tabs.module.scss';
 
  interface Tab {
@@ -24,6 +25,7 @@ interface TabsProps {
   TabsList: Tab[]
 }
 
+// !FIX - Dont
 const Tabs: FC<TabsProps> = (props) => {
   const {
     className = '',
@@ -108,7 +110,7 @@ const Tabs: FC<TabsProps> = (props) => {
         />
       </div>
       <div className={`${cls.content} ${contentClass}`}>
-        {activeTab.content}
+        {isLoading ? <Loader /> : activeTab.content }
       </div>
     </div>
   );

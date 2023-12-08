@@ -1,6 +1,6 @@
 .Budget{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .item{
@@ -13,5 +13,9 @@
 }
 
 .name{
-  margin-bottom: 0.3em;
+  margin-right: 0.4em;
+}
+
+.amount{
+  display: block;
 }
