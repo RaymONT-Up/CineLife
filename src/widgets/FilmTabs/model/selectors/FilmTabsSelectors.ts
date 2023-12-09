@@ -1,4 +1,6 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 
-export const getBudget = (state: StateSchema) => state.filmTabs.budget;
+export const getBudgetItems = (state: StateSchema) => state.filmTabs.budget.items;
+export const getImagesItems = (state: StateSchema) => state.filmTabs.images.items;
+
 export const getIsLoading = (state: StateSchema) => state.filmTabs.isLoading;

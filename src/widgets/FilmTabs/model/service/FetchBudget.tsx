@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { kinopoiskApi } from 'shared/api';
 
-export const FetchBudget = createAsyncThunk('FilmPage/FetchBudget', async (id: number, thunkApi) => {
+export const FetchBudget = createAsyncThunk('FilmTabs/FetchBudget', async (id: number, thunkApi) => {
   const { rejectWithValue } = thunkApi;
 
   try {

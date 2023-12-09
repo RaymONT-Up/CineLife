@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import { useDispatch, useSelector } from 'react-redux';
 import { FetchBudget } from 'widgets/FilmTabs/model/service/FetchBudget';
-import { getBudget } from 'widgets/FilmTabs/model/selectors/FilmTabsSelectors';
+import { getBudgetItems } from 'widgets/FilmTabs/model/selectors/FilmTabsSelectors';
 import cls from './Budget.module.scss';
 
 interface BudgetProps {
@@ -15,17 +15,17 @@ const Budget: FC<BudgetProps> = (props) => {
 
   const dispatch = useDispatch();
 
-  const budgetList = useSelector(getBudget);
+  const budgetItems = useSelector(getBudgetItems);
 
   useEffect(() => {
-    if (!budgetList) {
+    if (!budgetItems.length) {
       dispatch(FetchBudget(id) as any);
     }
-  }, [id, dispatch, budgetList]);
+  }, [id, dispatch, budgetItems]);
 
   return (
     <ul className={classNames(cls.Budget, {}, [className])}>
-      {budgetList?.items?.map((item) => (
+      {budgetItems?.map((item) => (
         <li className={cls.item} key={item.type}>
           <h6 className={cls.name}>{`${item.type}:`}</h6>
           <p className={cls.amount}>

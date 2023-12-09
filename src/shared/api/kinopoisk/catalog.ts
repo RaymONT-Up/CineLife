@@ -2,7 +2,7 @@ import { AxiosPromise } from 'axios';
 import { $kinopoisk } from './base';
 
 import {
-  CatalogParams, Film, FilmBudgetResponse, GetCatalogListResponse,
+  CatalogParams, Film, FilmBudget, FilmImages, GetCatalogListResponse,
 } from './models';
 
 export const $getCatalog = (params?: CatalogParams): AxiosPromise<GetCatalogListResponse> => $kinopoisk.get('/films', {
@@ -22,4 +22,6 @@ export const $getCatalog = (params?: CatalogParams): AxiosPromise<GetCatalogList
 
 export const $getFilm = (id: number): AxiosPromise<Film> => $kinopoisk.get(`/films/${id}`);
 
-export const $getFilmBudget = (id:number): AxiosPromise<FilmBudgetResponse> => $kinopoisk.get(`/films/${id}/box_office`);
+export const $getFilmImages = (id: number): AxiosPromise<FilmImages> => $kinopoisk.get(`/films/${id}/images`);
+
+export const $getFilmBudget = (id:number): AxiosPromise<FilmBudget> => $kinopoisk.get(`/films/${id}/box_office`);

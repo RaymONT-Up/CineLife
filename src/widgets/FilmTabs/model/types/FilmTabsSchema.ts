@@ -1,10 +1,10 @@
-import { FilmBudgetResponse } from 'shared/api/kinopoisk/models';
+import { FilmBudget, FilmImages } from 'shared/api/kinopoisk/models';
 
 export interface FilmTabsSchema {
   isLoading: boolean;
   error: string | null;
-  images?: [];
+  images?: FilmImages;
   videos?: [];
-  budget?: FilmBudgetResponse;
+  budget?: FilmBudget;
   facts?: [];
 }

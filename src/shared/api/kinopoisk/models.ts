@@ -95,7 +95,7 @@ export const FilmType: Record<catalogTypeTypes, string> = {
 };
 
 // budget
-export interface FilmBudget {
+export interface FilmBudgetItem {
   // ideally create an enum listing possible types if necessary
   type: string;
   amount: number;
@@ -103,7 +103,21 @@ export interface FilmBudget {
   name: string;
   symbol: string;
 }
-export interface FilmBudgetResponse {
+export interface FilmBudget {
   total: number;
-  items: FilmBudget[];
+  totalPages: number;
+  items: FilmBudgetItem[];
+}
+
+// images
+
+export interface FilmImageItem {
+  imageUrl: string;
+  previewUrl: string;
+}
+
+export interface FilmImages {
+  total: number;
+  totalPages: number;
+  items: FilmImageItem[];
 }

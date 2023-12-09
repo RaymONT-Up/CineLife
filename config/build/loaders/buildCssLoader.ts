@@ -1,7 +1,7 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 export const buildCssLoader = (isDev: boolean) => ({
-    test: /\.s[ac]ss$/i,
+  test: /\.(c|sc|sa)ss$/i,  // Обработка файлов с расширениями css, scss, или sass
     use: [
       // miniCss... создает отдельные файлы css а style-loader пишет css в js
       isDev ? "style-loader" : MiniCssExtractPlugin.loader,
