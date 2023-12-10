@@ -26,11 +26,9 @@ const Images: FC<ImagesProps> = (props) => {
   return (
     <div className={classNames(cls.Images, {}, [className])}>
       <Carousel
-        slidesPerView={5}
+        slidesPerView={4}
         items={imagesItems?.map((item) => (
-          <div>
-            <img src={item.imageUrl} alt="img" />
-          </div>
+          <img src={item.previewUrl} alt="img" />
         ))}
       />
     </div>

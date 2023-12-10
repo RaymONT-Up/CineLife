@@ -23,8 +23,8 @@ const Carousel: FC<CarouselProps> = ({
 }) => (
   <div className={classNames(cls.Carousel, {}, [className])}>
     <Swiper
-      spaceBetween={spaceBetween || 50}
-      slidesPerView={slidesPerView || 1}
+      spaceBetween={spaceBetween || 0}
+      slidesPerView={slidesPerView || 'auto'}
       breakpoints={breakpoints}
       {...props}
     >

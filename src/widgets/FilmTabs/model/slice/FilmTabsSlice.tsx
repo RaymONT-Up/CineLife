@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { FilmTabsSchema } from '../types/FilmTabsSchema';
 import { FetchBudget } from '../service/FetchBudget';
 import { FetchImages } from '../service/FetchImages';
+import { FetchFacts } from '../service/FetchFacts';
 
 const initialState: FilmTabsSchema = {
   isLoading: false,
@@ -16,6 +17,11 @@ const initialState: FilmTabsSchema = {
   images: {
     total: 0,
     totalPages: 0,
+    items: [],
+  },
+
+  facts: {
+    total: 0,
     items: [],
   },
 };
@@ -52,6 +58,19 @@ const FilmTabsSlice = createSlice({
         state.images = action.payload;
       })
       .addCase(FetchImages.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
+      })
+
+      .addCase(FetchFacts.pending, (state) => {
+        state.error = undefined;
+        state.isLoading = true;
+      })
+      .addCase(FetchFacts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.facts = action.payload;
+      })
+      .addCase(FetchFacts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
       });

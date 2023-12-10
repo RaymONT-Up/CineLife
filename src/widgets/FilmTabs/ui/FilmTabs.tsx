@@ -9,6 +9,7 @@ import Budget from './Budget/Budget';
 import { getIsLoading } from '../model/selectors/FilmTabsSelectors';
 import Images from './Images/Images';
 import { FilmTabsAction } from '../model/slice/FilmTabsSlice';
+import Facts from './Facts/Facts';
 
 interface FilmTabsProps {
   className?: string;
@@ -34,7 +35,7 @@ const FilmTabs: FC<FilmTabsProps> = (props) => {
     { content: 'Видео', name: 'Видео', id: 3 },
     { content: <Budget id={id} />, name: 'Бюджет', id: 4 },
     { content: 'Награды', name: 'Награды', id: 5 },
-    { content: 'Факты', name: 'Факты', id: 6 },
+    { content: <Facts id={id} />, name: 'Факты', id: 6 },
   ];
 
   useEffect(() => {

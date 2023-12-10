@@ -1,0 +1,22 @@
+.Facts{
+  display: flex;
+  flex-direction: column;
+}
+
+.Fact{
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+
+  border-bottom: 0.1em outset var(--text-color);
+  
+  a{
+    text-decoration: none;
+    transition-property: color;
+    transition-duration: var(--transition-duration);
+    color: var(--secondary-color);
+    
+    &:hover{
+      color: var(--primary-color)
+    }
+  }
+}

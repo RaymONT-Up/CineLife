@@ -121,3 +121,21 @@ export interface FilmImages {
   totalPages: number;
   items: FilmImageItem[];
 }
+
+// facts
+
+export enum FilmFactItemType {
+  FACT = 'FACT',
+  BLOOPER = 'BLOOPER'
+}
+
+export interface FilmFactItem {
+  text: string;
+  type: FilmFactItemType;
+  spoiler: boolean;
+}
+
+export interface FilmFacts{
+  total: number;
+  items: FilmFactItem[];
+}
