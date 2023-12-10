@@ -6,23 +6,28 @@ import { FetchFacts } from '../service/FetchFacts';
 
 const initialState: FilmTabsSchema = {
   isLoading: false,
-  error: null,
 
   budget: {
     total: 0,
     totalPages: 0,
     items: [],
+    dataReceived: false,
+    error: null,
   },
 
   images: {
     total: 0,
     totalPages: 0,
     items: [],
+    dataReceived: false,
+    error: null,
   },
 
   facts: {
     total: 0,
     items: [],
+    dataReceived: false,
+    error: null,
   },
 };
 
@@ -37,42 +42,60 @@ const FilmTabsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(FetchBudget.pending, (state) => {
-        state.error = undefined;
         state.isLoading = true;
+        state.budget.error = null;
       })
       .addCase(FetchBudget.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.budget = action.payload;
+
+        state.budget = {
+          ...action.payload,
+          dataReceived: true,
+        };
       })
       .addCase(FetchBudget.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload as string;
+        state.budget.dataReceived = true;
+
+        state.budget.error = action.payload as string;
       })
 
       .addCase(FetchImages.pending, (state) => {
-        state.error = undefined;
+        state.images.error = null;
         state.isLoading = true;
       })
       .addCase(FetchImages.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.images = action.payload;
+
+        state.images = {
+          ...action.payload,
+          dataReceived: true,
+        };
       })
       .addCase(FetchImages.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload as string;
+        state.budget.dataReceived = true;
+
+        state.images.error = action.payload as string;
       })
 
       .addCase(FetchFacts.pending, (state) => {
-        state.error = undefined;
+        state.facts.error = null;
         state.isLoading = true;
       })
       .addCase(FetchFacts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.facts = action.payload;
+
+        state.facts = {
+          ...action.payload,
+          dataReceived: true,
+        };
       })
       .addCase(FetchFacts.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload as string;
+        state.budget.dataReceived = true;
+
+        state.facts.error = action.payload as string;
       });
   },
 });

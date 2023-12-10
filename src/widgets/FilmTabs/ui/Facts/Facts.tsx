@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFactsItems } from 'widgets/FilmTabs/model/selectors/FilmTabsSelectors';
+import { getFacts } from 'widgets/FilmTabs/model/selectors/FilmTabsSelectors';
 import { FetchFacts } from 'widgets/FilmTabs/model/service/FetchFacts';
 import Button from 'shared/ui/Button';
 import replaceLink from './lib/replaceLinks';
@@ -15,18 +15,26 @@ interface FactsProps {
 
 const Facts: FC<FactsProps> = (props) => {
   const { className, id } = props;
-  const factsItems = useSelector(getFactsItems);
+  const { dataReceived, items, error } = useSelector(getFacts);
   const dispatch = useDispatch();
 
   const [showAllFacts, setShowAllFacts] = useState(false);
 
   useEffect(() => {
-    if (!factsItems.length) {
+    if (!dataReceived) {
       dispatch(FetchFacts(id) as any);
     }
-  }, [factsItems, dispatch, id]);
+  }, [dataReceived, dispatch, id]);
 
-  const displayedFacts = showAllFacts ? factsItems : factsItems.slice(0, 5);
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  if (dataReceived && items.length === 0) {
+    return <p>Факты не найдены</p>;
+  }
+
+  const displayedFacts = showAllFacts ? items : items.slice(0, 5);
 
   return (
     <div className={classNames(cls.Facts, {}, [className])}>
@@ -39,7 +47,7 @@ const Facts: FC<FactsProps> = (props) => {
           />
         ))}
       </ul>
-      {factsItems.length > 5 && (
+      {items.length > 5 && (
         <Button
           className={cls.showMore}
           onClick={() => setShowAllFacts(!showAllFacts)}
