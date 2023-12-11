@@ -5,10 +5,16 @@ import classNames from 'shared/lib/classNames/classNames';
 import Portal from 'shared/ui/Portal';
 import cls from './Modal.module.scss';
 
+export enum ModalTheme {
+  clear = 'clear',
+  classic = 'classic'
+}
+
 export interface ModalProps {
   className?: string;
   classNameContent?: string;
   classNameOverlay?: string;
+  theme?: ModalTheme,
 
   children: ReactNode;
   isOpen: boolean;
@@ -28,6 +34,8 @@ const Modal: FC<ModalProps> = (props) => {
     isOpen,
     onClose,
     lazy,
+
+    theme = ModalTheme.classic,
   } = props;
 
   const [isClosing, setIsClosing] = useState(false);
@@ -35,15 +43,23 @@ const Modal: FC<ModalProps> = (props) => {
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
-    if (isOpen) setIsMounted(true);
+    if (isOpen) {
+      setIsMounted(true);
+      // document.body.style.overflow = 'hidden';
+      // document.body.style.paddingRight = 'var(--scroll-size)';
+    }
   }, [isOpen]);
 
   const closeHandler = useCallback(() => {
     if (onClose) {
       setIsClosing(true);
+
       timerRef.current = setTimeout(() => {
         onClose();
         setIsClosing(false);
+
+        //   document.body.style.overflow = 'auto';
+        // document.body.style.paddingRight = '0';
       }, ANIMATION_DELAY);
     }
   }, [onClose]);
@@ -69,7 +85,6 @@ const Modal: FC<ModalProps> = (props) => {
   const mods: Record<string, boolean> = {
     [cls.isOpen]: isOpen,
     [cls.isClosing]: isClosing,
-
   };
 
   if (lazy && !isMounted) {
@@ -83,7 +98,7 @@ const Modal: FC<ModalProps> = (props) => {
           className={classNames(cls.overlay, {}, [classNameOverlay])}
           onClick={closeHandler}
         />
-        <div className={classNames(cls.content, {}, [classNameContent])}>
+        <div className={classNames(cls.content, {}, [classNameContent, cls[theme]])}>
           {children}
         </div>
       </div>

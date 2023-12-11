@@ -9,7 +9,6 @@ export interface FilmTabsSchema {
   isLoading: boolean;
 
   images?: WithDataReceivedAndError<FilmImages>;
-  videos?: [];
   budget?: WithDataReceivedAndError<FilmBudget>;
   facts?: WithDataReceivedAndError<FilmFacts>;
 }

@@ -57,6 +57,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'linebreak-style': 'off',
 
+    'arrow-body-style': 'off',
     'no-param-reassign': 'off',
     'react/jsx-no-useless-fragment': 'off',
   },

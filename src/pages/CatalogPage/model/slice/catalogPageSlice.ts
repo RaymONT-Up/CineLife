@@ -32,7 +32,7 @@ const catalogPageSlice = createSlice({
     },
 
     reset(state) {
-      state = initialState;
+      state = { ...initialState };
     },
   },
   extraReducers: (builder) => {

@@ -10,6 +10,7 @@ import { getIsLoading } from '../model/selectors/FilmTabsSelectors';
 import Images from './Images/Images';
 import { FilmTabsAction } from '../model/slice/FilmTabsSlice';
 import Facts from './Facts/Facts';
+import Team from './Team/Team';
 
 interface FilmTabsProps {
   className?: string;
@@ -20,7 +21,7 @@ interface FilmTabsProps {
 const FilmTabs: FC<FilmTabsProps> = (props) => {
   const {
     className,
-    description = 'Описание фильма не найдено',
+    description,
     id,
   } = props;
 
@@ -30,20 +31,20 @@ const FilmTabs: FC<FilmTabsProps> = (props) => {
   // !!!FIX -> optimize redrawing.
   // + If isLoading changes in the parent component, then <Budget> will not change and will remain with the original data isLoading = false
   const TabsList = [
-    { content: description, name: 'Описание', id: 1 },
+    {
+      content: description || 'Описание не найдено',
+      name: 'Описание',
+      id: 1,
+    },
     { content: <Images id={id} />, name: 'Изображения', id: 2 },
-    { content: 'Видео', name: 'Видео', id: 3 },
-    { content: <Budget id={id} />, name: 'Бюджет', id: 4 },
-    { content: 'Награды', name: 'Награды', id: 5 },
-    { content: <Facts id={id} />, name: 'Факты', id: 6 },
+    { content: <Budget id={id} />, name: 'Бюджет', id: 3 },
+    { content: <Facts id={id} />, name: 'Факты', id: 4 },
+    { content: <Team id={id} />, name: 'Команда', id: 5 },
+
   ];
 
   useEffect(() => {
-    console.log('render');
-
     return () => {
-      console.log('delete');
-
       dispatch(FilmTabsAction.reset());
     };
   }, [dispatch]); // Make sure to include dispatch as a dependency

@@ -1,22 +1,27 @@
 
 .content{
   position: relative;
+  height: auto;
+  width: auto;
+  overflow-y: auto;
   z-index: 1;
-  padding: 1.5em;
-  max-width: 70%;
-  min-width: 25%;
-
-  border: var(--border-size-d) solid var(--primary-color);
-  border-radius: var(--border-radius-size-d);
-
-  box-shadow: 0 0 0.2em 0.05em var(--primary-color);
-
-  background-color: var(--glass-bg-color);
-  backdrop-filter: blur(var(--glass-bg-blur));
-
-  
   transition: all, var(--transition-duration); 
   transform: scale(0.2);
+
+  &.classic{
+    padding: 1.5em;
+    max-width: 70%;
+    min-width: 25%;
+  
+    border: var(--border-size-d) solid var(--primary-color);
+    border-radius: var(--border-radius-size-d);
+  
+    box-shadow: 0 0 0.2em 0.05em var(--primary-color);
+  
+    background-color: var(--glass-bg-color);
+    backdrop-filter: blur(var(--glass-bg-blur));
+  }
+
 }
 
 .Modal{

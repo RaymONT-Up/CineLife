@@ -19,6 +19,7 @@ const Facts: FC<FactsProps> = (props) => {
   const dispatch = useDispatch();
 
   const [showAllFacts, setShowAllFacts] = useState(false);
+  const FactsToDisplay = 6;
 
   useEffect(() => {
     if (!dataReceived) {
@@ -34,7 +35,7 @@ const Facts: FC<FactsProps> = (props) => {
     return <p>Факты не найдены</p>;
   }
 
-  const displayedFacts = showAllFacts ? items : items.slice(0, 5);
+  const displayedFacts = showAllFacts ? items : items.slice(0, FactsToDisplay);
 
   return (
     <div className={classNames(cls.Facts, {}, [className])}>
@@ -47,7 +48,7 @@ const Facts: FC<FactsProps> = (props) => {
           />
         ))}
       </ul>
-      {items.length > 5 && (
+      {items.length > FactsToDisplay && (
         <Button
           className={cls.showMore}
           onClick={() => setShowAllFacts(!showAllFacts)}

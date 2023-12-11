@@ -1,7 +1,5 @@
 import { FC } from 'react';
 import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
-import { getFilm } from 'pages/FilmPage/model/selectors/FilmPageSelectors';
-import { useSelector } from 'react-redux';
 import {
   FilmType, catalogTypeTypes, countriesList, genresList,
 } from 'shared/api/kinopoisk/models';
@@ -59,7 +57,7 @@ const FilmInfo: FC<FilmInfoProps> = (props) => {
           {year}
         </FilmListItem>
         <FilmListItem name="Время">
-          {`${minutesToHours(filmLength)} / ${filmLength} мин.`}
+          {filmLength && `${minutesToHours(filmLength)} / ${filmLength} мин.`}
         </FilmListItem>
         <FilmListItem name="Слоган">
           {slogan}
