@@ -56,6 +56,7 @@ module.exports = {
     'import/extensions': 'off',
     'no-underscore-dangle': 'off',
     'linebreak-style': 'off',
+    'react/button-has-type': 'off',
 
     'arrow-body-style': 'off',
     'no-param-reassign': 'off',

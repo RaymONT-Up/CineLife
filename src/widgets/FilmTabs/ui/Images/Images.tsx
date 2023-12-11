@@ -3,7 +3,7 @@ import classNames from 'shared/lib/classNames/classNames';
 import { getImages } from 'widgets/FilmTabs/model/selectors/FilmTabsSelectors';
 import { FetchImages } from 'widgets/FilmTabs/model/service/FetchImages';
 import { useDispatch, useSelector } from 'react-redux';
-import Carousel from 'shared/ui/Carousel/ui/Carousel';
+import Carousel, { ArrowLeft, ArrowRight } from 'shared/ui/Carousel';
 import Button, { ButtonTheme } from 'shared/ui/Button';
 import cls from './Images.module.scss';
 import Gallery from './Gallery/Gallery';
@@ -55,6 +55,7 @@ const Images: FC<ImagesProps> = (props) => {
         slidesPerView={4}
         autoHeight
         spaceBetween={screenWidth / 100}
+        enableNavigation
         items={items?.map((item, index) => (
           <Button
             className={cls.wrapper}

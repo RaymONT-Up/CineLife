@@ -3,6 +3,8 @@ import {
 } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import Portal from 'shared/ui/Portal';
+import CloseIcon from 'shared/assets/icons/CloseIcon.svg';
+import Button from 'shared/ui/Button';
 import cls from './Modal.module.scss';
 
 export enum ModalTheme {
@@ -98,6 +100,9 @@ const Modal: FC<ModalProps> = (props) => {
           className={classNames(cls.overlay, {}, [classNameOverlay])}
           onClick={closeHandler}
         />
+        <Button className={cls.closeBtn} onClick={closeHandler}>
+          <CloseIcon />
+        </Button>
         <div className={classNames(cls.content, {}, [classNameContent, cls[theme]])}>
           {children}
         </div>

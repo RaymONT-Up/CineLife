@@ -19,6 +19,18 @@
   padding: var(--btn-padding);
   background-color: var(--primary-color);
   color: var(--text-color);
+
+  transition-property: color background-color transform;
+  transition-duration:var(--transition-duration) ;
+
+  &:hover{
+    color: var(--primary-color);
+    background-color: var(--text-color);
+
+    svg{
+      stroke: var(--primary-color);
+    }
+  }
 }
 
 .outline{
@@ -27,4 +39,31 @@
   padding: var(--btn-padding);
   color: var(--primary-color);
   background-color: transparent;
+}
+
+.glass_bg{
+  padding: var(--btn-padding);
+  border-radius: var(--btn-border-radius);
+  background-color: var(--glass-bg-color);
+  backdrop-filter: blur(1em);
+
+  transition-property: transform  backdrop-filter;
+  transition-duration: var(--transition-duration);
+  outline: 0.1em solid transparent;
+
+  &:hover{
+    backdrop-filter: blur(0.1em);
+    outline: 0.1em solid var(--primary-color);
+  }
+
+
+  &[disabled] {
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  &[disabled]:hover {
+    outline:none;
+    backdrop-filter: blur(1em);
+  }
 }

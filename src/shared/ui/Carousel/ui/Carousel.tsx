@@ -1,8 +1,13 @@
+// Carousel.tsx
 import { FC, ReactNode } from 'react';
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
+import {
+  Swiper, SwiperProps, SwiperSlide,
+} from 'swiper/react';
 import 'swiper/css';
 import classNames from 'shared/lib/classNames/classNames';
+import { Navigation } from 'swiper/modules';
 import cls from './Carousel.module.scss';
+import { ArrowLeft, ArrowRight } from './Arrows/Arrows';
 
 interface CarouselProps extends SwiperProps {
   className?: string;
@@ -11,6 +16,7 @@ interface CarouselProps extends SwiperProps {
   spaceBetween?: number;
   onSlideChange?: () => void;
   slidesPerView?: number;
+  enableNavigation?: boolean;
 }
 
 const Carousel: FC<CarouselProps> = ({
@@ -19,20 +25,38 @@ const Carousel: FC<CarouselProps> = ({
   breakpoints,
   spaceBetween,
   slidesPerView,
+  enableNavigation = false,
   ...props
-}) => (
-  <div className={classNames(cls.Carousel, {}, [className])}>
-    <Swiper
-      spaceBetween={spaceBetween || 0}
-      slidesPerView={slidesPerView || 'auto'}
-      breakpoints={breakpoints}
-      {...props}
-    >
-      {items.map((item, index) => (
-        <SwiperSlide key={index}>{item}</SwiperSlide>
-      ))}
-    </Swiper>
-  </div>
-);
+}) => {
+  const navigationOptions = enableNavigation ? {
+    nextEl: `.${cls.next}`,
+    prevEl: `.${cls.prev}`,
+  } : false;
+
+  return (
+    <div className={classNames(cls.Carousel, {}, [className])}>
+      <Swiper
+        spaceBetween={spaceBetween || 0}
+        slidesPerView={slidesPerView || 'auto'}
+        breakpoints={breakpoints}
+        navigation={navigationOptions}
+        modules={[Navigation]}
+        {...props}
+      >
+        {items.map((item, index) => (
+          <SwiperSlide key={index}>{item}</SwiperSlide>
+        ))}
+
+      </Swiper>
+
+      {enableNavigation && (
+        <>
+          <ArrowLeft className={cls.prev} />
+          <ArrowRight className={cls.next} />
+        </>
+      )}
+    </div>
+  );
+};
 
 export default Carousel;
