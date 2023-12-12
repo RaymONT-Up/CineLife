@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFacts } from 'widgets/FilmTabs/model/selectors/FilmTabsSelectors';
@@ -18,8 +18,8 @@ const Facts: FC<FactsProps> = (props) => {
   const { dataReceived, items, error } = useSelector(getFacts);
   const dispatch = useDispatch();
 
-  const [showAllFacts, setShowAllFacts] = useState(false);
   const FactsToDisplay = 6;
+  const [displayCount, setDisplayCount] = useState(FactsToDisplay);
 
   useEffect(() => {
     if (!dataReceived) {
@@ -35,7 +35,14 @@ const Facts: FC<FactsProps> = (props) => {
     return <p>Факты не найдены</p>;
   }
 
-  const displayedFacts = showAllFacts ? items : items.slice(0, FactsToDisplay);
+  const displayedFacts = items.slice(0, displayCount);
+
+  const showMore = () => {
+    setDisplayCount((prevCount) => prevCount + FactsToDisplay);
+  };
+  const closeMore = () => {
+    setDisplayCount(FactsToDisplay);
+  };
 
   return (
     <div className={classNames(cls.Facts, {}, [className])}>
@@ -48,12 +55,22 @@ const Facts: FC<FactsProps> = (props) => {
           />
         ))}
       </ul>
-      {items.length > FactsToDisplay && (
+      {displayCount >= items.length && (
+      <Button
+        centered
+        className={cls.close}
+        onClick={closeMore}
+      >
+        Скрыть
+      </Button>
+      )}
+      {items.length > displayCount && (
         <Button
+          centered
           className={cls.showMore}
-          onClick={() => setShowAllFacts(!showAllFacts)}
+          onClick={showMore}
         >
-          {showAllFacts ? 'Скрыть' : 'Показать больше'}
+          {`Показать еще ${displayCount} / ${items.length}`}
         </Button>
       )}
     </div>
