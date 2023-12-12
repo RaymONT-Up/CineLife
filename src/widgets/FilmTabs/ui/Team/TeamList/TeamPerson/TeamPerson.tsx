@@ -2,6 +2,7 @@ import { FC } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import { FilmTeamItem } from 'shared/api/kinopoisk/models';
 import AppLink from 'shared/ui/AppLink';
+import { AppRoutes } from 'shared/config/routeConfig/routeConfig';
 import cls from './TeamPerson.module.scss';
 
 interface TeamPersonProps extends FilmTeamItem{
@@ -28,7 +29,7 @@ const TeamPerson: FC<TeamPersonProps> = (props) => {
     <li>
       <AppLink
         className={classNames(cls.TeamPerson, {}, [className])}
-        to={`test/${staffId}`}
+        to={`/${AppRoutes.PERSON}/${staffId}`}
       >
         <div className={cls.wrapper}>
           <img

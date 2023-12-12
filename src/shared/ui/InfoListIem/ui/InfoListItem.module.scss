@@ -16,3 +16,14 @@
     font-weight: 400;
   }
 }
+
+// mods
+.wrap{
+  flex-direction: column;
+  align-items: flex-start;
+  
+  .item__name{
+    margin-bottom: 0.4em;
+    margin-right: 0;
+  }
+}

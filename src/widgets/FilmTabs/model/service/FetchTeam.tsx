@@ -5,7 +5,7 @@ export const FetchTeam = createAsyncThunk('FilmTabs/FetchTeam', async (id: numbe
   const { rejectWithValue } = thunkApi;
 
   try {
-    const response = await kinopoiskApi.films.$getFilmTeam(id);
+    const response = await kinopoiskApi.api.$getFilmTeam(id);
     if (!response.data) {
       throw new Error();
     }

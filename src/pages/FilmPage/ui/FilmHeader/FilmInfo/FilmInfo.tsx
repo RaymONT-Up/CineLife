@@ -6,8 +6,8 @@ import {
 import TagsList, { TagsListTheme } from 'shared/ui/TagsList';
 import minutesToHours from 'shared/lib/minutesToHours/minutesToHours';
 import Rating from 'shared/ui/Rating';
+import InfoListItem from 'shared/ui/InfoListIem';
 import cls from './FilmInfo.module.scss';
-import FilmListItem from './FilmListItem/FilmListItem';
 
 interface FilmInfoProps {
   className?: string;
@@ -53,38 +53,44 @@ const FilmInfo: FC<FilmInfoProps> = (props) => {
       </Title>
 
       <ul>
-        <FilmListItem name="Год">
+        <InfoListItem name="Год">
           {year}
-        </FilmListItem>
-        <FilmListItem name="Время">
-          {filmLength && `${minutesToHours(filmLength)} / ${filmLength} мин.`}
-        </FilmListItem>
-        <FilmListItem name="Слоган">
+        </InfoListItem>
+        <InfoListItem isVisible={filmLength} name="Время">
+          {`${minutesToHours(filmLength)} / ${filmLength} мин.`}
+        </InfoListItem>
+        <InfoListItem name="Слоган">
           {slogan}
-        </FilmListItem>
-        <FilmListItem name="Возраст">
+        </InfoListItem>
+        <InfoListItem isVisible={ratingAgeLimits} name="Возраст">
           {ratingAgeLimits && `${ratingAgeLimits?.replace('age', '')}+`}
-        </FilmListItem>
+        </InfoListItem>
 
-        <FilmListItem name="Жанры">
+        <InfoListItem
+          isVisible={genresList?.length !== 0}
+          name="Жанры"
+        >
           <TagsList className={cls.tagsList} list={genresList} />
-        </FilmListItem>
+        </InfoListItem>
 
-        <FilmListItem name="Страны">
+        <InfoListItem
+          isVisible={countriesList?.length !== 0}
+          name="Страны"
+        >
           <TagsList className={cls.tagsList} list={countriesList} theme={TagsListTheme.outline} />
-        </FilmListItem>
-        <FilmListItem name="Рейтинг">
+        </InfoListItem>
+        <InfoListItem name="Рейтинг">
           <Rating rating={rating} />
-        </FilmListItem>
-        <FilmListItem name="Тип">
+        </InfoListItem>
+        <InfoListItem name="Тип">
           {FilmType[type]}
-        </FilmListItem>
-        <FilmListItem name="Стартовый год">
+        </InfoListItem>
+        <InfoListItem name="Стартовый год">
           {startYear}
-        </FilmListItem>
-        <FilmListItem name="Конечный год">
+        </InfoListItem>
+        <InfoListItem name="Конечный год">
           {endYear}
-        </FilmListItem>
+        </InfoListItem>
         {/* <FilmListItem name="Состояние">
           {completed ? 'Завершен' : 'Продолжается'}
         </FilmListItem> */}

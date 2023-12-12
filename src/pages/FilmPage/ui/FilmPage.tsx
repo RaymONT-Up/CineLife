@@ -44,7 +44,6 @@ const FilmPage: FC<FilmPageProps> = () => {
 
   return (
     <div className={cls.FilmPage}>
-
       <FilmHeader />
       <FilmTabs id={+id} description={description} />
       <FilmPlayer id={+id} />

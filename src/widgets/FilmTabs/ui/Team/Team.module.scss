@@ -11,21 +11,3 @@
   opacity: 0.6;
 }
 
-.list{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: var(--index);
-  margin-bottom: calc(var(--index) * 1.5);
-}
-
-
-
-.title{
-  margin-bottom: 0.7em; 
-
-  span {
-    opacity: 0.6;
-    font-weight: 400;
-    margin-left: 0.3em;
-  }
-}

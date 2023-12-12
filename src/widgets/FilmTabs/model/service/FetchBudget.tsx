@@ -5,7 +5,7 @@ export const FetchBudget = createAsyncThunk('FilmTabs/FetchBudget', async (id: n
   const { rejectWithValue } = thunkApi;
 
   try {
-    const response = await kinopoiskApi.films.$getFilmBudget(id);
+    const response = await kinopoiskApi.api.$getFilmBudget(id);
     if (!response.data) {
       throw new Error();
     }

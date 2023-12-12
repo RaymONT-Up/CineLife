@@ -4,6 +4,7 @@ import { CatalogPage } from 'pages/CatalogPage';
 import { FilmPage } from 'pages/FilmPage';
 import { MainPage } from 'pages/MainPage';
 import NotFoundPage from 'pages/NotFoundPage';
+import { PersonPage } from 'pages/PersonPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import { RouteProps } from 'react-router-dom';
 
@@ -11,6 +12,8 @@ export enum AppRoutes {
   MAIN = 'main',
   CATALOG = 'catalog',
   FILM ='film',
+
+  PERSON = 'person',
 
   ABOUT = 'about',
   PROFILE = 'profile',
@@ -25,6 +28,8 @@ export const RoutePath: Record<AppRoutes, string> = {
 
   [AppRoutes.CATALOG]: '/catalog',
   [AppRoutes.FILM]: '/catalog/:id',
+
+  [AppRoutes.PERSON]: '/person/:id',
 
   [AppRoutes.ABOUT]: '/about',
 
@@ -47,6 +52,11 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.FILM]: {
     path: RoutePath.film,
     element: <FilmPage />,
+  },
+
+  [AppRoutes.PERSON]: {
+    path: RoutePath.person,
+    element: <PersonPage />,
   },
 
   [AppRoutes.ABOUT]: {

@@ -5,6 +5,7 @@ import { catalogReducer } from 'pages/CatalogPage';
 import { CatalogFilterAndSearchReducer } from 'features/CatalogFilterAndSearch';
 import { FilmReducer } from 'pages/FilmPage';
 import { FilmTabsReducer } from 'widgets/FilmTabs/model/slice/FilmTabsSlice';
+import { PersonReducer } from 'pages/PersonPage/model/slice/PersonPageSlice';
 import { StateSchema } from './StateSchema';
 
 export function createReduxStore(initialState?: StateSchema) {
@@ -15,6 +16,7 @@ export function createReduxStore(initialState?: StateSchema) {
     film: FilmReducer,
     filmTabs: FilmTabsReducer,
     auth: authReducer,
+    person: PersonReducer,
   };
   return configureStore<StateSchema>({
     reducer: rootReducers,

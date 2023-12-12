@@ -164,3 +164,43 @@ export interface FilmTeamItem {
   professionKey: TeamProfession;
 }
 export type FilmTeam = FilmTeamItem[];
+
+// Person
+export interface Spouse {
+  personId: number;
+  name: string;
+  divorced: boolean;
+  divorcedReason: string;
+  sex: string;
+  children: number;
+  webUrl: string;
+  relation: string;
+}
+export interface PersonFilm {
+  filmId: number;
+  nameRu: string;
+  nameEn: string;
+  rating: string;
+  general: boolean;
+  description: string;
+  professionKey: string;
+}
+export interface Person {
+  personId?: number;
+  webUrl?: string ;
+  nameRu?: string | null;
+  nameEn?: string | null;
+  sex?: string;
+  posterUrl?: string;
+  growth?: number;
+  birthday?: string;
+  death?: string | null;
+  age?: number;
+  birthplace?: string;
+  deathplace?: string | null;
+  spouses?: Spouse[];
+  hasAwards?: number;
+  profession?: string;
+  facts?: string[];
+  films?: PersonFilm[];
+}

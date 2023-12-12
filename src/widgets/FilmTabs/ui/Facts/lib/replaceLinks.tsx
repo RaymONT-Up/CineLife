@@ -1,8 +1,10 @@
-const replaceLink = (text: string) => {
-  // Замена "FILM" на "CATALOG" в тексте
-  const replacedText = text.replace(/film/g, 'catalog');
+import { AppRoutes } from 'shared/config/routeConfig/routeConfig';
 
-  return { __html: replacedText };
+const replaceLink = (text: string) => {
+  const replacedText = text.replace(/film/g, AppRoutes.CATALOG);
+  const finalText = replacedText.replace(/name/g, AppRoutes.PERSON);
+
+  return { __html: finalText };
 };
 
 export default replaceLink;
