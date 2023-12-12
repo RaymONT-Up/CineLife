@@ -12,6 +12,7 @@ export enum ButtonTheme {
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   theme?: ButtonTheme;
+  centered?: boolean;
 }
 
 const Button: FC<ButtonProps> = (props) => {
@@ -19,12 +20,15 @@ const Button: FC<ButtonProps> = (props) => {
     className = '',
     children,
     theme = ButtonTheme.CLASSIC,
+    centered = false,
     ...otherProps
   } = props;
   return (
     <button
       type="button"
-      className={classNames(cls.Button, {}, [className, cls[theme]])}
+      className={classNames(cls.Button, {
+        [cls.centered]: centered,
+      }, [className, cls[theme]])}
       {...otherProps}
     >
       {children}

@@ -3,6 +3,7 @@ import { FilmTabsSchema } from '../types/FilmTabsSchema';
 import { FetchBudget } from '../service/FetchBudget';
 import { FetchImages } from '../service/FetchImages';
 import { FetchFacts } from '../service/FetchFacts';
+import { FetchTeam } from '../service/FetchTeam';
 
 const initialState: FilmTabsSchema = {
   isLoading: false,
@@ -25,6 +26,12 @@ const initialState: FilmTabsSchema = {
 
   facts: {
     total: 0,
+    items: [],
+    dataReceived: false,
+    error: null,
+  },
+
+  team: {
     items: [],
     dataReceived: false,
     error: null,
@@ -74,7 +81,7 @@ const FilmTabsSlice = createSlice({
       })
       .addCase(FetchImages.rejected, (state, action) => {
         state.isLoading = false;
-        state.budget.dataReceived = true;
+        state.images.dataReceived = true;
 
         state.images.error = action.payload as string;
       })
@@ -93,9 +100,28 @@ const FilmTabsSlice = createSlice({
       })
       .addCase(FetchFacts.rejected, (state, action) => {
         state.isLoading = false;
-        state.budget.dataReceived = true;
+        state.facts.dataReceived = true;
 
         state.facts.error = action.payload as string;
+      })
+
+      .addCase(FetchTeam.pending, (state) => {
+        state.team.error = null;
+        state.isLoading = true;
+      })
+      .addCase(FetchTeam.fulfilled, (state, action) => {
+        state.isLoading = false;
+
+        state.team = {
+          items: action.payload,
+          dataReceived: true,
+        };
+      })
+      .addCase(FetchTeam.rejected, (state, action) => {
+        state.isLoading = false;
+        state.team.dataReceived = true;
+
+        state.team.error = action.payload as string;
       });
   },
 });

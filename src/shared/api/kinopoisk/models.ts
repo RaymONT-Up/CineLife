@@ -135,7 +135,32 @@ export interface FilmFactItem {
   spoiler: boolean;
 }
 
-export interface FilmFacts{
+export interface FilmFacts {
   total: number;
   items: FilmFactItem[];
 }
+
+// Team
+
+export enum TeamProfession {
+  DIRECTOR = 'Режиссер',
+  DESIGN = 'Художник',
+  EDITOR = 'Монтажер',
+  WRITER = 'Сценарист',
+  VOICE_DIRECTOR = 'Режиссер дубляжа',
+  COMPOSER = 'Композитор',
+  OPERATOR = 'Оператор',
+  PRODUCER = 'Продюсер',
+  ACTOR = 'Актер',
+}
+
+export interface FilmTeamItem {
+  staffId: number;
+  nameEn: string;
+  nameRu: string;
+  description: null | string;
+  posterUrl: string;
+  professionText: string;
+  professionKey: TeamProfession;
+}
+export type FilmTeam = FilmTeamItem[];

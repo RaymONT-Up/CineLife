@@ -1,24 +1,13 @@
-.team{
-  margin-top: 0.3em;
-  position: relative;
-}
-
-.total{
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  opacity: 0.6;
+.box{
+  margin-bottom: calc(var(--index) * 1.5);
 }
 
 .list{
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: var(--index);
-  margin-bottom: calc(var(--index) * 1.5);
+  margin-bottom: var(--index);
 }
-
-
 
 .title{
   margin-bottom: 0.7em; 
@@ -29,3 +18,4 @@
     margin-left: 0.3em;
   }
 }
+
