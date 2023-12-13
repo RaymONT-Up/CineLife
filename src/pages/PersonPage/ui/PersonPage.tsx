@@ -7,6 +7,7 @@ import { getPerson } from '../model/selectors/PersonPageSelectors';
 import { FetchPerson } from '../model/service/FetchPerson';
 import { PersonActions } from '../model/slice/PersonPageSlice';
 import PersonHeader from './PersonHeader/PersonHeader';
+import PersonFilms from './PersonFilms/PersonFilms';
 
 interface PersonPageProps {
   className?: string;
@@ -33,6 +34,7 @@ const PersonPage: FC<PersonPageProps> = () => {
     spouses,
     hasAwards,
     profession,
+    films,
   } = person;
 
   useEffect(() => {
@@ -71,6 +73,9 @@ const PersonPage: FC<PersonPageProps> = () => {
         spouses={spouses}
         hasAwards={hasAwards}
         profession={profession}
+      />
+      <PersonFilms
+        films={films}
       />
     </div>
   );

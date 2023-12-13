@@ -1,4 +1,4 @@
-import formatDate from './formatDate';
+import formatDate from 'shared/lib/formatDate/formatDate';
 
 describe('formatDate', () => {
   it('correct date format 1', () => {

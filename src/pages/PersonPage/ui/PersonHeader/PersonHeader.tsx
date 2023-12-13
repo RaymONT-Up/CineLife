@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
-import Title, { TitleTags } from 'shared/ui/Title';
+import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
 import { Person } from 'shared/api/kinopoisk/models';
 import InfoListItem from 'shared/ui/InfoListIem';
-import formatDate from 'shared/lib/formatDate/FormatDate';
+import formatDate from 'shared/lib/formatDate/formatDate';
+import formatYears from 'shared/lib/formatYears/formatYears';
 import cls from './PersonHeader.module.scss';
 
 interface PersonHeaderProps extends Omit<Person, 'facts' | 'films'> {
@@ -32,6 +33,9 @@ const PersonHeader: FC<PersonHeaderProps> = (props) => {
 
   const name = (nameRu || nameEn) || 'Имя неизвестно';
 
+  const birhdayFormated = formatDate(birthday as any);
+  const ageFormated = formatYears(age);
+
   const sprouseName = sex === 'MALE' ? 'Супруга' : 'Супруг';
 
   return (
@@ -44,20 +48,24 @@ const PersonHeader: FC<PersonHeaderProps> = (props) => {
         <Title className={cls.title} Tag={TitleTags.h1}>
           {name}
         </Title>
+        {(nameRu && nameEn)
+         && (
+         <Title theme={TitleTheme.subtitle} className={cls.subtitle} Tag={TitleTags.h1}>
+           {nameEn}
+         </Title>
+         ) }
         <ul>
           <InfoListItem isVisible={growth} name="Рост">
             {`${growth} см.`}
           </InfoListItem>
-          <InfoListItem name="Дата рождения">
-            {formatDate(birthday as any)}
-            {' '}
-            {`( ${age} )`}
+          <InfoListItem isVisible={birthday && age} name="Дата рождения">
+            {`${birhdayFormated} (${ageFormated})`}
           </InfoListItem>
           <InfoListItem name="Место рождения">
             {birthplace}
           </InfoListItem>
           <InfoListItem name="Смерть">
-            {death}
+            {formatDate(death as any)}
           </InfoListItem>
           <InfoListItem name="Место Смерти">
             {deathplace}
@@ -65,13 +73,14 @@ const PersonHeader: FC<PersonHeaderProps> = (props) => {
           <InfoListItem name="Профессия">
             {profession}
           </InfoListItem>
-          {/* <InfoListItem name={sprouseName}>
-            {spouses.map(spouse => {
-              <div>
-                {spouse.}
+          <InfoListItem name={sprouseName}>
+            {spouses?.map((spouse) => (
+              <div key={spouse.personId}>
+                {spouse.name}
+                {spouse.children}
               </div>
-            })}
-          </InfoListItem> */}
+            ))}
+          </InfoListItem>
         </ul>
       </div>
     </div>

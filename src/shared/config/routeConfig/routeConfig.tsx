@@ -11,7 +11,7 @@ import { RouteProps } from 'react-router-dom';
 export enum AppRoutes {
   MAIN = 'main',
   CATALOG = 'catalog',
-  FILM ='film',
+  FILM = 'film',
 
   PERSON = 'person',
 
@@ -21,8 +21,6 @@ export enum AppRoutes {
   NOT_FOUND_PAGE = 'notFoundPage'
 }
 
-// использовать для навигации.
-// пример <Link to={RoutePath.main}>Main</Link>
 export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: '/',
 

@@ -1,0 +1,51 @@
+.PersonFilm{
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: calc(var(--index) * 17.85);
+  background-color: var(--empty-color);
+  overflow: hidden;
+  border-radius: var(--border-radius-size-d);
+
+  transition: transform var(--transition-duration);
+
+  &:hover{
+    transform: translateY(-3%);
+  }
+}
+
+.rating{
+  position: absolute;
+  top: 2%;
+  left: 3%;
+}
+
+.img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  &_wrapper{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.info{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 3em;
+  padding: 0.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-size-d);
+  text-align: center;
+
+  background-color: var(--glass-bg-color);
+  backdrop-filter: blur(0.3em);
+}

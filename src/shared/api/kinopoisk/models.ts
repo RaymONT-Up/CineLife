@@ -152,6 +152,7 @@ export enum TeamProfession {
   OPERATOR = 'Оператор',
   PRODUCER = 'Продюсер',
   ACTOR = 'Актер',
+  HILMSELF = 'Играет себя'
 }
 
 export interface FilmTeamItem {
@@ -176,7 +177,7 @@ export interface Spouse {
   webUrl: string;
   relation: string;
 }
-export interface PersonFilm {
+export interface PersonFilmTypes {
   filmId: number;
   nameRu: string;
   nameEn: string;
@@ -202,5 +203,5 @@ export interface Person {
   hasAwards?: number;
   profession?: string;
   facts?: string[];
-  films?: PersonFilm[];
+  films?: PersonFilmTypes[];
 }

@@ -1,9 +1,16 @@
 .PersonHeader{
   display: flex;
+  margin-bottom: calc(var(--index) * 3.5);
 }
 
 .title{
-  margin-bottom: 0.5em;
+  margin-bottom: 0.2em;
+}
+
+.subtitle{
+  margin-bottom: 1em;
+
+  opacity: 0.8;
 }
 
 .img{
