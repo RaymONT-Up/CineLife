@@ -5,6 +5,10 @@ import { Person } from 'shared/api/kinopoisk/models';
 import InfoListItem from 'shared/ui/InfoListIem';
 import formatDate from 'shared/lib/formatDate/formatDate';
 import formatYears from 'shared/lib/formatYears/formatYears';
+import { AppRoutes } from 'shared/config/routeConfig/routeConfig';
+import AppLink from 'shared/ui/AppLink';
+import { AppLinkTheme } from 'shared/ui/AppLink/ui/AppLink';
+import getChildrenLabel from 'pages/PersonPage/lib/getChildrenLabel/getChildrenLabel';
 import cls from './PersonHeader.module.scss';
 
 interface PersonHeaderProps extends Omit<Person, 'facts' | 'films'> {
@@ -73,12 +77,29 @@ const PersonHeader: FC<PersonHeaderProps> = (props) => {
           <InfoListItem name="Профессия">
             {profession}
           </InfoListItem>
-          <InfoListItem name={sprouseName}>
+          <InfoListItem
+            isVisible={spouses?.length !== 0}
+            isVerticalCentered={false}
+            className={cls.spouses}
+            name={sprouseName}
+          >
             {spouses?.map((spouse) => (
-              <div key={spouse.personId}>
-                {spouse.name}
-                {spouse.children}
-              </div>
+              <AppLink
+                theme={AppLinkTheme.ACCENT}
+                className={cls.spouse}
+                to={`/${AppRoutes.PERSON}/${spouse.personId}`}
+                key={spouse.personId}
+              >
+                <span>
+                  {spouse.name}
+                </span>
+
+                <span>{spouse.children >= 1 && getChildrenLabel(spouse.children)}</span>
+
+                <span>
+                  {spouse.divorcedReason}
+                </span>
+              </AppLink>
             ))}
           </InfoListItem>
         </ul>

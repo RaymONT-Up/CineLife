@@ -1,6 +1,5 @@
 .item{
   display: flex;
-  align-items: center;
 
   &:not(:last-child){
     margin-bottom: 1.3em;
@@ -26,4 +25,8 @@
     margin-bottom: 0.4em;
     margin-right: 0;
   }
+}
+
+.isVerticalCentered{
+  align-items: center;
 }

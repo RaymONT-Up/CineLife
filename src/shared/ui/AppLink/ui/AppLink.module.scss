@@ -39,3 +39,18 @@
   background-color: var(--primary-color);
 }
 
+
+
+
+
+  
+.accent{
+  text-decoration: none;
+  transition-property: color;
+  transition-duration: var(--transition-duration);
+  color: var(--secondary-color);
+    
+  &:hover{
+    color: var(--primary-color)
+  }
+}

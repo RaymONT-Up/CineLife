@@ -5,6 +5,7 @@ import cls from './InfoListItem.module.scss';
 interface InfoListItemProps {
   className?: string;
   isVisible?: boolean | any;
+  isVerticalCentered?: boolean;
   isWrap?: boolean;
 
   name: string;
@@ -16,6 +17,7 @@ const InfoListItem: FC<InfoListItemProps> = (props) => {
     className,
     name,
     children,
+    isVerticalCentered = true,
     isVisible = undefined,
     isWrap = false,
   } = props;
@@ -25,7 +27,16 @@ const InfoListItem: FC<InfoListItemProps> = (props) => {
   return (
     <>
       {!!itemVisible && (
-      <li className={classNames(cls.item, { [cls.wrap]: isWrap }, [className])}>
+      <li className={classNames(
+        cls.item,
+        {
+          [cls.wrap]: isWrap,
+          [cls.isVerticalCentered]: isVerticalCentered,
+        },
+
+        [className],
+      )}
+      >
         <h6 className={cls.item__name}>
           {`${name}:`}
         </h6>

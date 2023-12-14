@@ -7,7 +7,8 @@ export enum AppLinkTheme {
   CLASSIC = 'classic',
   BUTTON = 'button',
   CLEAR = 'clear',
-  NAV_LINK = 'nav_link'
+  NAV_LINK = 'nav_link',
+  ACCENT = 'accent'
 }
 
 interface AppLinkProps extends LinkProps {

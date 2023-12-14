@@ -17,7 +17,7 @@ const PersonFilm: FC<PersonFilmProps> = (props) => {
     nameEn,
     professionKey,
     rating,
-
+    description,
   } = props;
 
   const name = nameRu || nameEn;
@@ -37,8 +37,15 @@ const PersonFilm: FC<PersonFilmProps> = (props) => {
           />
         </div>
         <div className={cls.info}>
-          {name}
-          {professionKey}
+          <p>
+            {name}
+          </p>
+          <p>
+            {professionKey}
+          </p>
+          <p>
+            {description}
+          </p>
         </div>
       </AppLink>
     </li>
