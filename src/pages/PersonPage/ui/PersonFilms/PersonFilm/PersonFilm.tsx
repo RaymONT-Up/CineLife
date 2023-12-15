@@ -28,7 +28,7 @@ const PersonFilm: FC<PersonFilmProps> = (props) => {
         className={cls.PersonFilm}
         to={`${RoutePath.catalog}/${filmId}`}
       >
-        <Rating className={cls.rating} rating={+rating} />
+        <Rating className={cls.rating} rating={rating} />
         <div className={cls.img_wrapper}>
           <img
             className={cls.img}

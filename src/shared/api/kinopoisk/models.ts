@@ -63,6 +63,8 @@ export interface CatalogParams {
 
 export interface Film {
   nameRu?: string;
+  nameEn?: string;
+  nameOriginal?: string;
 
   posterUrl?: string;
   description?: string;
@@ -181,7 +183,7 @@ export interface PersonFilmTypes {
   filmId: number;
   nameRu: string;
   nameEn: string;
-  rating: string;
+  rating: number | null;
   general: boolean;
   description: string;
   professionKey: string;

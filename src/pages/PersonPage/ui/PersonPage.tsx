@@ -77,6 +77,7 @@ const PersonPage: FC<PersonPageProps> = () => {
       <PersonFilms
         films={films}
       />
+
     </div>
   );
 };

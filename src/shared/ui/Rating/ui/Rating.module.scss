@@ -17,4 +17,8 @@
   &.bad{
     background-color: var(--bad-color);
   }
+
+  &.empty{
+    background-color: var(--empty-color);
+  }
 }
