@@ -1,10 +1,8 @@
-// Team.tsx
 import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FetchTeam } from 'widgets/FilmTabs/model/service/FetchTeam';
 import { getTeam } from 'widgets/FilmTabs/model/selectors/FilmTabsSelectors';
 import Title, { TitleTheme } from 'shared/ui/Title';
-import { FilmTeamItem } from 'shared/api/kinopoisk/models';
 import groupByKey from 'shared/lib/groupByKey/groupByKey';
 import cls from './Team.module.scss';
 import TeamList from './TeamList/TeamList';

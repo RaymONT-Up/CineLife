@@ -42,8 +42,16 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--border-radius-size-d);
+
   text-align: center;
+  text-wrap: balance;
 
   background-color: var(--glass-bg-color);
   backdrop-filter: blur(0.3em);
+}
+
+.description {
+  margin-top: 0.2em;
+  opacity: 0.7;
+  font-size: 0.8em;
 }

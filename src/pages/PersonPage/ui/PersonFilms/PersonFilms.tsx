@@ -1,9 +1,8 @@
-import { FC, useState } from 'react';
-import classNames from 'shared/lib/classNames/classNames';
-import { PersonFilmTypes } from 'shared/api/kinopoisk/models';
+import { FC } from 'react';
+import { PersonFilmTypes, TeamProfession } from 'shared/api/kinopoisk/models';
 import Title, { TitleTheme } from 'shared/ui/Title';
-import Button from 'shared/ui/Button';
 import groupByKey from 'shared/lib/groupByKey/groupByKey';
+import getEnumValueByKey from 'shared/lib/getEnumValueByKey/getEnumValueByKey';
 import cls from './PersonFilms.module.scss';
 import PersonFilmsList from './PersonFilmsList/PersonFilmsList';
 
@@ -21,24 +20,27 @@ const PersonFilms: FC<PersonFilmsProps> = (props) => {
 
   if (length === 0 || !films) {
     return (
-      <Title className={cls.title} theme={TitleTheme.subtitle}>
-        фильмы не найдены
-      </Title>
+      <div className={cls.PersonFilms}>
+        <Title theme={TitleTheme.subtitle}>
+          Информация о фильмах не найдена
+        </Title>
+      </div>
+
     );
   }
 
   const groupedItems = groupByKey(films, 'professionKey');
 
   return (
-    <div>
+    <div className={cls.PersonFilms}>
       <Title className={cls.title} theme={TitleTheme.subtitle}>
         Фильмография
         <span>{`(${length})`}</span>
       </Title>
       {Object.entries(groupedItems).map(([title, items], index) => (
         <PersonFilmsList
-          key={index}
-          title={title}
+          key={`${title}${index}`}
+          title={getEnumValueByKey(TeamProfession, title as any, title)}
           items={items}
         />
       ))}

@@ -154,7 +154,10 @@ export enum TeamProfession {
   OPERATOR = 'Оператор',
   PRODUCER = 'Продюсер',
   ACTOR = 'Актер',
-  HILMSELF = 'Играет себя'
+  HIMSELF = 'Играет самого себя',
+  HERSELF = 'Играет саму себя',
+  HRONO_TITR_MALE = 'Мужской голос за кадром',
+  HRONO_TITR_FEMALE = 'Женский голос за кадром',
 }
 
 export interface FilmTeamItem {

@@ -37,15 +37,12 @@ const PersonFilm: FC<PersonFilmProps> = (props) => {
           />
         </div>
         <div className={cls.info}>
-          <p>
+          <h6>
             {name}
-          </p>
-          <p>
-            {professionKey}
-          </p>
-          <p>
+          </h6>
+          <h6 className={cls.description}>
             {description}
-          </p>
+          </h6>
         </div>
       </AppLink>
     </li>

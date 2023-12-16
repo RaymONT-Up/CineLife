@@ -31,9 +31,8 @@ const PersonFilmsList: FC<PersonFilmsListProps> = (props) => {
         theme={TitleTheme.subtitle}
       >
         { title }
-
         <span>
-          {`(${total})`}
+          { ` (${total})`}
         </span>
       </Title>
 

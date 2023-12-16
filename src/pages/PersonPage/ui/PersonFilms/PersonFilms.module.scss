@@ -1,11 +1,13 @@
-.list{
-  display: grid;
-  grid-template-columns: repeat(5,1fr);
-  grid-gap: var(--index);
+.PersonFilms{
+  position: relative;
   margin-bottom: var(--index);
 }
 
 .title{
+  position: absolute;
+  right: 0;
+  top: 0;
+  
   margin-bottom: 1em;
 
   span{
