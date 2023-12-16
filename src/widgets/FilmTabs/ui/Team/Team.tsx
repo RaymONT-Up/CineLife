@@ -5,6 +5,7 @@ import { FetchTeam } from 'widgets/FilmTabs/model/service/FetchTeam';
 import { getTeam } from 'widgets/FilmTabs/model/selectors/FilmTabsSelectors';
 import Title, { TitleTheme } from 'shared/ui/Title';
 import { FilmTeamItem } from 'shared/api/kinopoisk/models';
+import groupByKey from 'shared/lib/groupByKey/groupByKey';
 import cls from './Team.module.scss';
 import TeamList from './TeamList/TeamList';
 
@@ -31,17 +32,7 @@ const Team: FC<TeamProps> = ({ className, id }) => {
     return <p>{error}</p>;
   }
 
-  const groupedItems = items.reduce((acc, item) => {
-    const { professionText } = item;
-
-    if (!acc[professionText]) {
-      acc[professionText] = [];
-    }
-
-    acc[professionText].push(item);
-
-    return acc;
-  }, {} as Record<string, FilmTeamItem[]>);
+  const groupedItems = groupByKey(items, 'professionText');
 
   return (
     <div className={cls.team}>

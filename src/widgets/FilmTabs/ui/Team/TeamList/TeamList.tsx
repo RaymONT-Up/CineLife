@@ -1,4 +1,3 @@
-// TeamList.tsx
 import { FC, useState } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
@@ -12,6 +11,8 @@ interface TeamListProps {
   group: FilmTeamItem[];
 }
 
+// !FIX --- decompose and refactor.
+// the Person page has the same PersonFilms component.
 const TeamList: FC<TeamListProps> = ({ professionText, group }) => {
   const [itemsToShow, setItemsToShow] = useState(10);
 

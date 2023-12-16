@@ -94,7 +94,7 @@ const PersonHeader: FC<PersonHeaderProps> = (props) => {
                   {spouse.name}
                 </span>
 
-                <span>{spouse.children >= 1 && getChildrenLabel(spouse.children)}</span>
+                {spouse.children >= 1 && <span>{ getChildrenLabel(spouse.children)}</span>}
 
                 <span>
                   {spouse.divorcedReason}
