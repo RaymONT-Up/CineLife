@@ -1,6 +1,6 @@
 .PersonFilms{
   position: relative;
-  margin-bottom: var(--index);
+  margin: calc(var(--index) * 2.5) 0  var(--index) 0;
 }
 
 .title{

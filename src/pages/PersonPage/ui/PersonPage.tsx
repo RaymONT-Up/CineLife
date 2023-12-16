@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PageLoader from 'widgets/PageLoader';
-import cls from './PersonPage.module.scss';
+import Facts from 'shared/ui/Facts';
 import { getPerson } from '../model/selectors/PersonPageSelectors';
 import { FetchPerson } from '../model/service/FetchPerson';
 import { PersonActions } from '../model/slice/PersonPageSlice';
@@ -35,6 +35,7 @@ const PersonPage: FC<PersonPageProps> = () => {
     hasAwards,
     profession,
     films,
+    facts,
   } = person;
 
   useEffect(() => {
@@ -58,7 +59,7 @@ const PersonPage: FC<PersonPageProps> = () => {
   }
 
   return (
-    <div className={cls.PersonPage}>
+    <div>
       <PersonHeader
         nameRu={nameRu}
         nameEn={nameEn}
@@ -74,10 +75,15 @@ const PersonPage: FC<PersonPageProps> = () => {
         hasAwards={hasAwards}
         profession={profession}
       />
+
+      <Facts
+        defaultShowCount={3}
+        items={facts}
+      />
+
       <PersonFilms
         films={films}
       />
-
     </div>
   );
 };

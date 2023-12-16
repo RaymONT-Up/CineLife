@@ -4,7 +4,7 @@ const replaceLink = (text: string) => {
   const replacedText = text.replace(/film/g, AppRoutes.CATALOG);
   const finalText = replacedText.replace(/name/g, AppRoutes.PERSON);
 
-  return { __html: finalText };
+  return finalText;
 };
 
 export default replaceLink;

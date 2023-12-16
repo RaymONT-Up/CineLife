@@ -39,6 +39,15 @@
   padding: var(--btn-padding);
   color: var(--primary-color);
   background-color: transparent;
+
+
+  transition-property: background-color color;
+  transition-duration: var(--transition-duration);
+
+  &:hover{
+    color: var(--text-color);
+    border-color: var(--text-color);
+  }
 }
 
 .glass_bg{
