@@ -1,33 +1,8 @@
-.PersonFilm{
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: var(--border-radius-size-d);
-}
-
 .rating{
   position: absolute;
-  z-index: 3;
+  z-index: 1;
   top: 2%;
   left: 3%;
-}
-
-.img{
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  inset: 0;
-  color: transparent;
-  object-fit: cover;
-
-  &_wrapper{
-    position: relative;
-    display: block;
-    padding-top: 155%;
-    background-color: var(--empty-color);
-  }
 }
 
 .info{

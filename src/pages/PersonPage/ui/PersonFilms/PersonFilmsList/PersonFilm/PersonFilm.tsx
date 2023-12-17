@@ -3,6 +3,7 @@ import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import AppLink from 'shared/ui/AppLink';
 import Rating from 'shared/ui/Rating';
 import { PersonFilmTypes } from 'shared/api/kinopoisk/models';
+import CardBgImage from 'shared/ui/CardBgImage';
 import cls from './PersonFilm.module.scss';
 
 interface PersonFilmProps extends PersonFilmTypes{
@@ -24,18 +25,12 @@ const PersonFilm: FC<PersonFilmProps> = (props) => {
 
   return (
     <li>
-      <AppLink
-        className={cls.PersonFilm}
+      <CardBgImage
+        src={`https://kinopoiskapiunofficial.tech/images/posters/kp_small/${filmId}.jpg`}
+        alt={`Постер ${name}`}
         to={`${RoutePath.catalog}/${filmId}`}
       >
         <Rating className={cls.rating} rating={rating} />
-        <div className={cls.img_wrapper}>
-          <img
-            className={cls.img}
-            src={`https://kinopoiskapiunofficial.tech/images/posters/kp_small/${filmId}.jpg`}
-            alt={`Постер ${name}`}
-          />
-        </div>
         <div className={cls.info}>
           <h6>
             {name}
@@ -44,7 +39,8 @@ const PersonFilm: FC<PersonFilmProps> = (props) => {
             {description}
           </h6>
         </div>
-      </AppLink>
+      </CardBgImage>
+
     </li>
   );
 };

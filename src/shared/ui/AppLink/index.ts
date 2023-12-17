@@ -1,3 +1,6 @@
-import AppLink from './ui/AppLink';
+import AppLink, { AppLinkProps } from './ui/AppLink';
 
+export {
+  AppLinkProps,
+};
 export default AppLink;

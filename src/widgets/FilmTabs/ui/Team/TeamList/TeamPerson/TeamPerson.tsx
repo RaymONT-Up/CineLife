@@ -3,6 +3,7 @@ import classNames from 'shared/lib/classNames/classNames';
 import { FilmTeamItem } from 'shared/api/kinopoisk/models';
 import AppLink from 'shared/ui/AppLink';
 import { AppRoutes } from 'shared/config/routeConfig/routeConfig';
+import CardBgImage from 'shared/ui/CardBgImage';
 import cls from './TeamPerson.module.scss';
 
 interface TeamPersonProps extends FilmTeamItem{
@@ -27,32 +28,27 @@ const TeamPerson: FC<TeamPersonProps> = (props) => {
 
   return (
     <li>
-      <AppLink
-        className={classNames(cls.TeamPerson, {}, [className])}
+      <CardBgImage
+        src={posterUrl}
+        alt={`Фотография ${name}`}
         to={`/${AppRoutes.PERSON}/${staffId}`}
       >
-        <div className={cls.wrapper}>
-          <img
-            className={cls.img}
-            src={posterUrl}
-            alt={`Фотография ${name}`}
-          />
-          <div className={cls.info}>
 
-            <h5 className={cls.name}>
-              {name}
-            </h5>
+        <div className={cls.info}>
 
-            {description
-            && (
+          <h5 className={cls.name}>
+            {name}
+          </h5>
+
+          {description && (
             <h6 className={cls.description}>
               {description}
             </h6>
-            )}
-          </div>
+          )}
         </div>
 
-      </AppLink>
+      </CardBgImage>
+
     </li>
   );
 };
