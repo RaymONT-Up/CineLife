@@ -10,9 +10,10 @@ const initialState: CatalogPageSchema = {
 
   //
   items: [],
-  page: 1,
 
   // pagination
+  page: 1,
+
   totalItems: null,
   totalPages: null,
 };
@@ -43,13 +44,16 @@ const catalogPageSlice = createSlice({
       })
       .addCase(FetchCatalog.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.totalPages = action.payload.totalPages;
-        state.totalItems = action.payload.total;
 
-        if (state.loadMore) {
-          state.items = [...state.items, ...action.payload.items];
+        const { data, loadMore } = action.payload;
+
+        state.totalPages = data.totalPages;
+        state.totalItems = data.total;
+
+        if (loadMore) {
+          state.items = [...state.items, ...data.items];
         } else {
-          state.items = action.payload.items;
+          state.items = data.items;
         }
       })
       .addCase(FetchCatalog.rejected, (state, action) => {

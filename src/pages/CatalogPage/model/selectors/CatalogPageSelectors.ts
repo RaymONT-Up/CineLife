@@ -1,7 +1,7 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 
+export const getCatalog = (state: StateSchema) => state.catalog;
 export const getCatalogState = (state:StateSchema) => state.catalog;
-export const getLoadMore = (state:StateSchema) => state.catalog.loadMore;
 export const getCatalogPage = (state:StateSchema) => state.catalog.page;
 export const getCatalogTotalPages = (state:StateSchema) => state.catalog.totalPages;
 

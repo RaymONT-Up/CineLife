@@ -4,6 +4,7 @@ import { CatalogList as CatalogListTypes } from 'shared/api/kinopoisk/models';
 import Title from 'shared/ui/Title';
 import { CatalogPreviewCard } from 'entities/CatalogPreviewCard';
 import PageLoader from 'widgets/PageLoader';
+import ListGrid from 'shared/ui/ListGrid';
 import cls from './CatalogList.module.scss';
 
 interface CatalogListProps {
@@ -11,7 +12,7 @@ interface CatalogListProps {
   error?: string;
   items: CatalogListTypes;
   isLoading: boolean;
-  loadMore: boolean;
+  // loadingMore: boolean;
 }
 
 const CatalogList: FC<CatalogListProps> = (props) => {
@@ -19,7 +20,7 @@ const CatalogList: FC<CatalogListProps> = (props) => {
     className,
     items,
     isLoading = false,
-    loadMore,
+    // loadingMore = false,
     error = '',
   } = props;
 
@@ -27,9 +28,9 @@ const CatalogList: FC<CatalogListProps> = (props) => {
     return <div>{error}</div>;
   }
 
-  if (isLoading && !loadMore) {
-    return <PageLoader />;
-  }
+  // if (isLoading) {
+  //   return <PageLoader />;
+  // }
 
   if (items.length < 1) {
     return (
@@ -41,7 +42,7 @@ const CatalogList: FC<CatalogListProps> = (props) => {
 
   return (
     <>
-      <ul className={classNames(cls.CatalogList, {}, [className])}>
+      <ListGrid className={classNames(cls.CatalogList, {}, [className])}>
         {items.map((item, index) => (
           <CatalogPreviewCard
             genres={item.genres}
@@ -55,8 +56,7 @@ const CatalogList: FC<CatalogListProps> = (props) => {
             year={item.year}
           />
         ))}
-      </ul>
-      {(isLoading && loadMore) && <PageLoader />}
+      </ListGrid>
     </>
   );
 };

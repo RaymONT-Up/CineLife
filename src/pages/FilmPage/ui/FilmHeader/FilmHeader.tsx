@@ -29,6 +29,7 @@ const FilmHeader: FC<FilmHeaderProps> = (props) => {
     filmLength,
     coverUrl,
     logoUrl,
+    nameOriginal,
   } = filmData;
 
   return (
