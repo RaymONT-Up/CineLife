@@ -51,12 +51,10 @@ const CatalogPage: FC<CatalogProps> = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, dispatch]);
 
-  useEffect(() => {
-    dispatch(catalogActions.reset());
-  }, [params, dispatch]);
-
   // init load
   useEffect(() => {
+    dispatch(catalogActions.setPage(1));
+
     if (paramsIsInstalled) {
       dispatch(FetchCatalog({ params: { ...params, page: 1 } }) as any);
     }
@@ -71,9 +69,8 @@ const CatalogPage: FC<CatalogProps> = (props) => {
   return (
     <div className={classNames(cls.Catalog, {}, [className])}>
       <CatalogFilterAndSearch isLoading={isLoading} />
-      <CatalogList isLoading={isLoading} error={error} items={items} />
-      <div ref={targetRef} className={cls.loadMore}>
-        Показать еще
+      <CatalogList loadingMore={page === 1} isLoading={isLoading} error={error} items={items} />
+      <div ref={targetRef} className={cls.showMore}>
         {isLoading && <Loader />}
       </div>
     </div>

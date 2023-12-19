@@ -1,7 +1,11 @@
 // using important is bad but this library...
 body .MySelect{
   background-color: var(--body-bg);
-  
+
+  &Wrapper{
+    z-index: 5;
+  }
+
   &__control{
 
     cursor: pointer;

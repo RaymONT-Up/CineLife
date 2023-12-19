@@ -12,7 +12,7 @@ interface CatalogListProps {
   error?: string;
   items: CatalogListTypes;
   isLoading: boolean;
-  // loadingMore: boolean;
+  loadingMore: boolean;
 }
 
 const CatalogList: FC<CatalogListProps> = (props) => {
@@ -20,7 +20,7 @@ const CatalogList: FC<CatalogListProps> = (props) => {
     className,
     items,
     isLoading = false,
-    // loadingMore = false,
+    loadingMore = false,
     error = '',
   } = props;
 
@@ -28,11 +28,11 @@ const CatalogList: FC<CatalogListProps> = (props) => {
     return <div>{error}</div>;
   }
 
-  // if (isLoading) {
-  //   return <PageLoader />;
-  // }
+  if (isLoading && loadingMore) {
+    return <PageLoader />;
+  }
 
-  if (items.length < 1) {
+  if (items.length < 1 && !loadingMore) {
     return (
       <Title centered>
         Ничего не найдено
