@@ -45,7 +45,6 @@ const CatalogPage: FC<CatalogProps> = (props) => {
   // when page was changed
   useEffect(() => {
     if (page > 1) {
-      console.log('set new page', page, params);
       dispatch(FetchCatalog({ params: { ...params, page }, loadMore: true }) as any);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,6 +54,7 @@ const CatalogPage: FC<CatalogProps> = (props) => {
   useEffect(() => {
     dispatch(catalogActions.setPage(1));
 
+    // if params from URL was installed
     if (paramsIsInstalled) {
       dispatch(FetchCatalog({ params: { ...params, page: 1 } }) as any);
     }
@@ -71,7 +71,7 @@ const CatalogPage: FC<CatalogProps> = (props) => {
       <CatalogFilterAndSearch isLoading={isLoading} />
       <CatalogList loadingMore={page === 1} isLoading={isLoading} error={error} items={items} />
       <div ref={targetRef} className={cls.showMore}>
-        {isLoading && <Loader />}
+        {(isLoading && page !== 1) && <Loader />}
       </div>
     </div>
   );

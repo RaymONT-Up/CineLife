@@ -34,6 +34,10 @@ export const CatalogFilterAndSearchSlice = createSlice({
         state.keyword = keyword;
       }
 
+      if (order) {
+        state.genres = [genre];
+      }
+
       if (genre) {
         state.genres = [genre];
       }

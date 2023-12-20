@@ -32,7 +32,7 @@ const CatalogList: FC<CatalogListProps> = (props) => {
     return <PageLoader />;
   }
 
-  if (items.length < 1 && !loadingMore) {
+  if (items.length < 1) {
     return (
       <Title centered>
         Ничего не найдено
@@ -41,23 +41,22 @@ const CatalogList: FC<CatalogListProps> = (props) => {
   }
 
   return (
-    <>
-      <ListGrid className={classNames(cls.CatalogList, {}, [className])}>
-        {items.map((item, index) => (
-          <CatalogPreviewCard
-            genres={item.genres}
-            countries={item.countries}
-            key={item.kinopoiskId || index}
-            kinopoiskId={item.kinopoiskId}
-            ratingKinopoisk={item.ratingKinopoisk}
-            nameRu={item.nameRu}
-            posterUrl={item.posterUrl}
-            posterUrlPreview={item.posterUrlPreview}
-            year={item.year}
-          />
-        ))}
-      </ListGrid>
-    </>
+    <ListGrid className={classNames(cls.CatalogList, {}, [className])}>
+      {items.map((item, index) => (
+        <CatalogPreviewCard
+          genres={item.genres}
+          countries={item.countries}
+          key={item.kinopoiskId || index}
+          kinopoiskId={item.kinopoiskId}
+          ratingKinopoisk={item.ratingKinopoisk}
+          nameRu={item.nameRu}
+          posterUrl={item.posterUrl}
+          posterUrlPreview={item.posterUrlPreview}
+          year={item.year}
+        />
+      ))}
+    </ListGrid>
+
   );
 };
 

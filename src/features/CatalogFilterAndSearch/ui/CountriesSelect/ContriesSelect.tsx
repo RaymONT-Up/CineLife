@@ -6,33 +6,33 @@ import { CatalogFilterAndSearchActions } from 'features/CatalogFilterAndSearch/m
 import updateUrlParam from 'shared/lib/urlParams/updateUrlParam';
 import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
 import findValueOption from 'features/CatalogFilterAndSearch/lib/findValueOption';
-import { getGenresState } from 'features/CatalogFilterAndSearch/model/selectors/getCatalogFilter';
-import { catalogGenresSelectOptions } from 'shared/config/catalogFilter/catalogFilter';
+import { getCountriesState } from 'features/CatalogFilterAndSearch/model/selectors/getCatalogFilter';
+import { catalogCountriesSelectOptions } from 'shared/config/catalogFilter/catalogFilter';
 
-interface GenresSelectProps {
+interface CountriesSelectProps {
   className?: string;
 }
 
-const GenresSelect: FC<GenresSelectProps> = (props) => {
+const CountriesSelect: FC<CountriesSelectProps> = (props) => {
   const { className } = props;
 
   const dispatch = useDispatch();
 
-  const genres = useSelector(getGenresState);
-  const genre: number = genres && genres[0];
-  const defaultValue = findValueOption(catalogGenresSelectOptions, genre, { value: '', label: 'Жанры' });
+  const Countries = useSelector(getCountriesState);
+  const country: number = Countries && Countries[0];
+  const defaultValue = findValueOption(catalogCountriesSelectOptions, country, { value: '', label: 'Все страны' });
 
   const onChange = (newValue: number) => {
     // set param
-    updateUrlParam(catalogURLParams.genre, `${newValue}`);
+    updateUrlParam(catalogURLParams.country, `${newValue}`);
 
-    dispatch(CatalogFilterAndSearchActions.setGenres([newValue]));
+    dispatch(CatalogFilterAndSearchActions.setCountries([newValue]));
   };
 
   return (
     <MySelect
-      options={catalogGenresSelectOptions}
-      name="Жанры"
+      options={catalogCountriesSelectOptions}
+      name="Страны"
       defaultValue={defaultValue}
       className={classNames('', {}, [className])}
       onChange={onChange}
@@ -41,4 +41,4 @@ const GenresSelect: FC<GenresSelectProps> = (props) => {
   );
 };
 
-export default GenresSelect;
+export default CountriesSelect;

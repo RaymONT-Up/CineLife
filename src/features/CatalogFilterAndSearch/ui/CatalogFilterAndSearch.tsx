@@ -10,6 +10,7 @@ import Search from './Search/Search';
 import { catalogURLParams } from '../model/types/urlParams';
 import { CatalogFilterAndSearchActions } from '../model/slice/CatalogFilterAndSearchSlice';
 import { getURLParamsIsInstalled } from '../model/selectors/getCatalogFilter';
+import CountriesSelect from './CountriesSelect/ContriesSelect';
 
 interface CatalogFilterAndSearchProps {
   className?: string;
@@ -57,6 +58,7 @@ const CatalogFilterAndSearch: FC<CatalogFilterAndSearchProps> = (props) => {
 
       <div className={cls.bottom}>
         <GenresSelect className={cls.genres} />
+        <CountriesSelect className={cls.countries} />
         <TypeSelect className={cls.type} />
         <SortSelect className={cls.sort} />
       </div>

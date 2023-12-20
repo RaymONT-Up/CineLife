@@ -3,7 +3,7 @@ const updateUrlParam = (paramName: string, paramValue: string) => {
 
   if (params.get(paramName) === paramValue) return;
 
-  if (paramValue === '') {
+  if (paramValue === '' || paramValue === undefined) {
     params.delete(paramName);
   } else {
     params.set(paramName, paramValue);
