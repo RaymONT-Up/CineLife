@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CatalogFilterAndSearchActions } from 'features/CatalogFilterAndSearch/model/slice/CatalogFilterAndSearchSlice';
 import updateUrlParam from 'shared/lib/urlParams/updateUrlParam';
 import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
-import findValueOption from 'features/CatalogFilterAndSearch/lib/findValueOption';
 import { getGenresState } from 'features/CatalogFilterAndSearch/model/selectors/getCatalogFilter';
 import { catalogGenresSelectOptions } from 'shared/config/catalogFilter/catalogFilter';
+import { findValueOption } from 'shared/ui/Select';
 
 interface GenresSelectProps {
   className?: string;

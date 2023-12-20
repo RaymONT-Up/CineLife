@@ -10,7 +10,7 @@ import {
 import updateUrlParam from 'shared/lib/urlParams/updateUrlParam';
 import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
 import { getTypeState } from 'features/CatalogFilterAndSearch/model/selectors/getCatalogFilter';
-import findValueOption from 'features/CatalogFilterAndSearch/lib/findValueOption';
+import { findValueOption } from 'shared/ui/Select';
 
 interface TypeSelectProps {
   className?: string;

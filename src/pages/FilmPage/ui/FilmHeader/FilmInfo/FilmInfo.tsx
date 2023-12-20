@@ -7,6 +7,10 @@ import TagsList, { TagsListTheme } from 'shared/ui/TagsList';
 import minutesToHours from 'shared/lib/minutesToHours/minutesToHours';
 import Rating from 'shared/ui/Rating';
 import InfoListItem from 'shared/ui/InfoListIem';
+import { findValueOption } from 'shared/ui/Select';
+import { catalogCountriesSelectOptions, findIdCountryByString, findIdGenreByString } from 'shared/config/catalogFilter/catalogFilter';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
 import cls from './FilmInfo.module.scss';
 
 interface FilmInfoProps {
@@ -39,8 +43,23 @@ const FilmInfo: FC<FilmInfoProps> = (props) => {
     rating,
   } = props;
 
-  const countriesList = countries?.map((item) => item.country);
-  const genresList = genres?.map((item) => item.genre);
+  const countriesList = countries?.map((item) => {
+    const id = findIdCountryByString(item.country);
+
+    return {
+      label: item.country,
+      to: `${RoutePath.catalog}?${catalogURLParams.country}=${id}`,
+    };
+  });
+
+  const genresList = genres?.map((item) => {
+    const id = findIdGenreByString(item.genre);
+
+    return {
+      label: item.genre,
+      to: `${RoutePath.catalog}?${catalogURLParams.genre}=${id}`,
+    };
+  });
 
   return (
     <div className={cls.FilmInfo}>
@@ -77,7 +96,11 @@ const FilmInfo: FC<FilmInfoProps> = (props) => {
           isVisible={countriesList?.length !== 0}
           name="Страны"
         >
-          <TagsList className={cls.tagsList} list={countriesList} theme={TagsListTheme.outline} />
+          <TagsList
+            className={cls.tagsList}
+            list={countriesList}
+            theme={TagsListTheme.outline}
+          />
         </InfoListItem>
         <InfoListItem name="Рейтинг">
           <Rating rating={rating} />

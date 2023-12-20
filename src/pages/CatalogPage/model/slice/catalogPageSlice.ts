@@ -6,8 +6,6 @@ import { FetchCatalog } from '../service/FetchCatalog';
 const initialState: CatalogPageSchema = {
   isLoading: false,
   error: undefined,
-  loadMore: false,
-
   //
   items: [],
 
@@ -22,9 +20,7 @@ const catalogPageSlice = createSlice({
   name: 'catalogPageSlice',
   initialState,
   reducers: {
-    setLoadMore(state, action:PayloadAction<boolean>) {
-      state.loadMore = action.payload;
-    },
+
     setItems(state, action:PayloadAction<CatalogList>) {
       state.items = action.payload;
     },
@@ -32,9 +28,8 @@ const catalogPageSlice = createSlice({
       state.page = action.payload;
     },
 
-    reset(state) {
-      state = { ...initialState };
-    },
+    reset: (state) => ({ ...initialState }),
+
   },
   extraReducers: (builder) => {
     builder

@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   catalogOrderTypes, catalogTypeTypes,
 } from 'shared/api/kinopoisk/models';
-import isValidUrlParam from 'features/CatalogFilterAndSearch/lib/isValidUrlParam';
+import isValidUrlParam from 'shared/lib/urlParams/isValidUrlParam';
 import { CatalogFilterAndSearchSchema } from '../types/CatalogFilterAndSearchSchema';
 
 export const catalogDefaultOrder = catalogOrderTypes.NUM_VOTE;

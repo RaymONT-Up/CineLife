@@ -26,12 +26,11 @@ const CatalogPreviewCard: FC<CatalogPreviewCardProps> = (props) => {
     countries,
   } = props;
 
-  const genresList = genres.map((item) => item.genre);
-  const countriesList = countries.map((item) => item.country);
+  const genresList = genres.map((item) => ({ label: item.genre }));
+  const countriesList = countries.map((item) => ({ label: item.country }));
 
   return (
     <li>
-
       <CardBgImage
         withOverflow
         className={classNames(cls.CatalogPreviewCard, {}, [className])}
@@ -43,8 +42,8 @@ const CatalogPreviewCard: FC<CatalogPreviewCardProps> = (props) => {
         <Rating className={cls.rating} rating={ratingKinopoisk} />
 
         <div className={cls.info}>
-          <TagsList list={genresList} />
-          <TagsList list={countriesList} theme={TagsListTheme.outline} />
+          <TagsList className={cls.tagList} list={genresList} />
+          <TagsList className={cls.tagList} list={countriesList} theme={TagsListTheme.outline} />
 
           <h6 className={cls.name}>
             {nameRu}

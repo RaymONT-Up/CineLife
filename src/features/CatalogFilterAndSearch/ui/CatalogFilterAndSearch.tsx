@@ -28,8 +28,9 @@ const CatalogFilterAndSearch: FC<CatalogFilterAndSearchProps> = (props) => {
   const ParamsIsInstalled = useSelector(getURLParamsIsInstalled);
 
   useEffect(() => {
-    // eslint-disable-next-line no-restricted-globals
+  // eslint-disable-next-line no-restricted-globals
     const searchParams = new URLSearchParams(location.search);
+
     const order = searchParams.get(catalogURLParams.order);
     const type = searchParams.get(catalogURLParams.type);
     const genre = searchParams.get(catalogURLParams.genre);

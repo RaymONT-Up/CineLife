@@ -1,8 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import TagsList, { TagsListTheme } from './TagsList';
 
-const mockList1 = ['Драма', 'Триллер', 'Для взрослых'];
-const mockList2 = ['Сша', 'Япония'];
+const mockList1 = [{
+  label: 'Драма',
+},
+{
+  label: 'Триллер',
+},
+];
+
+const mockList2 = [{
+  label: 'Сша',
+}];
 
 const meta = {
   title: 'shared/TagsList',

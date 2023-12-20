@@ -1034,3 +1034,15 @@ export const catalogCountriesSelectOptions = [
     label: 'Сан-Томе и Принсипи',
   },
 ];
+
+export const findIdCountryByString = (label: string): number | string => {
+  const id = catalogCountriesSelectOptions.find((item) => item.label.toLowerCase() === label.toLowerCase())?.value;
+
+  return id !== undefined ? id : '';
+};
+
+export const findIdGenreByString = (label: string): number | string => {
+  const id = catalogGenresSelectOptions.find((item) => item.label.toLowerCase() === label.toLowerCase())?.value;
+
+  return id !== undefined ? id : '';
+};
