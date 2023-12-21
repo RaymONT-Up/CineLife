@@ -3,7 +3,7 @@ body .MySelect{
   background-color: var(--body-bg);
 
   &Wrapper{
-    z-index: 5;
+    z-index: var(--z-index-select);
   }
 
   &__control{

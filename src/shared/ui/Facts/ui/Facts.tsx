@@ -9,7 +9,6 @@ interface FactsProps {
   defaultShowCount?: number;
   showMoreCount?: number;
   isHTML?: boolean;
-  withTitle?: boolean
 }
 
 const Facts: FC<FactsProps> = (props) => {
@@ -41,7 +40,6 @@ const Facts: FC<FactsProps> = (props) => {
     <div className={classNames(cls.Facts, {}, [className])}>
 
       <ul>
-
         {displayedFacts.map((item, index) => (
           <li className={cls.Fact} key={index}>
             {isHTML ? (

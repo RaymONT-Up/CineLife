@@ -7,6 +7,7 @@ import Logo from 'shared/ui/Logo';
 import cls from './Header.module.scss';
 import Nav from './Nav/Nav';
 import HeaderProfile from './Profile/HeaderProfile';
+import useHeaderFixed from '../lib/useHeaderFixed/useHeaderFixed';
 
 interface HeaderProps {
   className?: string;
@@ -15,8 +16,14 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = (props) => {
   const { className = '' } = props;
 
+  const { isFixed } = useHeaderFixed();
+
   return (
-    <header className={classNames(cls.Header, {}, [className, 'container'])}>
+    <header
+      className={classNames(cls.Header, {
+        [cls.fixed]: isFixed,
+      }, [className, 'container'])}
+    >
 
       <Logo className={cls.Logo} />
 

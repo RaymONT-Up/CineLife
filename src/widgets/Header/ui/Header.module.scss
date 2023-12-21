@@ -23,7 +23,18 @@
   background: var(--glass-bg-color);
 
   backdrop-filter: blur(var(--glass-bg-blur));
+
+
+  transition-property: transform opacity;
+  transition-duration: var(--transition-duration);
+
+  &.fixed{
+    transform: translateY(-100%) scale(0.4);
+    opacity: 0;
+  }
 }
+
+
 
 .nav{
   margin-right: calc(var(--index) * 3);

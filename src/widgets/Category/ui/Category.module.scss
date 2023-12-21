@@ -1,0 +1,11 @@
+.Category{
+  padding: var(--index) 0;
+}
+
+.title{
+  margin-bottom: var(--index);
+}
+
+.list{
+  margin-bottom: calc(var(--index) * 1.3);
+}
