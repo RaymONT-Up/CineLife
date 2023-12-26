@@ -57,4 +57,21 @@
 
   // container
   --container-margin: var(--index);
+
+  // medias
+  @media(width <= 1200px){
+    --index: calc(0.9vh + 1vw)
+  }
+
+  @media(width <= 800px){
+    --index: calc(1vh + 1.2vw)
+  }
+
+  @media(width <= 600px){
+    --index: calc(1.1vh + 1.3vw)
+  }
+
+  @media(width <= 400px){
+    --index: calc(1.2vh + 1.4vw)
+  }
 }

@@ -1,0 +1,57 @@
+/* burger btn */
+.burger {
+  position: relative;
+  width: calc(var(--index) * 1.5);
+  height: calc(var(--index));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.line1,
+.line2,
+.line3,
+.line4 {
+  position: absolute;
+  display: block;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+
+  transition-property: opacity transform;
+  transition-duration: var(--transition-duration);
+
+  background-color: var(--text-color);
+}
+
+.line1 {
+  top: 0;
+}
+
+.line2,
+.line3 {
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.line4 {
+  bottom: 0;
+}
+
+.open {
+  .line1,
+  .line4 {
+    opacity: 0;
+  }
+
+  .line2 {
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  .line3 {
+    transform: translateY(-50%) rotate(45deg);
+  }
+}

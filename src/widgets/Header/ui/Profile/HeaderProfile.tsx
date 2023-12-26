@@ -6,22 +6,28 @@ import { AuthModal } from 'features/Auth';
 import AppLink from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import ProfileIcon from 'shared/assets/icons/profileIcon.svg';
+import classNames from 'shared/lib/classNames/classNames';
 import cls from './HeaderProfile.module.scss';
 
-const HeaderProfile: FC = () => {
+interface HeaderProfileProps {
+  className?: string;
+}
+
+const HeaderProfile: FC<HeaderProfileProps> = ({ className }) => {
   const isAuth = useSelector(getIsAuth);
-  const [AuthIsOpen, setAuthIsOpen] = useState(false);
+  const [AuthIsOpen, setAuthIsOpen] = useState<boolean>(false);
 
   const openAuthModal = () => {
     setAuthIsOpen(true);
   };
+
   const closeAuthModal = () => {
     setAuthIsOpen(false);
   };
 
   if (isAuth) {
     return (
-      <div className={cls.HeaderProfile}>
+      <div className={classNames(cls.HeaderProfile, {}, [className!])}>
         <AppLink to={RoutePath.profile}>
           <ProfileIcon />
         </AppLink>
@@ -31,25 +37,14 @@ const HeaderProfile: FC = () => {
           <li className={cls.item}>Выйти</li>
         </ul>
       </div>
-
     );
   }
 
   return (
-    <>
-      <Button
-        onClick={openAuthModal}
-      >
-        Войти
-      </Button>
-
-      <AuthModal
-        isOpen={AuthIsOpen}
-        onClose={closeAuthModal}
-      />
-
-    </>
-
+    <div className={classNames(cls.HeaderProfile, {}, [className!])}>
+      <Button onClick={openAuthModal}>Войти</Button>
+      <AuthModal isOpen={AuthIsOpen} onClose={closeAuthModal} />
+    </div>
   );
 };
 

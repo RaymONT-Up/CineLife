@@ -158,6 +158,8 @@ export enum TeamProfession {
   HERSELF = 'Играет саму себя',
   HRONO_TITR_MALE = 'Мужской голос за кадром',
   HRONO_TITR_FEMALE = 'Женский голос за кадром',
+  VOICE_MALE = 'Актер озвучки',
+  VOICE_FEMALE = 'Акриса озвучки',
 }
 
 export interface FilmTeamItem {

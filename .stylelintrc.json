@@ -6,6 +6,7 @@
     "selector-class-pattern": null,
     "declaration-block-no-redundant-longhand-properties": null,
     "no-descending-specificity": null,
-    "color-function-notation": null
+    "color-function-notation": null,
+    "keyframes-name-pattern": null
   }
 }
