@@ -1,5 +1,5 @@
 import {
-  FC, useEffect,
+  FC,
 } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import Logo from 'shared/ui/Logo';
@@ -21,9 +21,13 @@ const Header: FC<HeaderProps> = (props) => {
   const { className = '' } = props;
 
   const { isFixed } = useHeaderFixed();
-  const [isOpen, isOpenToggler] = useToggler(false);
+  const [isOpen, isOpenToggler, setIsOpen] = useToggler(false);
 
   useBodyLock(isOpen);
+
+  const onCloseMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
     <header
@@ -43,7 +47,7 @@ const Header: FC<HeaderProps> = (props) => {
         <Nav className={cls.nav} />
         <HeaderProfile className={cls.profile} />
       </div>
-      <Menu isOpen={isOpen} />
+      <Menu onClose={onCloseMenu} isOpen={isOpen} />
     </header>
   );
 };

@@ -31,11 +31,11 @@ const HeaderProfile: FC<HeaderProfileProps> = ({ className }) => {
         <AppLink to={RoutePath.profile}>
           <ProfileIcon />
         </AppLink>
-        <ul className={cls.list}>
+        {/* <ul className={cls.list}>
           <li className={cls.item}>Избранное</li>
           <li className={cls.item}>Настройки</li>
           <li className={cls.item}>Выйти</li>
-        </ul>
+        </ul> */}
       </div>
     );
   }

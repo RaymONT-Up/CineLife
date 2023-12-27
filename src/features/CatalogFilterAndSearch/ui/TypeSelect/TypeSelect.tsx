@@ -45,6 +45,7 @@ const TypeSelect: FC<TypeSelectProps> = (props) => {
       defaultValue={defaultValue}
       className={classNames('', {}, [className])}
       onChange={onChange}
+
     />
   );
 };

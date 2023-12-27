@@ -10,7 +10,7 @@
 }
 
 .top{
-  margin-bottom: calc(var(--index) * 0.5);
+  margin-bottom: calc(var(--index) * 0.8);
 }
 
 .bottom{
@@ -38,3 +38,22 @@
   margin-left: auto;
 }
 
+
+@media(width <= 800px){
+  .countries,.genres,.type,.sort{
+    min-width: auto;
+    margin: 0;
+  }
+  
+  .bottom{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: var(--index);
+  }
+}
+
+@media(width <= 380px){
+  .bottom{
+    grid-template-columns: 1fr;
+  }
+}

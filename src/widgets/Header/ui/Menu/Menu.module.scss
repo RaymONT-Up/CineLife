@@ -12,6 +12,7 @@
   box-sizing: border-box;
   opacity: 0;
   visibility: hidden;
+  overflow-y: auto;
 
   transition-property: opacity visibility;
   transition-duration: var(--transition-duration);
@@ -68,3 +69,7 @@
 // }
 
 
+.profile{
+  margin-top: calc(var(--index) * 2);
+  margin-left: auto;
+}

@@ -18,6 +18,10 @@
   border-width: 0.12em;
 
   width: 100%;
+
+  @media(width <= 400px){
+    padding: 0.8em 3em 0.8em 1em;
+  }
 }
 
 .submitBtn{
@@ -31,3 +35,4 @@
   align-items: center;
   justify-content: center;
 }
+

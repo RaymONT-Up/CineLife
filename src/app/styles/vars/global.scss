@@ -3,7 +3,6 @@
 
   // header-height ~
   --header-height: calc(var(--index) * 5);
-  
 
   // scroll size
   --scroll-size: calc(var(--index) * 0.4);
@@ -64,14 +63,24 @@
   }
 
   @media(width <= 800px){
-    --index: calc(1vh + 1.2vw)
+    --index: calc(1.1vh + 1.2vw);
+    --font-size-m: calc(var(--index) * 0.9);
+    --font-size-l: calc(var(--index) * 1.1);
   }
 
   @media(width <= 600px){
-    --index: calc(1.1vh + 1.3vw)
+    --index: calc(1.2vh + 1.4vw);
+    --font-size-m: calc(var(--index) * 1);
+    --font-size-l: calc(var(--index) * 1.2);
+
   }
 
   @media(width <= 400px){
-    --index: calc(1.2vh + 1.4vw)
+    --index: calc(1.3vh + 1vw);
+    --container-margin: calc(var(--index) * 0.5);
+
+    // --index: calc(1.5vh + 1.3vw);
+    // --font-size-m: calc(var(--index) * 1.1);
+    // --font-size-l: calc(var(--index) * 1.3);
   }
 }

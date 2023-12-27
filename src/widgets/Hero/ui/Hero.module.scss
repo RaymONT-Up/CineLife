@@ -40,11 +40,20 @@
   position: relative;
   z-index: 2;
   width: 100%;
+  margin: var(--index);
+
+  @media(width <= 600px){
+    margin-bottom: calc(var(--index) * 4);
+  }
 }
 
 .searchForm{
   max-width: 70%;
   margin-bottom: 3em;
+
+  @media(width <= 600px){
+    max-width: 100%;
+  }
 }
 
 .title{
