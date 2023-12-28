@@ -3,6 +3,7 @@ import classNames from 'shared/lib/classNames/classNames';
 import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
 import { FilmTeamItem } from 'shared/api/kinopoisk/models';
 import Button from 'shared/ui/Button';
+import ListGrid from 'shared/ui/ListGrid';
 import cls from './TeamList.module.scss';
 import TeamPerson from './TeamPerson/TeamPerson';
 
@@ -14,7 +15,7 @@ interface TeamListProps {
 // !FIX --- decompose and refactor.
 // the Person page has the same PersonFilms component.
 const TeamList: FC<TeamListProps> = ({ professionText, group }) => {
-  const [itemsToShow, setItemsToShow] = useState(10);
+  const [itemsToShow, setItemsToShow] = useState(5);
 
   const showMore = () => {
     setItemsToShow((prev) => prev + 20);
@@ -35,7 +36,7 @@ const TeamList: FC<TeamListProps> = ({ professionText, group }) => {
         </span>
       </Title>
 
-      <ul className={cls.list}>
+      <ListGrid>
         {group.slice(0, itemsToShow).map((item, itemIndex) => (
           <TeamPerson
             staffId={item.staffId}
@@ -48,7 +49,7 @@ const TeamList: FC<TeamListProps> = ({ professionText, group }) => {
             professionText={item.professionText}
           />
         ))}
-      </ul>
+      </ListGrid>
 
       {itemsToShow < group.length && (
         <Button

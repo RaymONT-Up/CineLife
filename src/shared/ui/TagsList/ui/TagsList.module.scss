@@ -33,14 +33,29 @@
   &::first-letter {
     text-transform: uppercase;
   }
+
+  transition-duration: var(--transition-duration);
 }
 
 .bgBlur{
   background-color: var(--glass-bg-color);
-  backdrop-filter: blur(var(--glass-bg-blur));
+  backdrop-filter: blur(0.5em);
+
+  transition-property: background-color;
+  
+  &:hover{
+    background-color: var(--primary-color);
+  }
 }
+
 
 .outline{
   border: 0.05em solid var(--primary-color);
+
+  transition-property: background-color;
+
+  &:hover{
+    background-color: var(--primary-color);
+  }
 }
 

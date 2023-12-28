@@ -52,10 +52,27 @@ const Images: FC<ImagesProps> = (props) => {
   return (
     <div className={classNames(cls.Images, {}, [className])}>
       <Carousel
-        slidesPerView={4}
+        slidesPerView={5}
         autoHeight
         spaceBetween={screenWidth / 100}
         enableNavigation
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          320: {
+            slidesPerView: 2,
+          },
+          600: {
+            slidesPerView: 3,
+          },
+          800: {
+            slidesPerView: 4,
+          },
+          1200: {
+            slidesPerView: 5,
+          },
+        }}
         items={items?.map((item, index) => (
           <Button
             className={cls.wrapper}

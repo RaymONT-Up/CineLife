@@ -78,7 +78,7 @@ const FilmInfo: FC<FilmInfoProps> = (props) => {
         <InfoListItem isVisible={filmLength} name="Время">
           {`${minutesToHours(filmLength)} / ${filmLength} мин.`}
         </InfoListItem>
-        <InfoListItem name="Слоган">
+        <InfoListItem isVerticalCentered={false} name="Слоган">
           {slogan}
         </InfoListItem>
         <InfoListItem isVisible={ratingAgeLimits} name="Возраст">
@@ -86,6 +86,7 @@ const FilmInfo: FC<FilmInfoProps> = (props) => {
         </InfoListItem>
 
         <InfoListItem
+          isVerticalCentered={false}
           isVisible={genresList?.length !== 0}
           name="Жанры"
         >
@@ -93,6 +94,7 @@ const FilmInfo: FC<FilmInfoProps> = (props) => {
         </InfoListItem>
 
         <InfoListItem
+          isVerticalCentered={false}
           isVisible={countriesList?.length !== 0}
           name="Страны"
         >

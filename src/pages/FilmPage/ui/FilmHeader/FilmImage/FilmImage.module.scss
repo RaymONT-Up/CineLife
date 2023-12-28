@@ -11,5 +11,10 @@
     max-width: calc(var(--index) * 18);
     height: 100%;
     margin-right: calc(var(--index) * 1.5);
+
+    @media(width <= 800px){
+      margin-right: 0;
+      margin-bottom: var(--index);
+    }
   }
 }
