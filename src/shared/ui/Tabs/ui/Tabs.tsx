@@ -1,5 +1,5 @@
 import {
-  FC, ReactNode, useCallback, useEffect, useRef, useState,
+  FC, MouseEventHandler, ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import Button, { ButtonTheme } from 'shared/ui/Button';
@@ -25,7 +25,6 @@ interface TabsProps {
   TabsList: Tab[]
 }
 
-// !FIX - Dont
 const Tabs: FC<TabsProps> = (props) => {
   const {
     className = '',
@@ -33,40 +32,34 @@ const Tabs: FC<TabsProps> = (props) => {
     buttonClass = '',
     contentClass = '',
     activeClass = '',
-
     isLoading = false,
-
     TabsList,
-
     defaultTab = TabsList[0],
-
   } = props;
 
   const [activeTab, setActiveTab] = useState(defaultTab);
+  const [buttonWidth, setButtonWidth] = useState(0);
 
-  // underline logic
   const buttonsRef = useRef(null);
 
   const [underlineWidth, setUnderlineWidth] = useState(0);
   const [underlineLeft, setUnderlineLeft] = useState(0);
-
-  // useEffect(() => {
-  //   document.addEventListener('resize', activeTabSetLine);
-
-  //   return () => {
-  //     document.removeEventListener('resize', activeTabSetLine);
-  //   };
-  // }, [activeTabSetLine]);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   useEffect(() => {
     const activeTabEl = buttonsRef?.current?.querySelector(`.${cls.active}`);
-
     const width = activeTabEl?.offsetWidth;
     const left = activeTabEl?.offsetLeft;
 
     setUnderlineWidth(width);
     setUnderlineLeft(left);
   }, [activeTab]);
+
+  useEffect(() => {
+    setButtonWidth(buttonsRef.current.clientWidth / TabsList.length);
+  }, [TabsList]);
 
   const btnOnClick = (newTab: Tab) => {
     setActiveTab((prev) => {
@@ -75,8 +68,32 @@ const Tabs: FC<TabsProps> = (props) => {
     });
   };
 
+  const handleMouseDown: MouseEventHandler<HTMLDivElement> = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - buttonsRef.current.offsetLeft);
+    setScrollLeft(buttonsRef.current.scrollLeft);
+  };
+  // scroll x
+  const handleMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
+    if (!isDragging) return;
+    const x = e.pageX - buttonsRef.current.offsetLeft;
+    const walk = (x - startX) * 1.1;
+    buttonsRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp: MouseEventHandler<HTMLDivElement> = () => {
+    setIsDragging(false);
+  };
+
   return (
-    <div className={classNames(cls.Tabs, {}, [className])}>
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div
+      className={classNames(cls.Tabs, {}, [className])}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+    >
       <div
         ref={buttonsRef}
         className={classNames(cls.buttons, { [cls.isLoading]: isLoading }, [buttonsClass])}
@@ -110,7 +127,7 @@ const Tabs: FC<TabsProps> = (props) => {
         />
       </div>
       <div className={`${cls.content} ${contentClass}`}>
-        {isLoading ? <Loader /> : activeTab.content }
+        {isLoading ? <Loader /> : activeTab.content}
       </div>
     </div>
   );
