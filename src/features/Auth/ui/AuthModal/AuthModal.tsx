@@ -68,6 +68,7 @@ const AuthModal: FC<AuthModalProps> = (props) => {
 
   return (
     <Modal
+      lazy
       isOpen={isOpen}
       onClose={onClose}
       className={classNames(cls.Modal)}

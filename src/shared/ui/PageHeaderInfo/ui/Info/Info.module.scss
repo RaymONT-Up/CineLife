@@ -1,0 +1,19 @@
+.Info{
+  display: flex;
+  flex-direction: column;
+}
+
+.title{
+  margin-top: 0.3em;
+  margin-bottom: 0.2em;
+}
+
+.subtitle{
+  opacity: 0.6;
+  margin-bottom: 0.8em;
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
+}

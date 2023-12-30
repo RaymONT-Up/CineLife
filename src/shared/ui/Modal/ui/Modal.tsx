@@ -5,6 +5,7 @@ import classNames from 'shared/lib/classNames/classNames';
 import Portal from 'shared/ui/Portal';
 import CloseIcon from 'shared/assets/icons/CloseIcon.svg';
 import Button from 'shared/ui/Button';
+import useBodyLock from 'shared/lib/hooks/useBodyLock/useBodyLock';
 import cls from './Modal.module.scss';
 
 export enum ModalTheme {
@@ -43,6 +44,9 @@ const Modal: FC<ModalProps> = (props) => {
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  // fix body scroll
+  useBodyLock(isOpen);
 
   useEffect(() => {
     if (isOpen) {

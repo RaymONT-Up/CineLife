@@ -59,7 +59,7 @@
 
   // medias
   @media(width <= 1200px){
-    --index: calc(0.9vh + 1vw)
+    --index: calc(0.86vh + 0.9vw)
   }
 
   @media(width <= 800px){
@@ -70,14 +70,17 @@
 
   @media(width <= 600px){
     --index: calc(1.2vh + 1.4vw);
+    --title-hero-font-size: calc(var(--index) * 2);
+    --title-subtitle-font-size: calc(var(--index) * 1.2);
     --font-size-m: calc(var(--index) * 1);
     --font-size-l: calc(var(--index) * 1.2);
-
+    --border-radius-size-d: calc(var(--index) * 0.6);
   }
 
   @media(width <= 400px){
     --index: calc(1.3vh + 1vw);
     --container-margin: calc(var(--index) * 0.5);
+    --border-radius-size-d: calc(var(--index) * 0.8);
 
     // --index: calc(1.5vh + 1.3vw);
     // --font-size-m: calc(var(--index) * 1.1);

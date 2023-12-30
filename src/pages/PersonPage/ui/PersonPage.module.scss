@@ -1,0 +1,6 @@
+.facts{
+  z-index: 2;
+  position: relative;
+  margin-top: calc(var(--index) * -4);
+  margin-bottom: calc(var(--index) * 4);
+}

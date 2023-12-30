@@ -8,6 +8,7 @@ import { FetchPerson } from '../model/service/FetchPerson';
 import { PersonActions } from '../model/slice/PersonPageSlice';
 import PersonHeader from './PersonHeader/PersonHeader';
 import PersonFilms from './PersonFilms/PersonFilms';
+import cls from './PersonPage.module.scss';
 
 interface PersonPageProps {
   className?: string;
@@ -29,7 +30,6 @@ const PersonPage: FC<PersonPageProps> = () => {
     birthplace,
     death,
     deathplace,
-
     sex,
     spouses,
     hasAwards,
@@ -77,6 +77,7 @@ const PersonPage: FC<PersonPageProps> = () => {
       />
 
       <Facts
+        className={cls.facts}
         defaultShowCount={3}
         items={facts}
       />

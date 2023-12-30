@@ -47,7 +47,7 @@ const FilmTabs: FC<FilmTabsProps> = (props) => {
     return () => {
       dispatch(FilmTabsAction.reset());
     };
-  }, [dispatch]); // Make sure to include dispatch as a dependency
+  }, [dispatch]);
 
   return (
     <div className={classNames(cls.FilmTabs, {}, [className])}>

@@ -1,11 +1,11 @@
 .FilmPage {
-  --film-page-margin: calc((var(--index) * 2) + var(--container-margin));
+  // --film-page-margin: calc((var(--index) * 2) + var(--container-margin));
 
-  margin: calc(var(--header-height) * -1) calc(var(--index) * 2) 0 calc(var(--index) * 2);
+  // margin: calc(var(--header-height) * -1) calc(var(--index) * 2) 0 calc(var(--index) * 2);
 
-  @media (width <= 600px) {
-    --offset: calc(var(--index) * 0.8);
-    --film-page-margin: calc(var(--offset) + var(--container-margin));
-    margin: calc(var(--header-height) * -1) var(--offset) 0 var(--offset);
-  }
+  // @media (width <= 600px) {
+  //   --offset: calc(var(--index) * 0.8);
+  //   --film-page-margin: calc(var(--offset) + var(--container-margin));
+  //   margin: calc(var(--header-height) * -1) var(--offset) 0 var(--offset);
+  // }
 }
