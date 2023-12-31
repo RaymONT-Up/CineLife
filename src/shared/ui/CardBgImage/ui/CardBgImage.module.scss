@@ -22,7 +22,9 @@
     transition: opacity var(--transition-duration);
   }
 
-  &:hover::after{
+  &:hover::after, 
+  &:focus::after,
+  &:focus-visible::after{
     opacity: 1;
   }
 }

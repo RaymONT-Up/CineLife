@@ -78,12 +78,13 @@
   }
 
   @media(width <= 400px){
-    --index: calc(1.3vh + 1vw);
+    --index: calc(1.4vh + 1vw);
     --container-margin: calc(var(--index) * 0.5);
-    --border-radius-size-d: calc(var(--index) * 0.8);
 
     // --index: calc(1.5vh + 1.3vw);
-    // --font-size-m: calc(var(--index) * 1.1);
-    // --font-size-l: calc(var(--index) * 1.3);
+    --title-hero-font-size: calc(var(--index) * 2.2);
+    --title-subtitle-font-size: calc(var(--index) * 1.4);
+    --font-size-m: calc(var(--index) * 1.1);
+    --font-size-l: calc(var(--index) * 1.25);
   }
 }

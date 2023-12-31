@@ -42,8 +42,8 @@ const CatalogPreviewCard: FC<CatalogPreviewCardProps> = (props) => {
         <Rating className={cls.rating} rating={ratingKinopoisk} />
 
         <div className={cls.info}>
-          <TagsList className={cls.tagList} list={genresList} />
-          <TagsList className={cls.tagList} list={countriesList} theme={TagsListTheme.outline} />
+          <TagsList disableHover className={cls.tagList} list={genresList} />
+          <TagsList disableHover className={cls.tagList} list={countriesList} theme={TagsListTheme.outline} />
 
           <h6 className={cls.name}>
             {nameRu}

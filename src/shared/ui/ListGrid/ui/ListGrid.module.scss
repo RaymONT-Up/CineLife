@@ -16,11 +16,11 @@
   }
 
   @media(width <= 400px){
-    grid-gap: calc(var(--index) * 0.9);
+    grid-gap:  calc(var(--index) * 0.8) calc(var(--index) * 0.5);
   }
 
-  @media(width <= 320px){
-    grid-gap: calc(var(--index) * 0.5) var(--index);
+  @media(width <= 300px){
+    grid-gap: calc(var(--index) * 1.2);
     grid-template-columns: repeat(1, 1fr);
   }
 }

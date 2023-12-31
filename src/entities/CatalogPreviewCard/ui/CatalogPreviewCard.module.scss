@@ -38,6 +38,18 @@
       transform: scale(1.01);
     }
   }
+
+  @media(width <= 400px){
+    --padding: 0.3em;
+        
+    &:hover, &:focus-visible, &:focus{
+      transform: scale(1);
+    }
+  }
+
+  @media(width <= 300px){
+    --padding: 0.7em;
+  }
 }
 
 .tagList{
@@ -73,11 +85,13 @@
 
 .name{
   font-size: 1.1em;
+  line-height: 105%;
   margin-bottom: 0.2em;
 }
 
 .year{
   font-size: 0.8em;
+  line-height: 100%;
   
   opacity: 0.6;
 }
@@ -93,5 +107,38 @@
 
   .tagList{
     font-size: 75%;
+  }
+}
+
+
+@media(width <= 400px){
+  .year{
+    font-size: 0.8em;
+  }
+
+  .name{
+    font-size: 1em;
+  }
+
+  .tagList{
+    font-size: 65%;
+  }
+}
+
+@media(width <= 300px){
+  .year{
+    font-size: 1.3em;
+  }
+
+  .name{
+    font-size: 2em;
+  }
+
+  .tagList{
+    font-size: 95%;
+  }
+
+  .rating{
+    font-size: 1.3em;
   }
 }

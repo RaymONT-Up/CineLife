@@ -59,3 +59,14 @@
   }
 }
 
+
+// disable hovers
+.TagsList.disableHover{
+  .bgBlur:hover{
+    background-color: var(--glass-bg-color);
+  }
+
+  .outline:hover{
+    background-color: transparent;
+  }
+}

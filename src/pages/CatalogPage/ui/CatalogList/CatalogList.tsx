@@ -32,7 +32,8 @@ const CatalogList: FC<CatalogListProps> = (props) => {
     return <PageLoader />;
   }
 
-  if (items.length < 1) {
+  if (items.length < 1 && !loadingMore) {
+    console.log('no', items.length, loadingMore);
     return (
       <Title centered>
         Ничего не найдено

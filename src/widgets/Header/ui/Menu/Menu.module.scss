@@ -38,9 +38,9 @@
   box-sizing: border-box;
   width: 100%;
   display: block;
-  padding: 0.5em 0.1em;
+  padding: 0.4em 0.1em;
 
-  font-size: calc(var(--index) * 2.6);
+  font-size: calc(var(--index) * 2.5);
   font-weight: 500;
   line-height: 100%;
   text-align: right;
@@ -72,4 +72,10 @@
 .profile{
   margin-top: calc(var(--index) * 2);
   margin-left: auto;
+}
+
+@media(width <= 400px){
+  .link{
+    font-size: calc(var(--index) * 2.2);
+  }
 }

@@ -17,6 +17,7 @@ interface TagsListProps {
   className?: string;
   list: TagLink[];
   theme?: TagsListTheme;
+  disableHover?: boolean;
 }
 
 const TagsList: FC<TagsListProps> = (props) => {
@@ -24,6 +25,7 @@ const TagsList: FC<TagsListProps> = (props) => {
     className,
     list,
     theme = TagsListTheme.bgBlur,
+    disableHover,
   } = props;
 
   if (list?.length === 0) {
@@ -31,7 +33,11 @@ const TagsList: FC<TagsListProps> = (props) => {
   }
 
   return (
-    <ul className={classNames(cls.TagsList, {}, [className])}>
+    <ul
+      className={classNames(cls.TagsList, {
+        [cls.disableHover]: disableHover,
+      }, [className])}
+    >
       {list?.map((tag, index) => {
         const { to, label } = tag;
 
