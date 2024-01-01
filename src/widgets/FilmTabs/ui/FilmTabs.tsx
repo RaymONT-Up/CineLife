@@ -36,10 +36,27 @@ const FilmTabs: FC<FilmTabsProps> = (props) => {
       name: 'Описание',
       id: 1,
     },
-    { content: <Images id={id} />, name: 'Изображения', id: 2 },
-    { content: <Budget id={id} />, name: 'Бюджет', id: 3 },
-    { content: <Facts id={id} />, name: 'Факты', id: 4 },
-    { content: <Team id={id} />, name: 'Команда', id: 5 },
+    {
+      content:
+  <Images id={id} />,
+      name: 'Изображения',
+      id: 2,
+    },
+    {
+      content: <Budget id={id} />,
+      name: 'Бюджет',
+      id: 3,
+    },
+    {
+      content: <Facts id={id} />,
+      name: 'Факты',
+      id: 4,
+    },
+    {
+      content: <Team id={id} />,
+      name: 'Команда',
+      id: 5,
+    },
 
   ];
 

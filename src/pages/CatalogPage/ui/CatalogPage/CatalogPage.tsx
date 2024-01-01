@@ -13,6 +13,7 @@ import { catalogActions } from 'pages/CatalogPage/model/slice/catalogPageSlice';
 import { getURLParamsIsInstalled } from 'features/CatalogFilterAndSearch/model/selectors/getCatalogFilter';
 import useObserverApi from 'shared/lib/hooks/useObserverApi/useObserverApi';
 import Loader from 'shared/ui/Loader';
+import { useLocation } from 'react-router-dom';
 import cls from './Catalog.module.scss';
 import CatalogList from '../CatalogList/CatalogList';
 import { FetchCatalog } from '../../model/service/FetchCatalog';

@@ -1,4 +1,6 @@
 .Button {
+  --border-width: 0.1em;
+
   display: inline-block;
   cursor: pointer;
   border: none;
@@ -20,10 +22,12 @@
   background-color: var(--primary-color);
   color: var(--text-color);
 
-  transition-property: color background-color transform;
-  transition-duration:var(--transition-duration) ;
+  transition-property: color background-color transform border-color;
+  transition-duration: var(--transition-duration);
+  border: var(--border-width) solid var(--primary-color);
 
   &:hover{
+    border-color: var(--text-color);
     color: var(--primary-color);
     background-color: var(--text-color);
 
@@ -34,14 +38,14 @@
 }
 
 .outline{
-  border: 0.1em solid var(--primary-color);
+  border: var(--border-width) solid var(--primary-color);
   border-radius: var(--btn-border-radius);
   padding: var(--btn-padding);
   color: var(--primary-color);
   background-color: transparent;
 
 
-  transition-property: background-color color;
+  transition-property: background-color color border-color;
   transition-duration: var(--transition-duration);
 
   &:hover{

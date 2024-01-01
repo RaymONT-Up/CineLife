@@ -1,0 +1,27 @@
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 1.5em auto;
+
+  @media(width <= 320px){
+    flex-direction: column;
+  }
+}
+
+.showMore{
+  @media(width <= 320px) {
+    width: 100%;
+  }
+}
+
+.hideItems{
+  margin-left: 1.3em;
+
+  @media(width <= 320px){
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0.8em;
+  }
+}

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
-import Title, { TitleTheme } from 'shared/ui/Title';
+import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
 import cls from './Info.module.scss';
 
 interface InfoProps {
@@ -19,10 +19,10 @@ const Info: FC<InfoProps> = (props) => {
 
   return (
     <div className={classNames(cls.Info, {}, [className])}>
-      <Title className={cls.title}>{mainName}</Title>
+      <Title Tag={TitleTags.h1} className={cls.title}>{mainName}</Title>
 
       {name && subName && (
-        <Title theme={TitleTheme.subtitle} className={cls.subtitle}>
+        <Title Tag={TitleTags.h2} theme={TitleTheme.subtitle} className={cls.subtitle}>
           {subName}
         </Title>
       )}

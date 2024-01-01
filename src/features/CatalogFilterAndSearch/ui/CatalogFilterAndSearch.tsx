@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from 'shared/ui/Loader';
+import { useLocation } from 'react-router-dom';
 import cls from './CatalogFilterAndSearch.module.scss';
 import SortSelect from './SortSelect/SortSelect';
 import TypeSelect from './TypeSelect/TypeSelect';
@@ -27,10 +28,10 @@ const CatalogFilterAndSearch: FC<CatalogFilterAndSearchProps> = (props) => {
 
   const ParamsIsInstalled = useSelector(getURLParamsIsInstalled);
 
-  useEffect(() => {
   // eslint-disable-next-line no-restricted-globals
-    const searchParams = new URLSearchParams(location.search);
+  const searchParams = new URLSearchParams(location.search);
 
+  useEffect(() => {
     const order = searchParams.get(catalogURLParams.order);
     const type = searchParams.get(catalogURLParams.type);
     const genre = searchParams.get(catalogURLParams.genre);

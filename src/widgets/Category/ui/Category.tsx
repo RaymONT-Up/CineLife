@@ -4,11 +4,13 @@ import TagsList, { TagsListTheme } from 'shared/ui/TagsList';
 import { catalogCountriesSelectOptions, catalogGenresSelectOptions } from 'shared/config/catalogFilter/catalogFilter';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/urlParams';
+
+import useShowMore from 'shared/lib/hooks/useShowMore/useShowMore';
+import ShowMoreButtons from 'shared/ui/ShowMoreButtons';
 import cls from './Category.module.scss';
 
 interface CategoryProps {
   className?: string;
-
 }
 
 const Category: FC<CategoryProps> = (props) => {
@@ -19,26 +21,46 @@ const Category: FC<CategoryProps> = (props) => {
     };
   });
 
-  const genriesList = catalogGenresSelectOptions.map((country) => {
+  const genresList = catalogGenresSelectOptions.map((genre) => {
     return {
-      label: country.label,
-      to: `${RoutePath.catalog}?${catalogURLParams.genre}=${country.value}`,
+      label: genre.label,
+      to: `${RoutePath.catalog}?${catalogURLParams.genre}=${genre.value}`,
     };
   });
 
+  const {
+    visibleItems: visibleCountries,
+    hasMore: hasMoreCountries,
+    showMore: showMoreCountries,
+    reset: resetCountries,
+    canHide: canHideCountries,
+  } = useShowMore(countriesList, 30, 60);
+
   return (
     <div className={cls.Category}>
-      <Title className={cls.title} theme={TitleTheme.subtitle}>
-        По  жанрам:
-      </Title>
+      <div className={cls.box}>
+        <Title className={cls.title} theme={TitleTheme.subtitle}>
+          Жанры:
+        </Title>
 
-      <TagsList className={cls.list} list={genriesList} />
+        <TagsList list={genresList} />
+      </div>
 
-      <Title className={cls.title} theme={TitleTheme.subtitle}>
-        По  странам:
-      </Title>
+      <div className={cls.box}>
+        <Title className={cls.title} theme={TitleTheme.subtitle}>
+          Страны:
+        </Title>
 
-      <TagsList theme={TagsListTheme.outline} className={cls.list} list={countriesList} />
+        <TagsList theme={TagsListTheme.outline} list={visibleCountries} />
+
+        <ShowMoreButtons
+          canHide={canHideCountries}
+          hasMore={hasMoreCountries}
+          showMore={showMoreCountries}
+          reset={resetCountries}
+        />
+
+      </div>
     </div>
   );
 };

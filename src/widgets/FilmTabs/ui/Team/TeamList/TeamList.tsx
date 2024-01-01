@@ -1,9 +1,9 @@
-import { FC, useState } from 'react';
-import classNames from 'shared/lib/classNames/classNames';
+import { FC } from 'react';
 import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
 import { FilmTeamItem } from 'shared/api/kinopoisk/models';
-import Button from 'shared/ui/Button';
 import ListGrid from 'shared/ui/ListGrid';
+import useShowMore from 'shared/lib/hooks/useShowMore/useShowMore';
+import ShowMoreButtons from 'shared/ui/ShowMoreButtons';
 import cls from './TeamList.module.scss';
 import TeamPerson from './TeamPerson/TeamPerson';
 
@@ -12,14 +12,10 @@ interface TeamListProps {
   group: FilmTeamItem[];
 }
 
-// !FIX --- decompose and refactor.
-// the Person page has the same PersonFilms component.
 const TeamList: FC<TeamListProps> = ({ professionText, group }) => {
-  const [itemsToShow, setItemsToShow] = useState(5);
-
-  const showMore = () => {
-    setItemsToShow((prev) => prev + 20);
-  };
+  const {
+    visibleItems, hasMore, showMore, reset, canHide,
+  } = useShowMore(group, 15);
 
   const total = group.length;
 
@@ -37,7 +33,7 @@ const TeamList: FC<TeamListProps> = ({ professionText, group }) => {
       </Title>
 
       <ListGrid>
-        {group.slice(0, itemsToShow).map((item, itemIndex) => (
+        {visibleItems.map((item, itemIndex) => (
           <TeamPerson
             staffId={item.staffId}
             key={`${item.staffId}${itemIndex}`}
@@ -51,17 +47,12 @@ const TeamList: FC<TeamListProps> = ({ professionText, group }) => {
         ))}
       </ListGrid>
 
-      {itemsToShow < group.length && (
-        <Button
-          centered
-          className={cls.showMore}
-          onClick={showMore}
-        >
-          Показать еще (
-          {`${itemsToShow} / ${total}`}
-          )
-        </Button>
-      )}
+      <ShowMoreButtons
+        hasMore={hasMore}
+        canHide={canHide}
+        showMore={showMore}
+        reset={reset}
+      />
     </div>
   );
 };

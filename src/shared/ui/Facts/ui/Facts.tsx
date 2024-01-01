@@ -1,6 +1,7 @@
-import React, { FC, ReactNode, useState } from 'react';
+import { FC } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
-import Button, { ButtonTheme } from 'shared/ui/Button';
+import ShowMoreButtons from 'shared/ui/ShowMoreButtons';
+import useShowMore from 'shared/lib/hooks/useShowMore/useShowMore';
 import cls from './Facts.module.scss';
 
 interface FactsProps {
@@ -15,32 +16,20 @@ const Facts: FC<FactsProps> = (props) => {
   const {
     className,
     items = [],
-    defaultShowCount = 6,
-    showMoreCount = defaultShowCount,
+    defaultShowCount = 4,
+    showMoreCount = defaultShowCount * 2,
     isHTML = false,
   } = props;
 
-  const length = items?.length;
-
-  const [displayCount, setDisplayCount] = useState(defaultShowCount);
-
-  const hasMore = length - displayCount > 0;
-
-  const displayedFacts = items?.slice(0, displayCount);
-
-  const showMore = () => {
-    setDisplayCount((prevCount) => prevCount + showMoreCount);
-  };
-
-  const closeMore = () => {
-    setDisplayCount(showMoreCount);
-  };
+  const {
+    visibleItems, hasMore, showMore, reset, canHide,
+  } = useShowMore(items, showMoreCount, defaultShowCount);
 
   return (
     <div className={classNames(cls.Facts, {}, [className])}>
 
       <ul>
-        {displayedFacts.map((item, index) => (
+        {visibleItems.map((item, index) => (
           <li className={cls.Fact} key={index}>
             {isHTML ? (
               <div dangerouslySetInnerHTML={{ __html: item }} />
@@ -52,25 +41,13 @@ const Facts: FC<FactsProps> = (props) => {
 
       </ul>
 
-      {length > defaultShowCount && (
-        <div className={cls.buttons}>
+      <ShowMoreButtons
+        hasMore={hasMore}
+        canHide={canHide}
+        showMore={showMore}
+        reset={reset}
+      />
 
-          {hasMore && (
-          <Button className={cls.showMore} onClick={showMore}>
-            Показать еще
-          </Button>
-          )}
-
-          {displayCount > defaultShowCount && (
-            <Button
-              theme={ButtonTheme.OUTLINE}
-              onClick={closeMore}
-            >
-              Скрыть
-            </Button>
-          )}
-        </div>
-      )}
     </div>
   );
 };

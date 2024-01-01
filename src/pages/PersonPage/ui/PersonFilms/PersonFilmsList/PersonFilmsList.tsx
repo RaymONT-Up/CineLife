@@ -1,8 +1,9 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import ListGrid from 'shared/ui/ListGrid';
 import { PersonFilmTypes } from 'shared/api/kinopoisk/models';
 import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
-import Button from 'shared/ui/Button';
+import ShowMoreButtons from 'shared/ui/ShowMoreButtons';
+import useShowMore from 'shared/lib/hooks/useShowMore/useShowMore';
 import cls from './PersonFilmsList.module.scss';
 import PersonFilm from './PersonFilm/PersonFilm';
 
@@ -15,11 +16,9 @@ interface PersonFilmsListProps {
 const PersonFilmsList: FC<PersonFilmsListProps> = (props) => {
   const { className, items, title } = props;
 
-  const [itemsToShow, setItemsToShow] = useState(10);
-
-  const showMore = () => {
-    setItemsToShow((prev) => prev + 20);
-  };
+  const {
+    visibleItems, hasMore, showMore, reset, canHide,
+  } = useShowMore(items);
 
   const total = items.length;
 
@@ -37,7 +36,7 @@ const PersonFilmsList: FC<PersonFilmsListProps> = (props) => {
       </Title>
 
       <ListGrid className={cls.list}>
-        {items.slice(0, itemsToShow).map((film, index) => (
+        {visibleItems.map((film, index) => (
           <PersonFilm
             filmId={film.filmId}
             nameRu={film.nameRu}
@@ -51,17 +50,13 @@ const PersonFilmsList: FC<PersonFilmsListProps> = (props) => {
         ))}
       </ListGrid>
 
-      {itemsToShow < items.length && (
-      <Button
-        centered
-        className={cls.showMore}
-        onClick={showMore}
-      >
-        Показать еще (
-        {`${itemsToShow} / ${total}`}
-        )
-      </Button>
-      )}
+      <ShowMoreButtons
+        hasMore={hasMore}
+        canHide={canHide}
+        showMore={showMore}
+        reset={reset}
+      />
+
     </div>
   );
 };

@@ -8,7 +8,11 @@
   margin-bottom: 1em;
 
   border-bottom: 0.1em outset var(--text-color);
-  
+
+  &:last-child{
+    margin-bottom: 0;
+  }
+
   a{
     text-decoration: none;
     transition-property: color;
@@ -21,12 +25,3 @@
   }
 }
 
-.buttons{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.showMore{
-  margin-right: 1em;
-}
