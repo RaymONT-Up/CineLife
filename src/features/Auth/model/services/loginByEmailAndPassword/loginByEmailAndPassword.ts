@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { userActions } from 'entities/User';
 import { User } from 'entities/User/model/types/user';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localstorage';
 
 export interface loginByEmailAndPasswordProps {
   email: string;
@@ -28,7 +27,6 @@ const loginByEmailAndPassword = createAsyncThunk(
       };
 
       thunkAPI.dispatch(userActions.setAuthData(user));
-      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(idToken));
 
       return user;
     } catch (error) {

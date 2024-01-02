@@ -8,7 +8,7 @@
     padding: 1.5em;
     max-width: 70%;
     min-width: 25%;
-    overflow: hidden; /* Скрыть выход за пределы контента */
+    overflow: hidden;
   
     border: var(--border-size-d) solid var(--primary-color);
     border-radius: var(--border-radius-size-d);
@@ -17,7 +17,23 @@
   
     background-color: var(--glass-bg-color);
     backdrop-filter: blur(var(--glass-bg-blur));
+
+
+    @media(width <= 800px){
+      min-width: 40%;
+    }
+
+    @media(width <= 600px){
+      min-width: 50%;
+    }
+
+    @media(width <= 400px){
+      min-width: 70%;
+    }
   }
+
+
+ 
 }
 
 .Modal {

@@ -1,14 +1,14 @@
 .Modal {
   .isChanging {
     animation: is-changing-animation;
-    animation-duration: 1s;
+    animation-duration: 500ms;
 
     animation-fill-mode: forwards;
   }
 
   .isOpens {
     animation: is-opens-animation;
-    animation-duration: 1s;
+    animation-duration: 500ms;
 
     animation-fill-mode: forwards;
   }

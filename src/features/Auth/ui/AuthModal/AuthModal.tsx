@@ -1,13 +1,10 @@
 import {
-  FC, useCallback, useEffect, useState,
+  FC, useEffect, useState,
 } from 'react';
 import Modal from 'shared/ui/Modal';
 import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
 import Button, { ButtonTheme } from 'shared/ui/Button';
 import classNames from 'shared/lib/classNames/classNames';
-import { useDispatch } from 'react-redux';
-import { authActions } from 'features/Auth/model/slice/authSlice';
-import Loader from 'shared/ui/Loader';
 import cls from './AuthModal.module.scss';
 import LoginForm from '../LoginForm/LoginForm';
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -18,7 +15,7 @@ interface AuthModalProps {
   onClose: () => void;
 }
 
-const ANIMATION_DURATION = 1000;
+const ANIMATION_DURATION = 500;
 
 const AuthModal: FC<AuthModalProps> = (props) => {
   const { className = '', isOpen, onClose } = props;

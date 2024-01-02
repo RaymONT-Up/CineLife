@@ -2,7 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { userActions } from 'entities/User';
 import { User } from 'entities/User/model/types/user';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localstorage';
+import {
+  getFirestore, collection, doc, setDoc,
+} from 'firebase/firestore';
 
 export interface registerByEmailAndPasswordProps {
   email: string;
@@ -13,6 +15,8 @@ const registerByEmailAndPassword = createAsyncThunk(
   'auth/registerByEmailAndPassword',
   async (registrationData: registerByEmailAndPasswordProps, thunkAPI) => {
     const auth = getAuth();
+    const firestore = getFirestore(); // Инициализация Firestore
+
     const { email, password } = registrationData;
 
     try {
@@ -28,7 +32,13 @@ const registerByEmailAndPassword = createAsyncThunk(
       };
 
       thunkAPI.dispatch(userActions.setAuthData(user));
-      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(idToken));
+
+      const usersCollection = collection(firestore, 'users');
+      const userDocRef = doc(usersCollection, user.uid);
+      // после используяется для добавления/получения/удаления данных о избранных фильмах etc
+      await setDoc(userDocRef, {
+        uid: user.uid,
+      });
 
       return user;
     } catch (error) {
@@ -36,4 +46,5 @@ const registerByEmailAndPassword = createAsyncThunk(
     }
   },
 );
+
 export default registerByEmailAndPassword;

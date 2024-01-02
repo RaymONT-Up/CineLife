@@ -39,7 +39,8 @@
 
 .bgBlur{
   background-color: var(--glass-bg-color);
-  backdrop-filter: blur(0.5em);
+
+  // backdrop-filter: blur(0.5em);
 
   transition-property: background-color;
   
