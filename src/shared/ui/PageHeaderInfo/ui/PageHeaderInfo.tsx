@@ -38,10 +38,12 @@ const PageHeaderInfo: FC<PageHeaderInfoProps> = (props) => {
       )}
 
       <div className={cls.content}>
+
         <Image
           src={src}
           alt={alt}
         />
+
         <Info name={name} subName={subName}>
           {children}
         </Info>

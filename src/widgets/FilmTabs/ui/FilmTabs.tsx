@@ -37,8 +37,7 @@ const FilmTabs: FC<FilmTabsProps> = (props) => {
       id: 1,
     },
     {
-      content:
-  <Images id={id} />,
+      content: <Images id={id} />,
       name: 'Изображения',
       id: 2,
     },

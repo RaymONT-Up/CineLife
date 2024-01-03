@@ -10,6 +10,7 @@ import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/ur
 import TagsList, { TagsListTheme } from 'shared/ui/TagsList';
 import Rating from 'shared/ui/Rating';
 import { FilmType } from 'shared/api/kinopoisk/models';
+import FavoriteButton from 'features/favorites';
 import cls from './FilmHeader.module.scss';
 
 interface FilmHeaderProps {
@@ -35,8 +36,8 @@ const FilmHeader: FC<FilmHeaderProps> = (props) => {
     type,
     filmLength,
     coverUrl,
-    logoUrl,
     nameOriginal,
+    kinopoiskId,
   } = filmData;
 
   const countriesList = countries?.map((item) => {
@@ -120,6 +121,14 @@ const FilmHeader: FC<FilmHeaderProps> = (props) => {
         </FilmListItem> */}
 
       </ul>
+      <FavoriteButton data={{
+        name: nameRu || nameEn || nameOriginal,
+        year,
+        posterUrl,
+        id: kinopoiskId,
+        rating: ratingKinopoisk,
+      }}
+      />
     </PageHeaderInfo>
   );
 };
