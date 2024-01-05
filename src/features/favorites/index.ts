@@ -1,3 +1,9 @@
-import FavoriteButton from './ui/FavoriteButton';
+import { favoritesSlice } from './model/slice/FavoriteSlice';
+import { FavoritesSchema } from './model/types/favoriteTypes';
+import AddToFavorites from './ui/AddToFavorites';
 
-export default FavoriteButton;
+export {
+  FavoritesSchema,
+  favoritesSlice,
+};
+export default AddToFavorites;

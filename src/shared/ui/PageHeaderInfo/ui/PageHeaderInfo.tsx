@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ElementType, FC, ReactNode } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import cls from './PageHeaderInfo.module.scss';
 import Info from './Info/Info';

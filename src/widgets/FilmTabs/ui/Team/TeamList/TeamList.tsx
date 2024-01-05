@@ -15,7 +15,7 @@ interface TeamListProps {
 const TeamList: FC<TeamListProps> = ({ professionText, group }) => {
   const {
     visibleItems, hasMore, showMore, reset, canHide,
-  } = useShowMore(group, 15);
+  } = useShowMore(group);
 
   const total = group.length;
 

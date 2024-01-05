@@ -34,7 +34,7 @@ export const catalogGenresSelectOptions = [
   { value: 33, label: 'Детский' },
 ];
 
-// !FIX - It will be better to use a request to the apishka and create entity
+// !FIX - It will be better to use a request to the API and create entity
 // size app + 18-20kb
 export const catalogCountriesSelectOptions = [
   {

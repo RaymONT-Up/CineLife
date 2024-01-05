@@ -20,7 +20,7 @@ body .MySelect{
     
     color: var(--text-color);
     background-color: var(--glass-bg-color);  
-    backdrop-filter: var(--glass-bg-blur);
+    backdrop-filter: blur(0.2em);
 
     &--is-focused{
       svg{

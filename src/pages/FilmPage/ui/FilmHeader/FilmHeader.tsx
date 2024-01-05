@@ -10,7 +10,8 @@ import { catalogURLParams } from 'features/CatalogFilterAndSearch/model/types/ur
 import TagsList, { TagsListTheme } from 'shared/ui/TagsList';
 import Rating from 'shared/ui/Rating';
 import { FilmType } from 'shared/api/kinopoisk/models';
-import FavoriteButton from 'features/favorites';
+import AddToFavorites from 'features/favorites';
+
 import cls from './FilmHeader.module.scss';
 
 interface FilmHeaderProps {
@@ -69,7 +70,7 @@ const FilmHeader: FC<FilmHeaderProps> = (props) => {
       coverUrl={coverUrl}
     >
 
-      <ul>
+      <ul className={cls.list}>
         <InfoListItem name="Год">
           {year}
         </InfoListItem>
@@ -121,7 +122,8 @@ const FilmHeader: FC<FilmHeaderProps> = (props) => {
         </FilmListItem> */}
 
       </ul>
-      <FavoriteButton data={{
+
+      <AddToFavorites filmData={{
         name: nameRu || nameEn || nameOriginal,
         year,
         posterUrl,
@@ -129,6 +131,7 @@ const FilmHeader: FC<FilmHeaderProps> = (props) => {
         rating: ratingKinopoisk,
       }}
       />
+
     </PageHeaderInfo>
   );
 };

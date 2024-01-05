@@ -1,0 +1,30 @@
+.addToFavorite{
+  position: relative;
+  z-index: 5;
+  min-width: 280px;
+  width: 100%;
+  max-width: 20vw;
+
+  transition: all, var(--transition-duration);
+
+  &.loading{
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: wait;  
+
+    div{
+      cursor: wait;
+    }  
+  }
+}
+
+.error{
+  color: var(--bad-color);
+  font-size: 0.8em;
+}
+
+.loader{
+  width: 1em;
+  height: 1em;
+  background-color: var(--text-color);
+}

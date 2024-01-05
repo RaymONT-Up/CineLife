@@ -14,6 +14,7 @@ interface MySelectProps {
   name: string;
 
   defaultValue?: ISelectOption;
+  value?: ISelectOption;
   isOpen?:boolean;
   className?: string;
   isSearchable?: boolean;

@@ -1,6 +1,7 @@
 import { UserSchema } from 'entities/User';
 import { AuthSchema } from 'features/Auth';
 import { CatalogFilterAndSearchSchema } from 'features/CatalogFilterAndSearch';
+import { FavoritesSchema } from 'features/favorites';
 import { CatalogPageSchema } from 'pages/CatalogPage';
 import { FilmPageSchema } from 'pages/FilmPage';
 import { PersonPageSchema } from 'pages/PersonPage/model/types/PersonPageSchema';
@@ -14,4 +15,5 @@ export interface StateSchema {
   filmTabs: FilmTabsSchema;
   auth?: AuthSchema;
   person?: PersonPageSchema;
+  favorites?: FavoritesSchema;
 }

@@ -17,6 +17,7 @@ interface AuthModalProps {
 
 const ANIMATION_DURATION = 500;
 
+// !FIX - use global state.
 const AuthModal: FC<AuthModalProps> = (props) => {
   const { className = '', isOpen, onClose } = props;
   const [isLogin, setIsLogin] = useState(true);

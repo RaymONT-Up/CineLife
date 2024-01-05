@@ -3,7 +3,7 @@ import { FilmPageSchema } from '../types/FilmPageSchema';
 import { FetchFilm } from '../service/FetchFilm';
 
 const initialState: FilmPageSchema = {
-  isLoading: false,
+  isLoading: true,
   error: null,
   film: {},
 };
