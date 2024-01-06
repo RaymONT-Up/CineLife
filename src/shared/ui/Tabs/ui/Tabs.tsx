@@ -1,5 +1,5 @@
 import {
-  FC, MouseEventHandler, ReactNode, useCallback, useEffect, useRef, useState,
+  FC, MouseEventHandler, ReactNode, memo, useCallback, useEffect, useRef, useState,
 } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import Button, { ButtonTheme } from 'shared/ui/Button';
@@ -134,3 +134,4 @@ const Tabs: FC<TabsProps> = (props) => {
 };
 
 export default Tabs;
+export const MemoizedTabs = memo(Tabs);

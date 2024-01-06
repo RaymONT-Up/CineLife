@@ -7,6 +7,7 @@ import { FilmReducer } from 'pages/FilmPage';
 import { FilmTabsReducer } from 'widgets/FilmTabs/model/slice/FilmTabsSlice';
 import { PersonReducer } from 'pages/PersonPage/model/slice/PersonPageSlice';
 import { favoritesReducer } from 'features/favorites/model/slice/FavoriteSlice';
+import { profileReducer } from 'pages/ProfilePage';
 import { StateSchema } from './StateSchema';
 
 export function createReduxStore(initialState?: StateSchema) {
@@ -19,6 +20,7 @@ export function createReduxStore(initialState?: StateSchema) {
     auth: authReducer,
     person: PersonReducer,
     favorites: favoritesReducer,
+    profile: profileReducer,
   };
   return configureStore<StateSchema>({
     reducer: rootReducers,

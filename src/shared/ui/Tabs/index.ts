@@ -1,3 +1,6 @@
-import Tabs from './ui/Tabs';
+import Tabs, { MemoizedTabs } from './ui/Tabs';
 
+export {
+  MemoizedTabs,
+};
 export default Tabs;

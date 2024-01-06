@@ -5,15 +5,18 @@ import { FavoritesSchema } from 'features/favorites';
 import { CatalogPageSchema } from 'pages/CatalogPage';
 import { FilmPageSchema } from 'pages/FilmPage';
 import { PersonPageSchema } from 'pages/PersonPage/model/types/PersonPageSchema';
+import { ProfilePageSchema } from 'pages/ProfilePage';
 import { FilmTabsSchema } from 'widgets/FilmTabs/model/types/FilmTabsSchema';
 
 export interface StateSchema {
-  user?: UserSchema;
   catalog: CatalogPageSchema;
   catalogFilter: CatalogFilterAndSearchSchema;
   film: FilmPageSchema;
   filmTabs: FilmTabsSchema;
+  person: PersonPageSchema;
   auth?: AuthSchema;
-  person?: PersonPageSchema;
   favorites?: FavoritesSchema;
+  profile?: ProfilePageSchema;
+  user?: UserSchema;
+  // !?FIX - profile and user;
 }

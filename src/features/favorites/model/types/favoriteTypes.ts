@@ -15,7 +15,7 @@ export interface FavoritesSchema{
 export interface FilmData {
   id: number;
   name: string;
-  year: number | string;
+  year: number;
   posterUrl: string;
   rating: number;
   status?: FavoritesStatus;

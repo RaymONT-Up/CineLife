@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsAuth } from 'entities/User/model/selectors/getUserAuthData/getIsAuth';
@@ -9,8 +9,11 @@ import Button from 'shared/ui/Button';
 import { useNavigate } from 'react-router-dom';
 import Tabs from 'shared/ui/Tabs';
 import { getUserAuthData } from 'entities/User/model/selectors/getUserAuthData/getUserAuthData';
+import { FavoritesStatus } from 'features/favorites';
 import cls from './ProfilePage.module.scss';
-import FavoritesList from './FavoritesList/FavoritesList';
+import FavoritesList from './Favorites/FavoritesList/FavoritesList';
+import Favorites from './Favorites/Favorites';
+import { profileActions } from '../model/slice/ProfilePageSlice';
 
 interface ProfilePageProps {
   className?: string;
@@ -25,7 +28,13 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
   const { isAuth, authData } = useSelector(getUserAuthData);
   // const { email } = authData;
 
-  const navigate = useNavigate(); // Инициализация useNavigate для навигации
+  useEffect(() => {
+    return () => {
+      dispatch(profileActions.reset());
+    };
+  });
+
+  const navigate = useNavigate();
 
   const handleSignOut = async () => {
     const auth = getAuth();
@@ -46,21 +55,12 @@ const ProfilePage: FC<ProfilePageProps> = (props) => {
     );
   }
 
-  const tabsList = [
-    { name: 'Любимое', content: 'n', id: 1 },
-    { name: 'В планах', content: <FavoritesList />, id: 2 },
-    { name: 'Смотрю', content: 'Смотрю', id: 3 },
-    { name: 'Просмотрено', content: 'Просмотрено', id: 4 },
-    { name: 'Брошено', content: 'Брошено', id: 5 },
-  ];
-
   return (
     <div className={classNames(cls.ProfilePage, {}, [className])}>
       <Button onClick={handleSignOut}>
         {'Выйти из аккаунта '}
       </Button>
-
-      <Tabs TabsList={tabsList} />
+      <Favorites />
     </div>
   );
 };
