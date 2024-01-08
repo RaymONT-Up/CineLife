@@ -16,9 +16,17 @@ export const authSlice = createSlice({
   reducers: {
     setEmail(state, action: PayloadAction<string>) {
       state.email = action.payload;
+      state.error = undefined;
     },
     setPassword(state, action: PayloadAction<string>) {
       state.password = action.payload;
+      state.error = undefined;
+    },
+    setError(state, action: PayloadAction<string>) {
+      state.error = action.payload;
+    },
+    resetError(state) {
+      state.error = undefined;
     },
   },
   extraReducers: (builder) => {

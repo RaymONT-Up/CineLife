@@ -5,9 +5,12 @@ import Modal from 'shared/ui/Modal';
 import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
 import Button, { ButtonTheme } from 'shared/ui/Button';
 import classNames from 'shared/lib/classNames/classNames';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAuthState } from 'features/Auth/model/selectors/getAuthState/getAuthState';
+import Loader from 'shared/ui/Loader';
+import { authActions } from '../../model/slice/authSlice';
 import cls from './AuthModal.module.scss';
-import LoginForm from '../LoginForm/LoginForm';
-import RegisterForm from '../RegisterForm/RegisterForm';
+import AuthForm from '../AuthForm/AuthForm';
 
 interface AuthModalProps {
   className?: string;
@@ -17,18 +20,23 @@ interface AuthModalProps {
 
 const ANIMATION_DURATION = 500;
 
-// !FIX - use global state.
+// !FIX - use global state. repeatable code for registration and authorization
 const AuthModal: FC<AuthModalProps> = (props) => {
   const { className = '', isOpen, onClose } = props;
   const [isLogin, setIsLogin] = useState(true);
   const [isСhanging, setIsСhanging] = useState(false);
   const [isOpens, setIsOpens] = useState(false);
 
+  const dispatch = useDispatch();
+  const { isLoading, error } = useSelector(getAuthState);
+
   // Обработчик события для переключения формы
   const toggleFormType = () => {
     // Старт анимации закрытия
     setIsСhanging(true);
     setIsOpens(false);
+
+    dispatch(authActions.resetError());
 
     setTimeout(() => {
       setIsLogin((prev) => !prev);
@@ -72,6 +80,8 @@ const AuthModal: FC<AuthModalProps> = (props) => {
       className={classNames(cls.Modal)}
       classNameContent={classNames(cls.content, { [cls.isChanging]: isСhanging, [cls.isOpens]: isOpens })}
     >
+
+      {isLoading && <div className={cls.loader}><Loader /></div>}
       <Title
         theme={TitleTheme.subtitle}
         className={cls.Title}
@@ -80,10 +90,13 @@ const AuthModal: FC<AuthModalProps> = (props) => {
       >
         {isLogin ? 'Авторизация' : 'Регистрация'}
       </Title>
+      {error && (
+      <p className={cls.error}>
+        {error}
+      </p>
+      )}
 
-      {isLogin
-        ? <LoginForm className={classNames(cls.Form)} />
-        : <RegisterForm className={classNames(cls.Form)} />}
+      <AuthForm isLogin={isLogin} />
 
       <Button
         className={cls.toggleFormBtn}

@@ -15,7 +15,7 @@ const registerByEmailAndPassword = createAsyncThunk(
   'auth/registerByEmailAndPassword',
   async (registrationData: registerByEmailAndPasswordProps, thunkAPI) => {
     const auth = getAuth();
-    const firestore = getFirestore(); // Инициализация Firestore
+    const firestore = getFirestore();
 
     const { email, password } = registrationData;
 
@@ -42,7 +42,26 @@ const registerByEmailAndPassword = createAsyncThunk(
 
       return user;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      let errorMessage = 'Ошибка регистрации. Пожалуйста, проверьте введенные данные и попробуйте снова.';
+
+      switch (error.code) {
+        case 'auth/email-already-in-use':
+          errorMessage = 'Пользователь с таким email уже существует.';
+          break;
+        case 'auth/invalid-email':
+          errorMessage = 'Неверный формат email.';
+          break;
+        case 'auth/operation-not-allowed':
+          errorMessage = 'Регистрация отключена. Обратитесь к администратору.';
+          break;
+        case 'auth/weak-password':
+          errorMessage = 'Пароль слишком слабый. Попробуйте использовать более надежный пароль.';
+          break;
+        default:
+          break;
+      }
+
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   },
 );

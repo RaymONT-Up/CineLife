@@ -1,9 +1,7 @@
 import { FC } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
-import Tabs, { MemoizedTabs } from 'shared/ui/Tabs';
+import Tabs from 'shared/ui/Tabs';
 import { FavoritesStatus } from 'features/favorites';
-import { useSelector } from 'react-redux';
-import { getIsLoading } from '../../model/selectors/ProfilePageSelectors';
 import cls from './Favorites.module.scss';
 import FavoritesList from './FavoritesList/FavoritesList';
 
@@ -17,7 +15,7 @@ const tabsList = Object.entries(FavoritesStatus).map((item, index) => ({
   id: index,
 }));
 
-// !FIX - оптимизировать перерендер
+// !FIX - добавить отображение загрузки
 const Favorites: FC<FavoritesProps> = (props) => {
   const { className } = props;
 

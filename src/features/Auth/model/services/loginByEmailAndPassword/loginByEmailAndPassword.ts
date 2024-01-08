@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { userActions } from 'entities/User';
 import { User } from 'entities/User/model/types/user';
+import { FirebaseError } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 export interface loginByEmailAndPasswordProps {
@@ -30,8 +31,27 @@ const loginByEmailAndPassword = createAsyncThunk(
 
       return user;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      let errorMessage = 'Ошибка входа. Пожалуйста, проверьте веденные данные и попробуйте снова.';
+      switch (error.code) {
+        case 'auth/user-not-found':
+          errorMessage = 'Пользователь с таким email не найден.';
+          break;
+        case 'auth/wrong-password':
+          errorMessage = 'Неверный пароль.';
+          break;
+        case 'auth/invalid-email':
+          errorMessage = 'Неверный формат email.';
+          break;
+        case 'auth/invalid-login-credentials':
+          errorMessage = 'Неверный логин или пароль.';
+          break;
+        default:
+          break;
+      }
+
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   },
 );
+
 export default loginByEmailAndPassword;

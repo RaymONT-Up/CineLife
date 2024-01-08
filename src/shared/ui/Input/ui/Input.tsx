@@ -1,5 +1,5 @@
 import {
-  ChangeEvent, FC, InputHTMLAttributes, memo,
+  ChangeEvent, FC, InputHTMLAttributes,
 } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
@@ -35,6 +35,7 @@ const Input: FC<InputProps> = (props) => {
       placeholder={placeholder}
       type={type}
       className={classNames(cls.Input, {}, [className])}
+      {...otherProps}
     />
   );
 };

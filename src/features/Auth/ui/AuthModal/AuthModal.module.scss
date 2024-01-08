@@ -36,15 +36,39 @@
       transform: translateX(0) skew(0, 0) scaleY(1) scaleX(1);
     }
   }
+
+
+  .content{
+    max-width: 28%;
+    width: 100%;
+
+    @media(width <= 1000px){
+      max-width: 35%;
+    }
+
+    @media(width <= 800px){
+      max-width: 40%;
+    }
+
+    @media(width <= 600px){
+      max-width: 50%;
+    }
+
+    @media(width <= 400px){
+      max-width: 100%;
+    }
+  }
+
+
 }
 
 .Title{
-  margin-bottom: 1em;
+  margin-bottom: 0.6em;
 }
 
 .toggleFormBtn{
-  margin-top: 1em;
-  padding: 0.1em;
+  margin-top: 0.3em;
+  padding: 0.5em 0.2em;
   width: 100%;
   text-align: right;
 }
@@ -67,6 +91,33 @@
   button{
     display: block;
     width: 100%;
+  }
+}
+
+.error{
+  margin-bottom: 1em;
+  opacity: 0.8;
+  color: var(--bad-color);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.loader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--overlay-color-2);
+
+  > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
