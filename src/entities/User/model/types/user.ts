@@ -1,9 +1,9 @@
 export interface User {
-  uid: string;
-  displayName: string;
-  email: string;
-  photo: string;
-  userToken: string;
+  uid: string | null;
+  displayName: string | null;
+  email: string | null;
+  photo: string | null;
+  userToken: string | null;
 }
 
 export interface UserSchema {

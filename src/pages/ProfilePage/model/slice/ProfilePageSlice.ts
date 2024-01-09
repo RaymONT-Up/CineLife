@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { ProfilePageSchema } from '../types/ProfilePageTypes';
 import fetchFavorites from '../services/fetchFavorites';
 
-// !FIX - we have user slice
 const initialState: ProfilePageSchema = {
   isLoading: true,
   error: undefined,
@@ -17,10 +16,9 @@ export const profilePageSlice = createSlice({
     reset() {
       return { ...initialState };
     },
-
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchFavorites.pending, (state, action) => {
+    builder.addCase(fetchFavorites.pending, (state) => {
       state.error = undefined;
       state.isLoading = true;
     });

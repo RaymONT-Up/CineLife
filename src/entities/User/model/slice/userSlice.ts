@@ -3,6 +3,13 @@ import { UserSchema, User } from '../types/user';
 
 const initialState: UserSchema = {
   isAuth: false,
+  authData: {
+    uid: null,
+    displayName: null,
+    email: null,
+    photo: null,
+    userToken: null,
+  },
 };
 
 export const userSlice = createSlice({

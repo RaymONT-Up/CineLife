@@ -3,6 +3,7 @@ import classNames from 'shared/lib/classNames/classNames';
 import cls from './PageHeaderInfo.module.scss';
 import Info from './Info/Info';
 import Image from './Image/Image';
+import CoverBg from './CoverBg/CoverBg';
 
 interface PageHeaderInfoProps {
   className?: string;
@@ -31,10 +32,10 @@ const PageHeaderInfo: FC<PageHeaderInfoProps> = (props) => {
     <div className={classNames(cls.PageHeaderInfo, {}, [className])}>
 
       {coverUrl && (
-      <div
-        className={classNames(cls.coverBg, {}, [coverClassName])}
-        style={{ backgroundImage: `url(${coverUrl})` }}
-      />
+        <CoverBg
+          className={classNames('', {}, [coverClassName])}
+          url={`url(${coverUrl})`}
+        />
       )}
 
       <div className={cls.content}>

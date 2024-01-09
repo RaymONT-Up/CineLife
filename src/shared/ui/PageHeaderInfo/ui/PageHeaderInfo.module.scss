@@ -28,37 +28,3 @@
   
 }
 
-
-.coverBg{
-  position: absolute;
-  top: 0;
-  left: calc(var(--index) * -1);
-  right: calc(var(--index) * -1);
-  bottom: 0;
-  z-index: 0;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center 40%;
-  background-attachment: fixed;
-
-  &::after,&::before{
-    content: "";
-
-    position: absolute;
-    right: 0;
-    left: 0;  
-    bottom: -1%;
-
-    z-index: 1;
-  }
-
-  &::after{
-    top: 0;
-    background-color: var(--overlay-color-2);
-  }
-
-  &::before{
-    top: 70%;
-    background: var(--blackout);
-  }
-}

@@ -26,7 +26,7 @@ const Hero: FC<HeroProps> = (props) => {
   };
 
   return (
-    <div
+    <section
       className={classNames(cls.Hero, {}, [className])}
       style={{ backgroundImage: `url(${bgImg})` }}
     >
@@ -46,7 +46,7 @@ const Hero: FC<HeroProps> = (props) => {
           onSubmit={searchFormSubmitHandler}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

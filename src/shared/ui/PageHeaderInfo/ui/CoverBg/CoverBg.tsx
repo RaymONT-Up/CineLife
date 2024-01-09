@@ -4,12 +4,16 @@ import cls from './CoverBg.module.scss';
 
 interface CoverBgProps {
   className?: string;
+  url: string;
 }
 
 const CoverBg: FC<CoverBgProps> = (props) => {
-  const { className } = props;
+  const { className, url } = props;
   return (
-    <div className={classNames(cls.CoverBg, {}, [className])} />
+    <div
+      className={classNames(cls.CoverBg, {}, [className])}
+      style={{ backgroundImage: url }}
+    />
   );
 };
 

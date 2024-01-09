@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Title, { TitleTheme } from 'shared/ui/Title';
+import Title, { TitleTags, TitleTheme } from 'shared/ui/Title';
 import TagsList, { TagsListTheme } from 'shared/ui/TagsList';
 import { catalogCountriesSelectOptions, catalogGenresSelectOptions } from 'shared/config/catalogFilter/catalogFilter';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
@@ -37,18 +37,18 @@ const Category: FC<CategoryProps> = (props) => {
   } = useShowMore(countriesList, 30, 60);
 
   return (
-    <div className={cls.Category}>
+    <section className={cls.Category}>
       <div className={cls.box}>
-        <Title className={cls.title} theme={TitleTheme.subtitle}>
-          Жанры:
+        <Title className={cls.title} theme={TitleTheme.subtitle} Tag={TitleTags.h5}>
+          По жанрам:
         </Title>
 
         <TagsList list={genresList} />
       </div>
 
       <div className={cls.box}>
-        <Title className={cls.title} theme={TitleTheme.subtitle}>
-          Страны:
+        <Title className={cls.title} theme={TitleTheme.subtitle} Tag={TitleTags.h5}>
+          По  Странам:
         </Title>
 
         <TagsList theme={TagsListTheme.outline} list={visibleCountries} />
@@ -61,7 +61,7 @@ const Category: FC<CategoryProps> = (props) => {
         />
 
       </div>
-    </div>
+    </section>
   );
 };
 

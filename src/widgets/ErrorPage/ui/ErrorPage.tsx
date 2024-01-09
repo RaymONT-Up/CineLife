@@ -14,11 +14,13 @@ const ErrorPage: FC<ErrorPageProps> = (props) => {
     // eslint-disable-next-line no-restricted-globals
     location.reload();
   };
+
   return (
     <div className={classNames(cls.ErrorPage, {}, [className])}>
 
       <h1 className={cls.title}>Произошла непредвиденная ошибка</h1>
       <Button className={cls.reloadBtn} onClick={reloadPage}>Пожалуйста, обновите страницу</Button>
+
     </div>
   );
 };

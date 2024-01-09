@@ -11,7 +11,7 @@ interface NotFoundPageProps {
 const NotFoundPage: FC<NotFoundPageProps> = (props) => {
   const { className } = props;
   return (
-    <div className={classNames(cls.NotFoundPage, {}, [className])}>
+    <section className={classNames(cls.NotFoundPage, {}, [className])}>
       <Title
         className={cls.Title}
         color={TitleColor.primary}
@@ -23,7 +23,7 @@ const NotFoundPage: FC<NotFoundPageProps> = (props) => {
       <Title Tag={TitleTags.h3} theme={TitleTheme.subtitle} centered>
         Пожалуйста, проверьте правильность введенного URL или воспользуйтесь навигацией по сайту для поиска нужной информации.
       </Title>
-    </div>
+    </section>
   );
 };
 

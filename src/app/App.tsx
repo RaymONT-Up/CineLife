@@ -17,8 +17,12 @@ interface AppProps {
 const App: FC<AppProps> = () => {
   const { theme } = useTheme();
   const dispatch = useDispatch();
+
   useEffect(() => {
+    // set theme
     document.body.className = theme;
+
+    // if user was logined - set auth data
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         const {

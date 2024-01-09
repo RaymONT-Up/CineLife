@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import {
   Swiper, SwiperProps, SwiperSlide,
 } from 'swiper/react';
-import 'swiper/css';
+import 'swiper/scss';
 import classNames from 'shared/lib/classNames/classNames';
 import { Navigation } from 'swiper/modules';
 import { SwiperOptions } from 'swiper/types';

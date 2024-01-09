@@ -29,11 +29,17 @@ export default ({ config }: {config: webpack.Configuration}) => {
   });
   config.module.rules.push({
     test: /\.svg$/,
+    exclude: /swiper\.css$/,
     use: ['@svgr/webpack'],
   });
 
   //   Добавляем css loader
   config.module.rules.push(buildCssLoader(true));
+
+  config.module.rules.push({
+    test: /swiper\.css$/,
+    use: ['style-loader', 'css-loader'],
+  });
 
   return config;
 };
