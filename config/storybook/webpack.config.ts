@@ -38,8 +38,13 @@ export default ({ config }: {config: webpack.Configuration}) => {
 
   config.module.rules.push({
     test: /swiper\.css$/,
-    use: ['style-loader', 'css-loader'],
+    use: ['style-loader', 'sass-loader'],
   });
 
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      __IS_DEV__: JSON.stringify(process.env.NODE_ENV !== 'production'),
+    }),
+  );
   return config;
 };

@@ -10,14 +10,14 @@ import { getDescription, getError, getIsLoading } from '../model/selectors/FilmP
 import FilmHeader from './FilmHeader/FilmHeader';
 import FilmPlayer from './FilmPlayer/FilmPlayer';
 
-interface FilmPageProps {
+export interface FilmPageProps {
   className?: string;
 }
 
 // !FIX decompose and refactor
-const FilmPage: FC<FilmPageProps> = () => {
-  const { id } = useParams<{ id: string }>();
+const FilmPage: FC<FilmPageProps> = (props) => {
   const dispatch = useDispatch();
+  const { id } = useParams<{ id: string }>();
 
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);

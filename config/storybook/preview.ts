@@ -2,9 +2,12 @@ import type { Preview } from '@storybook/react';
 
 import '../../src/app/styles/index.scss';
 import { RouterDecorator } from 'shared/config/storybook/RouterDecorator/RouterDecorator';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '../../src/app/providers/ThemeProvider/lib/ThemeContext';
+
+const __IS_DEV__ = true;
 
 const preview: Preview = {
   parameters: {
@@ -19,6 +22,9 @@ const preview: Preview = {
   decorators: [
     StyleDecorator,
     ThemeDecorator(Theme.DARK),
-    RouterDecorator],
+    RouterDecorator,
+    StoreDecorator,
+  ],
+
 };
 export default preview;
