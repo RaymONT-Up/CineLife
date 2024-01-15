@@ -16,7 +16,6 @@ Cinelife is a web application for movie lovers.
 - **TypeScript**: A statically typed programming language to improve code security and readability.
 - **Jest and React testing library**: For unit testing applications.
 - **Storybook and Loki**: A tool for developing user interface components in a project.
-- **Functional Design**: Like the front-end architecture of an application.
 - **Firebase**: Database and user ratings.
 - **Eslint, Stylelint**: Linters for the project.
 - **Webpack**: Project builder.
@@ -49,13 +48,14 @@ Cinelife is a web application for movie lovers.
 - [x] Movie page. Block with information, description, image + gallery, budget data, facts, team.
 - [x] Actor page. Information, facts, films based on commercials (director, actor, voice actors, etc.).
 - [x] Favorites user. Adding a movie to favorites/watching/will-watch/abandoned.
-- [ ] Size optimization package -> share app with async deferred components. Add plugins to your webpack to compress images and remove unnecessary code.
+- [ ] Refactoring.
+- [ ] -+ Size optimization package -> share app with async deferred components. Add plugins to your webpack to compress images and remove unnecessary code.
 - [ ] ? Testings for react components, redux, selectors.
 - [ ] ? Film selections. Collections of films like “100 Best Films”, etc.
 - [ ] ? Film reviews.
 - [ ] ? Write Stories for Asynchronous Components using Storybook.
 - [ ] ? Setup CD.
-- [ ] ?? Add another important task)
+- [ ] ?? Add another important task :)
 
 
 
