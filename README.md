@@ -1,40 +1,61 @@
 # Cinelife
-Demo - cinelife.web.app;
 
-Cinelife - веб-приложение для любителей кино.
+Demo - [cinelife.web.app](https://cinelife.web.app)
 
-## Технологии
+Cinelife is a web application for movie lovers.
 
-- **React**: Основная библиотека для создания пользовательского интерфейса.
-- **React-router-dom**: Роутинг реакт приложения. 
-- **Redux Toolkit**: Инструменты для управления состоянием приложения.
-- **TypeScript**: Статически типизированный язык программирования для повышения безопасности и читаемости кода.
-- **Webpack**: Средство для сборки и упаковки проекта.
-- **Jest и React Testing Library**: Для юнит-тестирования приложения.
-- **Storybook и Loki**: Инструмент для разработки компонентов пользовательского интерфейса в изоляции.
-- **Feature-sliced-design**: Как архитектура Frontend приложения.
-- **Firebase**: База данных и аунтификация пользователя.
-- **Eslint, stylelint**: Линтеры для проекта.
-- **Webpack**: Сборщик проекта.
+#### Contacts
+- Email: [raymontwebdev@gmail.com](mailto:raymontwebdev@gmail.com)
+- Telegram: [@Raym0NT](https://t.me/Raym0NT)
 
-## Команды для управления проектом
+## Technologies
 
-- `npm start`: Запускает приложение в режиме разработки на порту 3000.
-- `npm run build:prod`: Собирает продуктовую версию приложения.
-- `npm run build:dev`: Собирает dev версию приложения.
-- `npm run lint:ts`: Eslint проверяет Typescript файлы на ошибки.
-- `npm run lint:ts:fix`: Eslint автоматическое исправление ошибок Typescript.
-- `npm run lint:scss`: Stylelint проверяет scss файлы на ошибки.
-- `npm run lint:scss:fix`: Stylelint автоматическое исправление ошибок scss.
-- `npm run test:unit`: Запускает юнит-тесты для приложения.
-- `npm run test:ui`: Запускает тестирование пользовательского интерфейса с использованием Loki.
-- `npm run test:ui:ok`: Подтверждает результаты тестирования пользовательского интерфейса.
-- `npm run test:ui:ci`: Запускает тестирование пользовательского интерфейса в CI-среде.
-- `npm run test:ui:report`: Генерирует отчет о результатах тестирования пользовательского интерфейса.
-- `npm run storybook`: Запускает Storybook для разработки компонентов.
-- `npm run storybook:build`: Собирает Storybook для развертывания.
-- `npm run deploy`: Собирает продуктовую версию приложения и разворачивает ее с использованием Firebase.
+- **React**: The main library for creating user interfaces.
+- **React-router-dom**: React app routing.
+- **Redux Toolkit**: Tools for managing application state.
+- **TypeScript**: A statically typed programming language to improve code security and readability.
+- **Jest and React testing library**: For unit testing applications.
+- **Storybook and Loki**: A tool for developing user interface components in a project.
+- **Firebase**: Database and user ratings.
+- **Eslint, Stylelint**: Linters for the project.
+- **Webpack**: Project builder.
+- **Axios**: JS-lib for http requests.
+- **Firebase**: Firebase for database and auth. 
+- **FSD**: Frontend architecture "FeatureSliced Design".
 
-Email: raymontwebdev@gmail.com
-telegram: @Raym0NT 
+## Teams for project management
+
+- `npm run start`: Starts the application in development mode on port 3000.
+- `npm run build:prod`: Builds the product version of the application.
+- `npm run build:dev`: Builds the dev version of the application.
+- `npm run lint:ts`: Eslint subsequently found errors in the typescript files.
+- `npm run lint:ts:fix`: Eslint contains Typescript bug fixes.
+- `npm run lint:scss`: Stylelint subsequently scss files were found to be incorrect.
+- `npm run lint:scss:fix`: Stylelint partially fixes scss errors.
+- `npm run test:unit`: Runs unit tests for the application.
+- `npm run test:ui`: Runs UI testing using Loki.
+- `npm run test:ui:ok`: Confirms the results of UI testing.
+- `npm run test:ui:ci`: Runs UI testing in the CI environment.
+- `npm run test:ui:report`: Generates a UI testing vulnerability report.
+- `npm run storybook`: Runs Storybook to develop components.
+- `npm run storybook:build`: Builds the Storybook for deployment.
+- `npm run deploy`: Builds the production version of the application and deploys it using Firebase.
+
+## ToDo
+
+- [x] Home page.
+- [x] Catalog. Filtering by genres, countries, types (TV series, films, etc.), sorting. Loading by scroll.
+- [x] Movie page. Block with information, description, image + gallery, budget data, facts, team.
+- [x] Actor page. Information, facts, films based on commercials (director, actor, voice actors, etc.).
+- [x] Favorites user. Adding a movie to favorites/watching/will-watch/abandoned.
+- [ ] Refactoring.
+- [ ] -+ Size optimization package -> share app with async deferred components. Add plugins to your webpack to compress images and remove unnecessary code.
+- [ ] ? Testings for react components, redux, selectors.
+- [ ] ? Film selections. Collections of films like “100 Best Films”, etc.
+- [ ] ? Film reviews.
+- [ ] ? Write Stories for Asynchronous Components using Storybook.
+- [ ] ? Setup CD.
+- [ ] ?? Add another important task :)
+
+
 
