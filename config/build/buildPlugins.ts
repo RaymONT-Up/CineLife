@@ -32,7 +32,7 @@ export const buildPlugins = (
     }),
 
     // Глобальные переменные из .env
-    new Dotenv()
+    new Dotenv(),
   ];
 
   if(isDev) {
