@@ -11,7 +11,7 @@
 .buttons{
   position: relative;
   z-index: 1;
-  overflow-x: scroll;
+  overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   overflow-y: visible;

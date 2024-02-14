@@ -1,14 +1,21 @@
 import {
-  FC, MouseEventHandler, ReactNode, memo, useCallback, useEffect, useRef, useState,
+  FC,
+  MouseEventHandler,
+  ReactNode,
+  memo,
+  useEffect,
+  useRef,
+  useState,
 } from 'react';
 import classNames from 'shared/lib/classNames/classNames';
 import Button, { ButtonTheme } from 'shared/ui/Button';
 import Loader from 'shared/ui/Loader';
 import cls from './Tabs.module.scss';
 
- interface Tab {
+type componentWithProps = () => ReactNode;
+interface Tab {
   name: string | ReactNode;
-  content: string | ReactNode;
+  content: string | ReactNode | componentWithProps;
   id: number | string;
 }
 
@@ -22,8 +29,15 @@ interface TabsProps {
 
   defaultTab?: Tab; // tab from tabsList
 
-  TabsList: Tab[]
+  TabsList: Tab[];
 }
+
+const renderTabContent = (tab: Tab) => {
+  if (typeof tab.content === 'function') {
+    return tab.content();
+  }
+  return tab.content;
+};
 
 const Tabs: FC<TabsProps> = (props) => {
   const {
@@ -96,7 +110,9 @@ const Tabs: FC<TabsProps> = (props) => {
     >
       <div
         ref={buttonsRef}
-        className={classNames(cls.buttons, { [cls.isLoading]: isLoading }, [buttonsClass])}
+        className={classNames(cls.buttons, { [cls.isLoading]: isLoading }, [
+          buttonsClass,
+        ])}
       >
         {TabsList.map((tab) => {
           const { id, name } = tab;
@@ -127,7 +143,7 @@ const Tabs: FC<TabsProps> = (props) => {
         />
       </div>
       <div className={`${cls.content} ${contentClass}`}>
-        {isLoading ? <Loader /> : activeTab.content}
+        {isLoading ? <Loader /> : renderTabContent(activeTab)}
       </div>
     </div>
   );

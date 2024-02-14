@@ -15,10 +15,7 @@ interface FavoritesListProps {
 }
 
 const FavoritesList: FC<FavoritesListProps> = (props) => {
-  const {
-    className,
-    status = FavoritesStatus.Favorite,
-  } = props;
+  const { className, status = FavoritesStatus.Favorite } = props;
   const films = useSelector(getFavorites);
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
@@ -33,10 +30,7 @@ const FavoritesList: FC<FavoritesListProps> = (props) => {
 
   if (films.length === 0 && !isLoading) {
     return (
-      <Title
-        theme={TitleTheme.subtitle}
-        centered
-      >
+      <Title theme={TitleTheme.subtitle} centered>
         Пусто
       </Title>
     );
@@ -45,7 +39,7 @@ const FavoritesList: FC<FavoritesListProps> = (props) => {
   return (
     <div>
       <ListGrid>
-        {films.map((film) => (
+        {films?.map((film) => (
           <CatalogPreviewCard
             key={film.id}
             nameRu={film.name}

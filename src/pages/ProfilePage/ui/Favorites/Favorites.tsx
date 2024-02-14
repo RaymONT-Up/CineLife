@@ -15,7 +15,6 @@ const tabsList = Object.entries(FavoritesStatus).map((item, index) => ({
   id: index,
 }));
 
-// !FIX - добавить отображение загрузки
 const Favorites: FC<FavoritesProps> = (props) => {
   const { className } = props;
 
